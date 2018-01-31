@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+<title>Welcome to my personal website | Alexandros Stergiou</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/design.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+<style>
+@import 'https://fonts.googleapis.com/css?family=Lalezar';
+
+
+#welcome-slide{
+   animation: backAn 40s infinite;
+   background: url("backgrounds/3.jpg");
+   background-color:#cdc8c4;
+   padding:5;
+   margin:0;
+   width:100vw;
+   height:auto;
+}
+
+#welcome-slide #myphoto{
+   mix-blend-mode: lighten;
+   width:100%;
+   height:auto;
+
+}
+
+#welcome-slide #claim{
+   position:absolute;
+   bottom:50px;
+   left: calc(50% - 100px );
+   margin:auto;
+   z-index: 3em;
+   color:#ccc7c3;
+}
+
+#welcome-slide #claim h2{
+   display: none;
+}
+
+#welcome-slide #claim h3{
+   display: none;
+}
+
+@media only screen and (min-width : 750px) {
+ #welcome-slide #claim h2{
+   display: block;
+   font-size: 1.1em;
+   text-transform: uppercase;
+   margin:0em;
+   padding:0em;
+   margin-left: 0em;
+   margin-bottom: 0.5em;
+   font-weight: 400;
+   line-height: 0em;
+   text-align: center;
+}
+
+#welcome-slide #claim h3{
+   display: block;
+   font-size: 1.3em;
+   text-transform: uppercase;
+   margin: 0em;
+   padding:0em;
+   margin-left: 0em;
+   text-align: center;
+}
+}
+
+@keyframes backAn {
+   0%   { background-position:0% 100%; }
+   50%   { background-position:100% 100%; }
+   100%   { background-position:0% 100%; }
+}
+
+
+body,h1,h2,h3,h4,h5,h6 {font-family: "Wagnasty", sans-serif;}
+body, html {
+    height: 100%;
+    line-height: 1.8;
+}
+
+
+
+.button {
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 1em 2em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.8em;
+  margin: 0.3em 0.3em;
+  -webkit-transition-duration: 0.8s; /* Safari Chrome */
+  -moz-transition-duration: 0.8; /* Firefox */
+  transition-duration: 0.8s;
+  cursor: pointer;
+  border-radius: 0.7em;
+  -webkit-touch-callout:none;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none
+
+}
+
+.button:hover {
+  background-color: #6b96cc;
+  color: white;
+  box-shadow: 0 2em 2em 0 rgba(0,0,0,0.24),0 1em 1em 0 rgba(0,0,0,0.19);
+}
+
+.circle{
+  border-radius:50%;
+}
+
+.xxlarge{
+  font-size:3.6em;
+}
+
+.xlarge{
+  font-size:2.4em;
+}
+
+.hover-grey:hover{
+  color:#6b96cc;
+}
+
+.white{
+  color:#fff;
+}
+
+.light-grey{
+  color: #f1f1f1;
+}
+
+.boxed {
+  border-style: solid none solid none ;
+  border-width: 0.05em;
+  border-color: white;
+}
+
+.boxed_grey {
+  border-style: solid none solid none;
+  border-width: 0.05em;
+  border-color: #ADADAD
+}
+
+.middle{
+  text-align:center;
+}
+
+/* Create a Parallax Effect */
+.background1{
+    opacity: 1;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+.background2, .background3, .background4, .background5 {
+    opacity: 0.9;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+/* First image */
+.background1 {
+    background-image: url("backgrounds/30.jpg");
+    min-height: 99%;
+}
+
+/* Second image*/
+.background2 {
+    background-image: url("backgrounds/39.jpg");
+    min-height: 30em;
+}
+
+/* Third image*/
+.background3 {
+    background-image: url("backgrounds/32.jpg");
+    min-height: 30em;
+}
+
+/* Fourth image*/
+.background4 {
+    background-image: url("backgrounds/41.jpg");
+    min-height: 30em;
+}
+
+/* Fifth image*/
+.background5 {
+    background-image: url("backgrounds/33.jpg");
+    min-height: 30em;
+}
+
+img {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
+}
+
+
+@media only screen and (max-width: 1024px) {
+    .backgroun1, .background2, .background3 {
+        max-width: 100%
+    }
+}
+
+.fa-cog {
+  color: white;
+}
+
+</style>
+<head>
+	<link rel="apple-touch-icon" sizes="180x180" href="favicon.ico/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon.ico/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon.ico/favicon-16x16.png">
+	<link rel="manifest" href="favicon.ico/manifest.json">
+	<link rel="mask-icon" href="favicon.ico/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="theme-color" content="#ffffff">
+
+ <!-- Disable right-click for images -->
+<script>
+    function norightclick(e) {
+        var clickedTag = (e ==null) ? event.srcElement.tagName : e.target.tagName;
+        if (clickedTag == "IMG") {
+            return false;
+        }
+    }
+    document.oncontextmenu = norightclick;
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-84369959-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+
+<body>
+
+<!-- Welcome Image -->
+<div class="background1 display-container middle">
+  <img src="photos/me_circle.png" class="drop " width="200px" alt="Me">
+  <h3 class="white middle fade">Alexandros Stergiou</h3>
+   <h5 class="white middle fade">Utrecht University Computer Science Ph.D. student</h5>
+   <div>
+   <a class="white middle fade" href="mailto:a.g.stergiou@uu.nl?Subject=Hello from a friendly website visitor"><i class="fa fa-paper-plane"></i> a.g.stergiou _at_ uu.nl</a>
+
+   <a class="white middle fade" href="https://www.uu.nl/staff/AGStergiou/0" target="_blank"><i class="fa fa-university" target="_blank"></i> UU personal page</a></br>
+   </div>
+
+
+
+    <div id="social-platforms" style="margin-bottom:1em;">
+      <div class="fade">
+
+        <a class="tooltip" href="https://github.com/alexandrosstergiou" target="_blank" data-title="GitHub"><i class="fa fa-github"></i><span>GitHub</span></a>
+
+        <!--<a class="tooltip" href="https://scholar.google.co.uk/citations?user=_E_Zs3kAAAAJ&hl=en&oi=sra" target="_blank" data-title="GoogleScholar"><i class="ai ai-google-scholar ai"></i><span>GoogleScholar</span></a>
+
+        <a class="tooltip" href="https://www.researchgate.net/profile/Alexandros_Stergiou" target="_blank" data-title="ResearchGate"><i class="ai ai-researchgate ai"></i><span>ResearchGate</span></a>-->
+
+        <a class="tooltip" href="https://www.linkedin.com/in/alexandros-stergiou-b06a17128/" target="_blank" data-title="LinkedIn"><i class="fa fa-linkedin"></i><span>LinkedIn</span></a>
+
+
+      </div>
+    </div>
+
+
+
+</div>
+
+<!-- About -->
+<div class="content container padding body" id="about">
+  <h3 class="middle">Bio</h3>
+
+
+  <p class="middle"><em>My work is focused on Machine Learning, Deep Learning, Computer Vision and Data Mining</em></p>
+
+  <div class="col hide-small section middle">
+
+    <p>
+    I am currently a full-time PhD student at Utrecht University's Department of Information and Computing Sciences. My project is based on using Machine Learning and Computer Vision for non-verbal phycology, supervised by <a href="https://www.uu.nl/staff/RWPoppe" target="_blank"><font color="#6b96cc"> Dr. Ronald Poppe</font></a> and <a href="https://www.staff.science.uu.nl/~veltk101/" target="_blank"><font color="#6b96cc"> Prof. Remco Veltkamp</font></a>. Among others, I am working on using Deep Learning and Artificial Intelligence for scene understanding and classification.
+    </p>
+    <p>
+    Before my Phd, I obtained my Masters in Advance Computer Science from University of Essex working with <a href="https://www1.essex.ac.uk/csee/staff/profile.aspx?ID=1466" target="_blank"><font color="#6b96cc"> Dr. Adrian Clark</font></a>. My Bachelor was also from University of Essex in Computer Science.
+    </p>
+    <p>
+     In the past, during my MSc, I was also involved with the <a href="https://www1.essex.ac.uk/iads/" target="_blank"><font color="#6b96cc"> Institute of Analytics and Data Science (IADS)</font></a> for a summer project on Neural Networks for structured population data with <a href="https://www1.essex.ac.uk/csee/staff/profile.aspx?ID=4954" target="_blank"><font color="#6b96cc"> Dr. Spyros Samothrakis</font></a>.
+     </p>
+
+
+  </div>
+
+    <div class="middle">
+      <a class="show-inline-block middle"><i class="fa fa-file-pdf-o" download></i> You can contact me for my full CV</a>
+    </div>
+
+</div>
+
+
+<!-- Second Parallax Image -->
+<div class="background2 display-container">
+  <div class="display-m">
+    <h2 class="xxlarge light-grey wide boxed middle fade">PUBLICATIONS</h2>
+  </div>
+</div>
+
+<!-- Projects -->
+<div class="content container padding body">
+  <h3 class="middle">MY TOP PUBLICATIONS</h3>
+  <p class="middle"><em>A full publications list can be found in my GoogleScholar profile.</em></p><br>
+
+  <!-- Conceiving Human Interaction by Visualising Depth Data of Head Pose Changes and Emotion Recognition via Facial Expressions -->
+  <div class="row-padding middle boxed_grey">
+  <div class="row">
+
+
+    <!-- Hide this text on small devices -->
+    <div class="section">
+      <h4>Conceiving Human Interaction by Visualising Depth Data of Head Pose Changes and Emotion Recognition via Facial Expressions</h4>
+      <h6><font color="#6b96cc">MDPI Computers Volume 6, Issue 3</font></h6>
+      <h6><b>Abstract</b></h6>
+      <p>Affective computing in general and human activity and intention analysis in particular comprise a rapidly-growing field of research. Head pose and emotion changes present serious challenges when applied to player’s training and ludology experience in serious games, or analysis of customer satisfaction regarding broadcast and web services, or monitoring a driver’s attention. Given the increasing prominence and utility of depth sensors, it is now feasible to perform large-scale collection of three-dimensional (3D) data for subsequent analysis. Discriminative random regression forests were selected in order to rapidly and accurately estimate head pose changes in an unconstrained environment. In order to complete the secondary process of recognising four universal dominant facial expressions (happiness, anger, sadness and surprise), emotion recognition via facial expressions (ERFE) was adopted. After that, a lightweight data exchange format (JavaScript Object Notation (JSON)) is employed, in order to manipulate the data extracted from the two aforementioned settings. Motivated by the need to generate comprehensible visual representations from different sets of data, in this paper, we introduce a system capable of monitoring human activity through head pose and emotion changes, utilising an affordable 3D sensing technology (Microsoft Kinect sensor).<br /> <a href="http://www.mdpi.com/2073-431X/6/3/25" target="_blank"><u>[PDF]</u></a></p>
+      <img src="photos/Conceiving_Human_Interaction/Fig2.png" width="200em" height="160em" alt="Fig1" style="margin-top=2%" ondragstart="return false;">
+      <img src="photos/Conceiving_Human_Interaction/Fig3.png" width="200em" height="160em" alt="Fig2" style="margin-top=2%" ondragstart="return false;">
+      <img src="photos/Conceiving_Human_Interaction/Fig1.png" width="200em" height="160em" alt="Fig4" style="margin-top=2%" ondragstart="return false;">
+      <img src="photos/Conceiving_Human_Interaction/Fig4.png" width="200em" height="160em" alt="Fig3" style="margin-top=2%" ondragstart="return false;">
+      <p><a class="button" href="https://github.com/alexandrosstergiou/BringDepthDataAlive" target="_blank" id="btn3">GITHUB CODE</a></p>
+      </div>
+    </div>
+  </div>
+
+
+  </div>
+
+
+
+<!-- Third Parallax Image -->
+<div class="background3 display-container">
+  <div class="display-m">
+    <h2 class="xxlarge light-grey wide boxed middle fade">PROJECTS</h2>
+  </div>
+</div>
+
+<!-- Projects -->
+<div class="content container padding body">
+  <h3 class="middle">MY WORK</h3>
+  <p class="middle"><em>These are some of my latest projects from courses and pet projects.</em></p><br>
+
+  <!-- The Driver's Assistant: Utilising Synthetic Data Generation and Deep Learning for Traffic Sign Classification -->
+  <div class="row-padding middle boxed_grey">
+  <div class="row">
+
+
+    <!-- Hide this text on small devices -->
+    <div class="section">
+      <h4>The Driver's Assistant: Utilising Synthetic Data Generation and Deep Learning for Traffic Sign Classification</h4>
+      <h6>MSc Thesis</h6>
+      <h6><b>Abstract</b></h6>
+      <p>A main concern of road sign recognition systems has been the use of a large dataset obtained through research and manually finding sufficient data in order to conduct the necessary experiments and optimally create a model with high accuracy rates. The purpose of this dissertation is the introduction of a traffic sign recognition system , which is based on synthetic data generation methods (SGTD), that is not bound to a specific set of road signs as occurring in a country or region, but can generate training examples given a defined set of templates. This work can significantly decrease the time spent by researches or system developers in order to acquire data and allows the reallocation of the main project focus on the construction of the predictive model. Although, the training dataset is synthetically created, the variations in visual appearance between examples, such as differences in illumination and rotation, are reflected on each image to best represent road signs in real world settings and have been implemented using Computer Vision methods. The main classifier that the system is based on is a Convolutional Neural Network (CNN) that can achieve close to state-of-the art accuracy results when trained on actual data.<br /> <a href="photos/Drivers_assistant/drivers-assistant-utilising.pdf" target="_blank"><u>[PDF]</u></a></p>
+      <img src="photos/Drivers_assistant/Fig1.png" width="200em" height="160em" alt="Fig1" style="margin-top=2%" ondragstart="return false;">
+      <img src="photos/Drivers_assistant/Fig2.png" width="200em" height="160em" alt="Fig2" style="margin-top=2%" ondragstart="return false;">
+      <img src="photos/Drivers_assistant/Fig3.png" width="200em" height="160em" alt="Fig4" style="margin-top=2%" ondragstart="return false;">
+      <img src="photos/Drivers_assistant/Fig4.png" width="200em" height="160em" alt="Fig3" style="margin-top=2%" ondragstart="return false;">
+      <p><a class="button" href="https://github.com/alexandrosstergiou/The-Drivers-Assistant-Traffic-Sign-Recognition" target="_blank" id="btn3">GITHUB CODE</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrapping for polling data from the EU referendum vote in the United Kingdom -->
+  <div class="row-padding middle boxed_grey">
+  <div class="row">
+
+
+    <!-- Hide this text on small devices -->
+    <div class="section">
+      <h4>Bootstrapping for polling data from the EU referendum vote in the United Kingdom</h4>
+      <h6>IADS summer possition (UoE) & CE888 coursework</h6>
+      <h6><b>Abstract</b></h6>
+      <p>Voting polls have been the most prominent and widely used way of forecasting results. The most straightforward way of determining the voter’s intentions would be to ask who or what he or she is going to vote. However, it has been found that even how this questioned is phrased can effect the results. Ambivalent voters as well as vacillating voters who have not fully though their decision can have a significant impact in both the polling results as well as towards a possible divergence from the results during the voting day. For voters in these cases, addition information such as their features can signify the most probable tend for each individual in regards to similar examples that have very strong opinions. By considering these features, what is proposed is a simulation of each person’s experience, when casting the ballot. This paper presents the use of Bootstrapping (or also known as bagging), to normalise the features of the polling population in order to represent the entire population that is eligible to vote. This technique will be applied to data from the 2016 Referendum that held the question of the remain or exit of the United Kingdom from the European Union.<br /> <a href="photos/Bootstrap_polling/Bootstrapping for polling data from the EU referendum vote in the United Kingdom.pdf" target="_blank"><u>[PDF - coursework version]</u></a></p>
+      <p><a class="button" href="https://github.com/alexandrosstergiou/Bootstrap-for-polling" target="_blank" id="btn3">GITHUB CODE</a></p>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+
+
+  <!-- Fourth Parallax Image -->
+  <div class="background4 display-container">
+    <div class="display-m">
+      <h2 class="xxlarge light-grey wide boxed middle fade">TEACHING</h2>
+    </div>
+  </div>
+
+  <!-- Modules -->
+  <div class="content container padding body">
+    <h3 class="middle">MODULES THAT I HAVE BEEN INVOLVED IN</h3>
+
+    <!-- 1 -->
+    <div class="row-padding middle boxed_grey">
+    <div class="row">
+      <h4><font color="#d3d3d3"> To be updated soon</font></h4>
+
+
+      <!-- Hide this text on small devices -->
+      <!--
+      <div class="section">
+        <h4> 2017/2018 <a href="http://www.cs.uu.nl/education/vak.php?vak=INFOMCV" target="_blank"><font color="#6b96cc"> INFOMCV: Computer Vision (MSc course)</font></a> Assignments supervisor</h4>
+        <h6>You can have a look at the lecture notes which can be found in the <a href="http://www.cs.uu.nl/docs/vakken/mcv/index.htm" target="_blank"><font color="#6b96cc"> course syllabus</font></a> page.</h6>
+      </div>
+        -->
+      </div>
+    </div>
+
+    </div>
+
+
+<!-- Fifth Parallax Image -->
+<div class="background5 display-container">
+  <div class="display-m">
+     <h2 class="xxlarge light-grey wide boxed fade" align="middle">PERSONAL INFO</h2>
+  </div>
+</div>
+
+<!-- Affiliations Section -->
+<div class="content container body">
+  <h3 class="middle">AFFILIATIONS</h3>
+  <div class="middle">
+  	<a href="https://www.uu.nl/en/organisation/department-of-information-and-computing-sciences" target="_blank">
+  		<img src="photos/affiliations/utrecht.png" hspace="20" height="100em" />
+  	</a>
+  	<a href="https://www1.essex.ac.uk/iads/" target="_blank">
+		<img src="photos/affiliations/IADS.jpg" hspace="20" height="100em" />
+	</a>
+	<a href="https://www1.essex.ac.uk/csee/" target="_blank">
+		<img src="photos/affiliations/essex.jpg" hspace="20" height="100em" />
+	</a>
+	</div>
+</div>
+
+</br>
+</br>
+</br>
+
+<div class="middle"><p class="light-grey" style="color:#ccc">&copy; Alexandros Stergiou</p></div>
+
+</body>
+</html>
