@@ -78,10 +78,10 @@
   }
 
 #social-platforms a:hover {
-    background-color: #6b96cc;
+    background-color: #4973AB;
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.45);
   }
-  
+
 #social-platforms a:hover:before, #social-platforms a:hover:after {
   opacity:1;
   z-index:50;
@@ -199,7 +199,7 @@ footer {
 	margin-bottom:16px;
 }
 
-@media (max-width:600px){	
+@media (max-width:600px){
 	.hide-small{
 		display:none;
 	}
@@ -226,16 +226,16 @@ a:visited {
 
 /* The Modal (background) */
 .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
-    padding-top: 100px; 
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
     left: 0;
     top: 0;
     width: 100%;
-    height: 100%; 
+    height: 100%;
     background-color: rgba(30,30,30,0.6);
-    
+
 }
 
 /* Modal Content */
@@ -269,14 +269,14 @@ a:visited {
 
 .close:hover,
 .close:focus {
-    color: #ADADAD;   
+    color: #ADADAD;
 }
 
 
 .display-m{
 	position:absolute;top:50%;left:50%;
 	transform:translate(-50%,-50%);
-	
+
 }
 
 
@@ -316,8 +316,8 @@ a:visited {
     -moz-animation: fadein 6s; /* Firefox*/
     -ms-animation: fadein 6s; /* IE*/
     -o-animation: fadein 6s; /* Opera*/
-    
-    
+
+
 }
 
 .fadex3{
@@ -326,8 +326,8 @@ a:visited {
     -moz-animation: fadein 2s; /* Firefox*/
     -ms-animation: fadein 2s; /* IE*/
     -o-animation: fadein 2s; /* Opera*/
-    
-    
+
+
 }
 
 @keyframes fadein {
@@ -384,5 +384,3 @@ a:visited {
     0%  {top:-500px;}
     100% {top:0em;}
 }
-
-
