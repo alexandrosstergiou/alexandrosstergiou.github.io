@@ -16,7 +16,7 @@
    background-color:#cdc8c4;
    padding:5;
    margin:0;
-   width:100vw;
+   width:100%;
    height:auto;
 }
 
@@ -29,8 +29,8 @@
 
 #welcome-slide #claim{
    position:absolute;
-   bottom:50px;
-   left: calc(50% - 100px );
+   bottom:10%;
+   left: calc(50% - 100%);
    margin:auto;
    z-index: 3em;
    color:#ccc7c3;
@@ -44,7 +44,7 @@
    display: none;
 }
 
-@media only screen and (min-width : 750px) {
+@media only screen and (min-width : 40%) {
  #welcome-slide #claim h2{
    display: block;
    font-size: 1.1em;
@@ -118,11 +118,11 @@ body, html {
 }
 
 .xxlarge{
-  font-size:3.6em;
+  font-size:240%;
 }
 
 .xlarge{
-  font-size:2.4em;
+  font-size:150%;
 }
 
 .hover-grey:hover{
@@ -139,7 +139,7 @@ body, html {
 
 .boxed {
   border-style: solid none solid none ;
-  border-width: 0.05em;
+  border-width: 0.5%;
   border-color: white;
 }
 
@@ -170,32 +170,40 @@ body, html {
 
 /* First image */
 .background1 {
-    background-image: url("backgrounds/60.jpg");
-    min-height: 75%;
+    background-image: url("backgrounds/70.jpg");
+    min-height: 70%;
 }
 
 /* Second image*/
 .background2 {
-    background-image: url("backgrounds/42.jpg");
-    min-height: 70%;
+    background-image: url("backgrounds/76.jpg");
+    min-height: 60%;
 }
 
 /* Third image*/
 .background3 {
     background-image: url("backgrounds/46.jpg");
-    min-height: 70%;
+    min-height: 60%;
 }
 
 /* Fourth image*/
 .background4 {
     background-image: url("backgrounds/62.jpg");
-    min-height: 70%;
+    min-height: 60%;
 }
 
 /* Fifth image*/
 .background5 {
     background-image: url("backgrounds/44.jpg");
-    min-height: 70%;
+    min-height: 60%;
+}
+
+/* photo */
+.me {
+  width: 8%;
+  height: 8%;
+  min-width: 80em;
+  min-height: 80em;
 }
 
 img {
@@ -209,7 +217,7 @@ img {
 }
 
 
-@media only screen and (max-width: 1024px) {
+@media only screen {
     .backgroun1, .background2, .background3 {
         max-width: 100%
     }
@@ -265,7 +273,7 @@ img {
 
 <!-- Welcome Image -->
 <div class="background1 display-container middle">
-  <img src="photos/me_circle.png" class="drop " width="150px" alt="Me">
+  <img src="photos/me_circle.png" class="drop" width="200em" alt="Me">
   <h3 class="white middle fade">Alexandros Stergiou</h3>
    <h5 class="white middle fade">Utrecht University Computer Science Ph.D. student</h5>
    <div>
@@ -301,7 +309,7 @@ img {
 
   <p class="middle"><em>My work is focused on Computer Vision, Machine Learning and Deep Learning</em></p>
 
-  <div class="col hide-small section middle">
+  <div class="col section middle">
 
     <p>
     I am currently a full-time PhD student at Utrecht University's Department of Information and Computing Sciences. My project is based on Machine Learning and Computer Vision for human action and interaction recognition in everyday social settings, supervised by <a href="https://www.uu.nl/staff/RWPoppe" target="_blank"><font color="#4973AB"> Dr. Ronald Poppe</font></a> and <a href="https://www.uu.nl/staff/default.aspx?lng=NL&Profielpagina=RCVeltkamp&t=0" target="_blank"><font color="#4973AB"> Prof. Remco Veltkamp</font></a>. Among others, I am working on improvements for the efficiency and explainabilty of spatio-temporal Deep Learning and Artificial Intelligence methods, in scene understanding and classification of videos.
@@ -335,27 +343,27 @@ img {
 
 
 
-  <!-- Class Feature Visualisation Pyramids -->
+  <!-- Class Feature Pyramids for Video Explanation -->
   <div class="row-padding middle boxed_grey">
   <div class="row">
 
 
     <!-- Hide this text on small devices -->
     <div class="section">
-      <table width="900" align="center" border="0" cellpadding="0">
+      <table width="900em" align="center" border="0em" cellpadding="0em">
         <tbody>
           <tr>
-            <td width="25%" valign="top">
+            <td width="25%" valign="center">
               <img img class="static"  src="photos/Class_Feature_Pyramids/CFP.png" width="170em" height="170em" alt="feature-pyramids" style="margin-top=2%" ondragstart="return false;"><img img class="active"  src="photos/Class_Feature_Pyramids/Class_Feature_Pyramid.gif" width="170em" height="170em" alt="human-human-active" style="margin-top=2%" ondragstart="return false;">
             </td>
             <td width="75%" valign="top">
-              <font color="#4973AB"><a href="#" target="_blank">Class Feature Visualization Pyramids</a></font>
+              <font color="#4973AB"><a href="#" target="_blank">Class Feature Pyramids for Video Explanation</a></font>
               <p> Alexandros Stergiou, <font color="#4973AB"><a href="https://www.uu.nl/medewerkers/GKapidis" target="_blank">Georgios Kapidis</a></font>, <font color="#4973AB"><a href="http://gkalliatakis.com/" target="_blank"> Grigorios Kalliatakis</a></font>,<font color="#4973AB"><a href="http://www.lsbu.ac.uk/about-us/people/people-finder/dr-christos-chrysoulas" target="_blank"> Christos Chrysoulas</a></font>,<br> <font color="#4973AB"><a href="https://www.uu.nl/staff/default.aspx?lng=NL&Profielpagina=RWPoppe&t=0" target="_blank"> Ronald Poppe</a></font>, <font color="#4973AB"><a href="https://www.uu.nl/staff/RCVeltkamp" target="_blank"> Remco Veltkamp</a></font> </p>
               <p><font color="#ADADAD"> Intenrantional Conference on Computer Vision Workshop (ICCVW), 2019</font></p>
-              <a href="#" target="_blank"><u>[PDF]</u> </a><a href="#" target="_blank"><u>[code]</u></a> <u onclick="feature_pyramids()">[bibtex]</u></a></p>
+              <a href="https://arxiv.org/abs/1909.08611" target="_blank"><u>[PDF]</u> </a><a href="https://github.com/alexandrosstergiou/Class_Feature_Visualization_Pyramid" target="_blank"><u>[code]</u></a> <u onclick="feature_pyramids()">[bibtex]</u></a></p>
               <script>
                 function feature_pyramids() {
-                  alert("@article{stergiou2019class,title={Class Feature Visualization Pyramids},author={Stergiou, Alexandros and Kapidis, Georgios and Kalliatakis, Grigorios and Chrysoulas, Christos Poppe, Ronald and Veltkamp, Remco and },year={2019}");
+                  alert("@article{stergiou2019class,title={Class Feature Pyramids for Video Explanation},author={Stergiou, Alexandros and Kapidis, Georgios and Kalliatakis, Grigorios and Chrysoulas, Christos Poppe, Ronald and Veltkamp, Remco and },year={2019}");
                 }
               </script>
             </td>
@@ -381,14 +389,14 @@ img {
       <table width="900" align="center" border="0" cellpadding="0">
         <tbody>
           <tr>
-            <td width="25%" valign="top">
-              <img src="photos/Fast_conv/fast_v01.png" width="150em" height="150em" alt="FAST_conv" style="margin-top=2%" ondragstart="return false;">
+            <td width="25%" valign="center">
+              <img src="photos/FAST_conv/fast_v01.png" width="150em" height="150em" alt="FAST_conv" style="margin-top=2%" ondragstart="return false;">
             </td>
             <td width="75%" valign="top">
               <font color="#4973AB"><a href="#" target="_blank">Spatio-Temporal FAST 3D Convolutions for Human Action Recognition</a></font>
               <p> Alexandros Stergiou, <font color="#4973AB"><a href="https://www.uu.nl/staff/default.aspx?lng=NL&Profielpagina=RWPoppe&t=0" target="_blank"> Ronald Poppe</a></font></p>
               <p><font color="#ADADAD"> Intenrantional Conference on Machine Learning Applications (ICMLA), 2019</font></p>
-              <a href="#" target="_blank"><u>[PDF]</u> </a><a href="#" target="_blank"><u>[code]</u></a> <u onclick="FAST_conv()">[bibtex]</u></a></p>
+              <a href="https://arxiv.org/abs/1909.13474" target="_blank"><u>[PDF]</u> </a><a href="#"><u>[code]</u></a> <u onclick="FAST_conv()">[bibtex]</u></a></p>
               <script>
                 function FAST_conv() {
                   alert("@article{stergiou2019fast,title={Spatio-Temporal FAST 3D Convolutions for Human Action RecognitionRecognition},author={Stergiou, Alexandros and Poppe, Ronald},booktitle={IEEE Intenrantional Conference on Machine Learning Applications (ICMLA)},year={2019},organization={IEEE}");
@@ -418,7 +426,7 @@ img {
       <table width="900" align="center" border="0" cellpadding="0">
         <tbody>
           <tr>
-            <td width="25%" valign="top">
+            <td width="25%" valign="center">
               <img img class="static"  src="photos/Saliency_Tubes/tubes_3d.jpg" width="150em" height="150em" alt="saliency-tubes" style="margin-top=2%" ondragstart="return false;"><img img class="active"  src="photos/Saliency_Tubes/saliency_tubes.gif" width="150em" height="150em" alt="human-human-active" style="margin-top=2%" ondragstart="return false;">
             </td>
             <td width="75%" valign="top">
@@ -451,8 +459,8 @@ img {
       <table width="900" align="center" border="0" cellpadding="0">
         <tbody>
           <tr>
-            <td width="25%" valign="top">
-              <img img class="static"  src="photos/Understanding_human_to_human/back-prop.jpg" width="150em" height="150em" alt="human-human-static" style="margin-top=2%" ondragstart="return false;"><img img class="active"  src="photos/Understanding_human_to_human/back-prop.gif" width="150em" height="150em" alt="human-human-active" style="margin-top=2%" ondragstart="return false;">
+            <td width="25%" valign="center">
+              <img src="photos/Understanding_human_to_human/interactions.png" width="150em" height="120em" alt="h2h_survey" style="margin-top=1%" ondragstart="return false;">
             </td>
             <td width="75%" valign="top">
               <font color="#4973AB"><a href="https://www.sciencedirect.com/science/article/pii/S1077314219301158" target="_blank">Analyzing human-to-human interactions: a survey</a></font>
@@ -483,7 +491,7 @@ img {
       <table width="900" align="center" border="0" cellpadding="0">
         <tbody>
           <tr>
-            <td width="25%" valign="top">
+            <td width="25%" valign="center">
               <img img class="static"  src="photos/Drivers_assistant/1.png" width="80em" height="150em" alt="human-human-static" style="margin-top=2%" ondragstart="return false;"><img img class="active"  src="photos/Drivers_assistant/1.gif" width="80em" height="150em" alt="human-human-active" style="margin-top=2%" ondragstart="return false;">
             </td>
             <td width="75%" valign="top">
@@ -515,7 +523,7 @@ img {
       <table width="900" align="center" border="0" cellpadding="0">
         <tbody>
           <tr>
-            <td width="25%" valign="top">
+            <td width="25%" valign="center">
               <img src="photos/Conceiving_Human_Interaction/Fig2.png" width="150em" height="150em" alt="conceiving_human" style="margin-top=2%" ondragstart="return false;">
             </td>
             <td width="75%" valign="top">
@@ -591,7 +599,7 @@ img {
 
       <!-- Hide this text on small devices -->
       <div class="section">
-        <table width="900" align="center" border="0" cellpadding="0">
+        <table width="900em" align="center" border="0em" cellpadding="0em">
           <tbody>
             <tr>
               <td width="25%" valign="top">
@@ -623,13 +631,13 @@ img {
   <h3 class="middle">AFFILIATIONS</h3>
   <div class="middle">
   	<a href="https://www.uu.nl/en/research/interaction-technology" target="_blank">
-  		<img src="photos/affiliations/utrecht.png" hspace="20" height="100em" />
+  		<img src="photos/affiliations/utrecht.png" hspace="4em" height="60em" />
   	</a>
   	<a href="https://www1.essex.ac.uk/iads/" target="_blank">
-		<img src="photos/affiliations/IADS.png" hspace="20" height="100em" />
+		<img src="photos/affiliations/IADS.png" hspace="4em" height="60em" />
 	</a>
 	<a href="https://www1.essex.ac.uk/csee/" target="_blank">
-		<img src="photos/affiliations/essex.png" hspace="20" height="100em" />
+		<img src="photos/affiliations/essex.png" hspace="4em" height="60em" />
 	</a>
 	</div>
 </div>

@@ -17,17 +17,17 @@
   text-align:center;
   position:relative;
   display:inline-block;
-  width:50px;
-  height:50px;
+  width:1.4em;
+  height:1.4em;
   font-size:1.75em;
   color:#fff;
   line-height:1.15em;
   border:0;
   cursor:pointer;
-  margin:4px;
-  padding:10px;
-  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.35);
-  border-radius:0 10px 10px 10px;
+  margin:0.3em;
+  padding:0.1em;
+  box-shadow: 0 0.1em 0.5em 0 rgba(0, 0, 0, 0.35);
+  border-radius:0 0.1em 0.1em 0.1em;
   -webkit-transition:all .5s;
   -moz-transition:all .5s;
   transition:all .5s;
@@ -40,7 +40,7 @@
 #social-platforms a:after {
   opacity:0;
   font-size:.5em;
-  font-weight:300;
+  font-weight:30em;
   color:#FFF;
   background:#000;
   content:attr(data-title);
@@ -48,10 +48,10 @@
   display:block;
   position:absolute;
   left:0;
-  bottom:60px;
+  bottom:60em;
   z-index:-5;
   cursor:help;
-  padding:3px 8px;
+  padding:3em 8em;
   -webkit-transition:all .5s;
   -moz-transition:all .5s;
   transition:all .5s;
@@ -61,17 +61,17 @@
   opacity:0;
   display:block;
   position:absolute;
-  bottom:55px;
+  bottom:5em;
   left:50%;
-  margin-left:-5px;
+  margin-left:-5em;
   z-index:9;
   cursor:help;
   content:'';
   width:0;
   height:0;
-  border-left:5px solid transparent;
-  border-right:5px solid transparent;
-  border-top:5px solid #000;
+  border-left:5em solid transparent;
+  border-right:5em solid transparent;
+  border-top:5em solid #000;
   -webkit-transition:all .5s;
   -moz-transition:all .5s;
   transition:all .5s;
@@ -79,7 +79,7 @@
 
 #social-platforms a:hover {
     background-color: #4973AB;
-  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.45);
+  box-shadow: 0 0.1em 0.1em 0 rgba(0, 0, 0, 0.45);
   }
 
 #social-platforms a:hover:before, #social-platforms a:hover:after {
@@ -188,7 +188,7 @@ footer {
 }
 
 
-@media only screen and (min-width:601px){
+@media only screen {
 .col.m6{width:49.99999%
 }
 
@@ -206,7 +206,7 @@ footer {
 }
 
 .wide {
-	letter-spacing: 10px;
+	letter-spacing: .1em;
 }
 .hover-opacity {
 	cursor: pointer;
@@ -229,7 +229,7 @@ a:visited {
     display: none;
     position: fixed;
     z-index: 1;
-    padding-top: 100px;
+    padding-top: 100em;
     left: 0;
     top: 0;
     width: 100%;
@@ -242,8 +242,8 @@ a:visited {
 .modal-content {
     background-color: #FFF;
     margin: auto;
-    padding: 20px;
-    border: 1px solid #ADADAD;
+    padding: 6em;
+    border: 1em solid #ADADAD;
 }
 
 .modal-content-horizontal-50 {
@@ -262,7 +262,7 @@ a:visited {
 .close {
     color: #000;
     float: right;
-    font-size: 32px;
+    font-size: 8em;
     font-weight: bold;
     cursor: pointer;
 }
@@ -286,7 +286,7 @@ a:visited {
 
 
 .content{
-	max-width:980px;
+	max-width:100em;
 	margin:auto
 }
 
@@ -297,12 +297,12 @@ a:visited {
 	}
 
 .container{
-	padding:0.01em 16px
+	padding:0.01em 4em
 }
 
 .padding{
-	padding-top:32px;
-	padding-bottom:32px;
+	padding-top:1em;
+	padding-bottom:1em;
 }
 
 .col{
@@ -364,23 +364,23 @@ a:visited {
     margin-top: 5em;
     position: relative;
     -webkit-animation-name: drp; /* Chrome, Safari, Opera */
-    -webkit-animation-duration: 3s; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 2s; /* Chrome, Safari, Opera */
     animation-name: drp;
-    animation-duration: 3s;
+    animation-duration: 2s;
 }
 
 /* Chrome, Safari, Opera */
 @-webkit-keyframes drp {
-    0%  {top:-500px;}
+    0%  {top:-100em;}
     100% {top:0em;}
 }
 /*Firefox*/
 @-moz-keyframes drp{
-	0%  {top:-500px;}
+	0%  {top:-100em;}
     100% {top:0em;}
 }
 
 @keyframes drp {
-    0%  {top:-500px;}
+    0%  {top:-100em;}
     100% {top:0em;}
 }
