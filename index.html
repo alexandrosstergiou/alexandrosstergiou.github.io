@@ -312,7 +312,7 @@ img {
   <div class="col section middle">
 
     <p>
-    I am currently a full-time PhD student at Utrecht University's Department of Information and Computing Sciences. My project is based on Machine Learning and Computer Vision for human action and interaction recognition in everyday social settings, supervised by <a href="https://www.uu.nl/staff/RWPoppe" target="_blank"><font color="#4973AB"> Dr. Ronald Poppe</font></a> and <a href="https://www.uu.nl/staff/default.aspx?lng=NL&Profielpagina=RCVeltkamp&t=0" target="_blank"><font color="#4973AB"> Prof. Remco Veltkamp</font></a>. Among others, I am working on improvements for the efficiency and explainabilty of spatio-temporal Deep Learning and Artificial Intelligence methods, in scene understanding and classification of videos.
+    I am currently a full-time PhD student at Utrecht University's Department of Information and Computing Sciences. My project is based on Machine Learning and Computer Vision for human action and interaction recognition in everyday social settings, supervised by <a href="https://www.uu.nl/staff/RWPoppe" target="_blank"><font color="#4973AB"> Dr. Ronald Poppe</font></a> and <a href="https://www.uu.nl/staff/default.aspx?lng=NL&Profielpagina=RCVeltkamp&t=0" target="_blank"><font color="#4973AB"> Prof. Remco Veltkamp</font></a>. Among others, I am working on improvements on the efficiency and explainabilty of spatio-temporal Deep Learning and Artificial Intelligence methods, in scene understanding and classification of videos.
     </p>
     <p>
     Before my PhD, I obtained my Masters in Advance Computer Science from University of Essex working with <a href="https://www1.essex.ac.uk/csee/staff/profile.aspx?ID=1466" target="_blank"><font color="#4973AB"> Dr. Adrian Clark</font></a>. During this time I also worked at the <a href="https://www1.essex.ac.uk/iads/" target="_blank"><font color="#4973AB"> Institute for Analytics and Data Science (IADS)</font></a> for a summer project on Neural Networks for structured population data with <a href="https://www1.essex.ac.uk/csee/staff/profile.aspx?ID=4954" target="_blank"><font color="#4973AB"> Dr. Spyros Samothrakis</font></a>. My Bachelor was also at the University of Essex in Computer Science.
@@ -343,6 +343,49 @@ img {
 
 
 
+  <!-- Learning Class-Specific Features with Class Regularization for Videos -->
+  <div class="row-padding middle boxed_grey">
+  <div class="row">
+
+
+    <!-- Hide this text on small devices -->
+    <div class="section">
+      <table width="900em" align="center" border="0em" cellpadding="0em">
+        <tbody>
+          <tr>
+            <td width="25%" valign="center">
+              <img img class="static"  src="photos/Class_Reg/CR.png" width="170em" height="170em" alt="feature-pyramids" style="margin-top=2%" ondragstart="return false;"><img img class="active"  src="photos/Class_Reg/CR.gif" width="170em" height="170em" alt="human-human-active" style="margin-top=2%" ondragstart="return false;">
+            </td>
+            <td width="75%" valign="top">
+              <font color="#4973AB"><a href="https://www.mdpi.com/2076-3417/10/18/6241" target="_blank">Learning Class-Specific Features with Class Regularization for Videos</a></font>
+              <p> Alexandros Stergiou, <font color="#4973AB"><a href="https://www.uu.nl/staff/default.aspx?lng=NL&Profielpagina=RWPoppe&t=0" target="_blank"> Ronald Poppe</a></font>, <font color="#4973AB"><a href="https://www.uu.nl/staff/RCVeltkamp" target="_blank"> Remco Veltkamp</a></font> </p>
+              <p><font color="#ADADAD"> Applied Sciences, 2020</font></p>
+              <a href="https://www.mdpi.com/2076-3417/10/18/6241" target="_blank"><u>[PDF]</u> </a><a href="#"><u>[code]</u></a> <u onclick="class_regularisation()">[bibtex]</u></a></p>
+              <script>
+                function class_regularisation() {
+                  alert("@article{stergiou2020learning, \n
+                          title={Learning Class-Specific Features with Class Regularization for Videos}, \n
+                          author={Stergiou, Alexandros and Poppe, Ronald and Veltkamp, Remco C}, \n
+                          journal={Applied Sciences}, \n
+                          volume={10}, \n
+                          number={18}, \n
+                          pages={6241}, \n
+                          year={2020}, \n
+                          publisher={Multidisciplinary Digital Publishing Institute} \n
+                        }");
+                }
+              </script>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+  </div>
+
+
+
+
   <!-- Class Feature Pyramids for Video Explanation -->
   <div class="row-padding middle boxed_grey">
   <div class="row">
@@ -363,7 +406,13 @@ img {
               <a href="https://arxiv.org/abs/1909.08611" target="_blank"><u>[PDF]</u> </a><a href="https://github.com/alexandrosstergiou/Class_Feature_Visualization_Pyramid" target="_blank"><u>[code]</u></a> <u onclick="feature_pyramids()">[bibtex]</u></a></p>
               <script>
                 function feature_pyramids() {
-                  alert("@article{stergiou2019class,title={Class Feature Pyramids for Video Explanation},author={Stergiou, Alexandros and Kapidis, Georgios and Kalliatakis, Grigorios and Chrysoulas, Christos Poppe, Ronald and Veltkamp, Remco and },booktitle={IEEE Intenrantional Conference on Computer Vision Workshops (ICCVW)},year={2019},organization={IEEE}");
+                  alert("@article{stergiou2019class, \n
+                         title={Class Feature Pyramids for Video Explanation}, \n
+                         author={Stergiou, Alexandros and Kapidis, Georgios and Kalliatakis, Grigorios and Chrysoulas, Christos Poppe, Ronald and Veltkamp, Remco}, \n
+                         booktitle={IEEE Intenrantional Conference on Computer Vision Workshops (ICCVW)}, \n
+                         year={2019}, \n
+                         organization={IEEE} \n
+                        }");
                 }
               </script>
             </td>
@@ -399,7 +448,13 @@ img {
               <a href="https://arxiv.org/abs/1909.13474" target="_blank"><u>[PDF]</u> </a><a href="#"><u>[code]</u></a> <u onclick="FAST_conv()">[bibtex]</u></a></p>
               <script>
                 function FAST_conv() {
-                  alert("@article{stergiou2019fast,title={Spatio-Temporal FAST 3D Convolutions for Human Action RecognitionRecognition},author={Stergiou, Alexandros and Poppe, Ronald},booktitle={IEEE Intenrantional Conference on Machine Learning Applications (ICMLA)},year={2019},organization={IEEE}");
+                  alert("@article{stergiou2019fast, \n
+                          title={Spatio-Temporal FAST 3D Convolutions for Human Action Recognition}, \n
+                          author={Stergiou, Alexandros and Poppe, Ronald}, \n
+                          booktitle={IEEE Intenrantional Conference on Machine Learning Applications (ICMLA)}, \n
+                          year={2019}, \n
+                          organization={IEEE} \n
+                        }");
                 }
               </script>
             </td>
@@ -436,7 +491,13 @@ img {
               <a href="https://arxiv.org/abs/1902.01078" target="_blank"><u>[PDF]</u> </a><a href="https://github.com/alexandrosstergiou/Saliency-Tubes-Visual-Explanations-for-Spatio-Temporal-Convolutions" target="_blank"><u>[code]</u></a> <u onclick="saliency_tubes()">[bibtex]</u></a></p>
               <script>
                 function saliency_tubes() {
-                  alert("@article{stergiou2019saliency,title={Saliency Tubes: Visual Explanations for Spatio-Temporal Convolutions},author={Stergiou, Alexandros and Kapidis, Georgios and Kalliatakis, Grigorios and Chrysoulas, Christos and Veltkamp, Remco and Poppe, Ronald},booktitle={IEEE International Conference on Image Processing (ICIP)},year={2019},organization={IEEE}");
+                  alert("@article{stergiou2019saliency,\n
+                          title={Saliency Tubes: Visual Explanations for Spatio-Temporal Convolutions}, \n
+                          author={Stergiou, Alexandros and Kapidis, Georgios and Kalliatakis, Grigorios and Chrysoulas, Christos and Veltkamp, Remco and Poppe, Ronald}, \n
+                          booktitle={IEEE International Conference on Image Processing (ICIP)}, \n
+                          year={2019}, \n
+                          organization={IEEE} \n
+                        }");
                 }
               </script>
             </td>
@@ -469,7 +530,12 @@ img {
               <a href="https://arxiv.org/abs/1808.00022" target="_blank"><u>[PDF]</u> </a><a href="https://github.com/alexandrosstergiou/Inception_v3_TV_Human_Interactions" target="_blank"><u>[code]</u></a> <u onclick="H2H_survey()">[bibtex]</u></a></p>
               <script>
                 function H2H_survey() {
-                  alert("@article{stergiou2018understanding,\nAuthor = {Stergiou, Alexandros and Poppe, Ronald},\nTitle = {Analyzing human-human interactions: a survey},\nJournal = {Computer Vision and Image Understanding},\nYear = {2019}}");
+                  alert("@article{stergiou2018understanding,\n
+                          author = {Stergiou, Alexandros and Poppe, Ronald}, \n
+                          title = {Analyzing human-human interactions: a survey}, \n
+                          journal = {Computer Vision and Image Understanding}, \n
+                          year = {2019} \n
+                        }");
                 }
               </script>
             </td>
@@ -501,7 +567,12 @@ img {
               <a href="http://www.mdpi.com/2504-2289/2/3/19" target="_blank"><u>[PDF]</u> </a><a href="https://github.com/alexandrosstergiou/Traffic-Sign-Recognition-basd-on-Synthesised-Training-Data" target="_blank"><u>[code]</u></a> <u onclick="Traffic_sign_rec()">[bibtex]</u></a></p>
               <script>
                 function Traffic_sign_rec() {
-                  alert("@article{bdcc2030019,\nAuthor = {Stergiou, Alexandros and Kalliatakis, Grigorios and Chrysoulas, Christos},\nTitle = {Traffic Sign Recognition based on Synthesised Training Data},\nJournal = {Big Data and Cognitive Computing},\nYear = {2018}}");
+                  alert("@article{bdcc2030019,\n
+                          author = {Stergiou, Alexandros and Kalliatakis, Grigorios and Chrysoulas, Christos},\n
+                          title = {Traffic Sign Recognition based on Synthesised Training Data},\n
+                          journal = {Big Data and Cognitive Computing},\n
+                          year = {2018} \n
+                        }");
                 }
               </script>
             </td>
@@ -533,7 +604,12 @@ img {
               <a href="http://www.mdpi.com/2073-431X/6/3/25" target="_blank"><u>[PDF]</u> </a><a href="https://github.com/GKalliatakis/BringDepthDataAlive" target="_blank"><u>[code]</u></a> <u onclick="Conceiving_Human_Interaction()">[bibtex]</u></a></p>
               <script>
                 function Conceiving_Human_Interaction() {
-                  alert("@article{computers6030025,\nAuthor = {Kalliatakis, Grigorios and Stergiou, Alexandros and Vidakis, Nikolaos},\nTitle = {Conceiving Human Interaction by Visualising Depth Data of Head Pose Changes and Emotion Recognition via Facial Expressions},\nJournal = {Computers},\nYear = {2017}}");
+                  alert("@article{computers6030025,\n
+                          author = {Kalliatakis, Grigorios and Stergiou, Alexandros and Vidakis, Nikolaos},\n
+                          title = {Conceiving Human Interaction by Visualising Depth Data of Head Pose Changes and Emotion Recognition via Facial Expressions},\n
+                          journal = {Computers},\n
+                          year = {2017} \n
+                        }");
                 }
               </script>
             </td>
