@@ -146,7 +146,7 @@ body, html {
 .boxed_grey {
   border-style: solid none solid none;
   border-width: 0.05em;
-  border-color: #ADADAD
+  border-color: #5b6362
 }
 
 .middle{
@@ -170,7 +170,7 @@ body, html {
 
 /* First image */
 .background1 {
-    background-image: url("backgrounds/65.jpg");
+    background-image: url("backgrounds/67.jpg");
     min-height: 70%;
 }
 
@@ -188,7 +188,7 @@ body, html {
 
 /* Fourth image*/
 .background4 {
-    background-image: url("backgrounds/62.jpg");
+    background-image: url("backgrounds/49.jpg");
     min-height: 60%;
 }
 
@@ -312,7 +312,11 @@ img {
   <div class="col section middle">
 
     <p>
-    I am currently a full-time PhD student at Utrecht University's Department of Information and Computing Sciences. My project is based on Machine Learning and Computer Vision for human action and interaction recognition in everyday social settings, supervised by <a href="https://www.uu.nl/staff/RWPoppe" target="_blank"><font color="#4973AB"> Dr. Ronald Poppe</font></a> and <a href="https://www.uu.nl/staff/default.aspx?lng=NL&Profielpagina=RCVeltkamp&t=0" target="_blank"><font color="#4973AB"> Prof. Remco Veltkamp</font></a>. Among others, I am working on improvements on the efficiency and explainabilty of spatio-temporal Deep Learning and Artificial Intelligence methods, in scene understanding and classification of videos.
+      I am currently a full-time PhD student at Utrecht University's Department of Information and Computing Sciences.
+      My project is based on Machine Learning and Computer Vision for human action and interaction recognition in everyday
+      social settings, supervised by <a href="https://www.uu.nl/staff/RWPoppe" target="_blank"><font color="#4973AB"> Dr. Ronald Poppe</font></a> and
+      <a href="https://www.uu.nl/staff/default.aspx?lng=NL&Profielpagina=RCVeltkamp&t=0" target="_blank"><font color="#4973AB"> Prof. Remco Veltkamp</font></a>.
+      I am also working on improvements on the efficiency and explainabilty of spatio-temporal Deep Learning and Artificial Intelligence methods, in scene understanding and classification of videos.
     </p>
     <p>
     Before my PhD, I obtained my Masters in Advance Computer Science from University of Essex working with <a href="https://www1.essex.ac.uk/csee/staff/profile.aspx?ID=1466" target="_blank"><font color="#4973AB"> Dr. Adrian Clark</font></a>. During this time I also worked at the <a href="https://www1.essex.ac.uk/iads/" target="_blank"><font color="#4973AB"> Institute for Analytics and Data Science (IADS)</font></a> for a summer project on Neural Networks for structured population data with <a href="https://www1.essex.ac.uk/csee/staff/profile.aspx?ID=4954" target="_blank"><font color="#4973AB"> Dr. Spyros Samothrakis</font></a>. My Bachelor was also at the University of Essex in Computer Science.
@@ -341,6 +345,45 @@ img {
   <p class="middle"><em>A full list can be found in my GoogleScholar profile.</em></p><br>
 
 
+  <!-- Learn to cycle: Time-consistent feature discovery for action recognition -->
+  <div class="row-padding middle boxed_grey">
+  <div class="row">
+
+
+
+    <div class="section">
+      <table width="900em" align="center" border="0em" cellpadding="0em">
+        <tbody>
+          <tr>
+            <td width="25%" valign="center">
+              <img img class="static"  src="photos/SRTG/SRTG.png" width="170em" height="170em" alt="learn2cycle" style="margin-top=2%" ondragstart="return false;"><img img class="active"  src="photos/SRTG/SRTG.gif" width="170em" height="170em" alt="srtg-active" style="margin-top=2%" ondragstart="return false;">
+            </td>
+            <td width="75%" valign="top">
+              <font color="#4973AB"><a href="https://doi.org/10.1016/j.patrec.2020.11.012" target="_blank">Learn to cycle: Time-consistent feature discovery for action recognition</a></font>
+              <p> Alexandros Stergiou and <font color="#4973AB"><a href="https://www.uu.nl/staff/default.aspx?lng=NL&Profielpagina=RWPoppe&t=0" target="_blank"> Ronald Poppe</a></font></p>
+              <p><b> Pattern Recognition Letters, 2020</b></p>
+                <a href="https://arxiv.org/abs/2006.08247" target="_blank"><u>[PDF]</u></a>
+                <a href="https://github.com/alexandrosstergiou/Squeeze-and-Recursion-Temporal-Gates" target="_blank"><u>[code]</u></a>
+              <u onclick="learn2cycle()">[bibtex]</u></a>
+              </p>
+              <script>
+                function learn2cycle() {
+                  alert("@article{stergiou2020learn, \n
+                          title = {Learn to cycle: Time-consistent feature discovery for action recognition}, \n
+                          author={Stergiou, Alexandros and Poppe, Ronald and Veltkamp, Remco C}, \n
+                          journal = {Pattern Recognition Letters}, \n
+                          year = {2020}, \n
+                          issn = {0167-8655} \n
+                        }");
+                }
+              </script>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+  </div>
 
 
   <!-- Learning Class-Specific Features with Class Regularization for Videos -->
@@ -348,18 +391,18 @@ img {
   <div class="row">
 
 
-    <!-- Hide this text on small devices -->
+
     <div class="section">
       <table width="900em" align="center" border="0em" cellpadding="0em">
         <tbody>
           <tr>
             <td width="25%" valign="center">
-              <img img class="static"  src="photos/Class_Reg/CR.png" width="170em" height="170em" alt="feature-pyramids" style="margin-top=2%" ondragstart="return false;"><img img class="active"  src="photos/Class_Reg/CR.gif" width="170em" height="170em" alt="human-human-active" style="margin-top=2%" ondragstart="return false;">
+              <img img class="static"  src="photos/Class_Reg/CR.png" width="170em" height="170em" alt="class-reg" style="margin-top=2%" ondragstart="return false;"><img img class="active"  src="photos/Class_Reg/CR.gif" width="170em" height="170em" alt="human-human-active" style="margin-top=2%" ondragstart="return false;">
             </td>
             <td width="75%" valign="top">
               <font color="#4973AB"><a href="https://www.mdpi.com/2076-3417/10/18/6241" target="_blank">Learning Class-Specific Features with Class Regularization for Videos</a></font>
               <p> Alexandros Stergiou, <font color="#4973AB"><a href="https://www.uu.nl/staff/default.aspx?lng=NL&Profielpagina=RWPoppe&t=0" target="_blank"> Ronald Poppe</a></font>, <font color="#4973AB"><a href="https://www.uu.nl/staff/RCVeltkamp" target="_blank"> Remco Veltkamp</a></font> </p>
-              <p><font color="#ADADAD"> Applied Sciences, 2020</font></p>
+              <p><b> Applied Sciences, 2020</b></p>
               <a href="https://www.mdpi.com/2076-3417/10/18/6241" target="_blank"><u>[PDF]</u> </a><a href="#"><u>[code]</u></a> <u onclick="class_regularisation()">[bibtex]</u></a></p>
               <script>
                 function class_regularisation() {
@@ -391,7 +434,7 @@ img {
   <div class="row">
 
 
-    <!-- Hide this text on small devices -->
+
     <div class="section">
       <table width="900em" align="center" border="0em" cellpadding="0em">
         <tbody>
@@ -402,7 +445,7 @@ img {
             <td width="75%" valign="top">
               <font color="#4973AB"><a href="https://ieeexplore.ieee.org/document/9022210" target="_blank">Class Feature Pyramids for Video Explanation</a></font>
               <p> Alexandros Stergiou, <font color="#4973AB"><a href="https://www.uu.nl/medewerkers/GKapidis" target="_blank">Georgios Kapidis</a></font>, <font color="#4973AB"><a href="http://gkalliatakis.com/" target="_blank"> Grigorios Kalliatakis</a></font>,<font color="#4973AB"><a href="http://www.lsbu.ac.uk/about-us/people/people-finder/dr-christos-chrysoulas" target="_blank"> Christos Chrysoulas</a></font>,<br> <font color="#4973AB"><a href="https://www.uu.nl/staff/default.aspx?lng=NL&Profielpagina=RWPoppe&t=0" target="_blank"> Ronald Poppe</a></font>, <font color="#4973AB"><a href="https://www.uu.nl/staff/RCVeltkamp" target="_blank"> Remco Veltkamp</a></font> </p>
-              <p><font color="#ADADAD"> Intenrantional Conference on Computer Vision Workshop (ICCVW), 2019</font></p>
+              <p><b>Intenrantional Conference on Computer Vision Workshop (ICCVW), 2019</b></p>
               <a href="https://arxiv.org/abs/1909.08611" target="_blank"><u>[PDF]</u> </a><a href="https://github.com/alexandrosstergiou/Class_Feature_Visualization_Pyramid" target="_blank"><u>[code]</u></a> <u onclick="feature_pyramids()">[bibtex]</u></a></p>
               <script>
                 function feature_pyramids() {
@@ -433,7 +476,7 @@ img {
   <div class="row">
 
 
-    <!-- Hide this text on small devices -->
+
     <div class="section">
       <table width="900" align="center" border="0" cellpadding="0">
         <tbody>
@@ -444,7 +487,7 @@ img {
             <td width="75%" valign="top">
               <font color="#4973AB"><a href="https://ieeexplore.ieee.org/document/8999121" target="_blank">Spatio-Temporal FAST 3D Convolutions for Human Action Recognition</a></font>
               <p> Alexandros Stergiou, <font color="#4973AB"><a href="https://www.uu.nl/staff/default.aspx?lng=NL&Profielpagina=RWPoppe&t=0" target="_blank"> Ronald Poppe</a></font></p>
-              <p><font color="#ADADAD"> Intenrantional Conference on Machine Learning Applications (ICMLA), 2019</font></p>
+              <p><b> Intenrantional Conference on Machine Learning Applications (ICMLA), 2019</b></p>
               <a href="https://arxiv.org/abs/1909.13474" target="_blank"><u>[PDF]</u> </a><a href="#"><u>[code]</u></a> <u onclick="FAST_conv()">[bibtex]</u></a></p>
               <script>
                 function FAST_conv() {
@@ -476,7 +519,7 @@ img {
   <div class="row">
 
 
-    <!-- Hide this text on small devices -->
+
     <div class="section">
       <table width="900" align="center" border="0" cellpadding="0">
         <tbody>
@@ -487,7 +530,7 @@ img {
             <td width="75%" valign="top">
               <font color="#4973AB"><a href="https://ieeexplore.ieee.org/document/8803153" target="_blank">Saliency Tubes: Visual Explanations for Spatio-Temporal Convolutions</a></font>
               <p> Alexandros Stergiou, <font color="#4973AB"><a href="https://www.uu.nl/medewerkers/GKapidis" target="_blank">Georgios Kapidis</a></font>, <font color="#4973AB"><a href="http://gkalliatakis.com/" target="_blank"> Grigorios Kalliatakis</a></font>,<font color="#4973AB"><a href="http://www.lsbu.ac.uk/about-us/people/people-finder/dr-christos-chrysoulas" target="_blank"> Christos Chrysoulas</a></font>,<br> <font color="#4973AB"><a href="https://www.uu.nl/staff/RCVeltkamp" target="_blank"> Remco Veltkamp</a></font>, <font color="#4973AB"><a href="https://www.uu.nl/staff/default.aspx?lng=NL&Profielpagina=RWPoppe&t=0" target="_blank"> Ronald Poppe</a></font> </p>
-              <p><font color="#ADADAD"> International Confernce on Image Procesing (ICIP), 2019</font></p>
+              <p><b> International Confernce on Image Procesing (ICIP), 2019</b></p>
               <a href="https://arxiv.org/abs/1902.01078" target="_blank"><u>[PDF]</u> </a><a href="https://github.com/alexandrosstergiou/Saliency-Tubes-Visual-Explanations-for-Spatio-Temporal-Convolutions" target="_blank"><u>[code]</u></a> <u onclick="saliency_tubes()">[bibtex]</u></a></p>
               <script>
                 function saliency_tubes() {
@@ -515,7 +558,7 @@ img {
   <div class="row">
 
 
-    <!-- Hide this text on small devices -->
+
     <div class="section">
       <table width="900" align="center" border="0" cellpadding="0">
         <tbody>
@@ -526,15 +569,18 @@ img {
             <td width="75%" valign="top">
               <font color="#4973AB"><a href="https://www.sciencedirect.com/science/article/pii/S1077314219301158" target="_blank">Analyzing human-to-human interactions: a survey</a></font>
               <p> Alexandros Stergiou, <font color="#4973AB"><a href="https://www.uu.nl/staff/default.aspx?lng=NL&Profielpagina=RWPoppe&t=0" target="_blank">Ronald Poppe</a></font></p>
-              <p><font color="#ADADAD"> Computer Vision and Image Understanding, 2019</font></p>
+              <p><b> Computer Vision and Image Understanding, 2019</b></p>
               <a href="https://arxiv.org/abs/1808.00022" target="_blank"><u>[PDF]</u> </a><a href="https://github.com/alexandrosstergiou/Inception_v3_TV_Human_Interactions" target="_blank"><u>[code]</u></a> <u onclick="H2H_survey()">[bibtex]</u></a></p>
               <script>
                 function H2H_survey() {
-                  alert("@article{stergiou2018understanding,\n
+                  alert("@article{stergiou2019analyzing,\n
                           author = {Stergiou, Alexandros and Poppe, Ronald}, \n
                           title = {Analyzing human-human interactions: a survey}, \n
                           journal = {Computer Vision and Image Understanding}, \n
-                          year = {2019} \n
+                          volume = {188}, \n
+                          pages = {102799}, \n
+                          year = {2019}, \n
+                          issn = {1077-3142} \n
                         }");
                 }
               </script>
@@ -552,7 +598,7 @@ img {
   <div class="row">
 
 
-    <!-- Hide this text on small devices -->
+
     <div class="section">
       <table width="900" align="center" border="0" cellpadding="0">
         <tbody>
@@ -563,7 +609,7 @@ img {
             <td width="75%" valign="top">
               <font color="#4973AB"><a href="https://www.mdpi.com/2504-2289/2/3/19" target="_blank">Traffic Sign Recognition based on Synthesised Training Data</a></font>
               <p> Alexandros Stergiou, <font color="#4973AB"><a href="http://gkalliatakis.com/" target="_blank">Grigorios Kalliatakis</a></font>,<font color="#4973AB"><a href="http://www.lsbu.ac.uk/about-us/people/people-finder/dr-christos-chrysoulas" target="_blank"> Christos Chrysoulas</a></font></p>
-              <p><font color="#ADADAD"> Big Data and Cognitive Computing, 2018</font></p>
+              <p><b> Big Data and Cognitive Computing, 2018</b></p>
               <a href="http://www.mdpi.com/2504-2289/2/3/19" target="_blank"><u>[PDF]</u> </a><a href="https://github.com/alexandrosstergiou/Traffic-Sign-Recognition-basd-on-Synthesised-Training-Data" target="_blank"><u>[code]</u></a> <u onclick="Traffic_sign_rec()">[bibtex]</u></a></p>
               <script>
                 function Traffic_sign_rec() {
@@ -589,7 +635,7 @@ img {
   <div class="row">
 
 
-    <!-- Hide this text on small devices -->
+
     <div class="section">
       <table width="900" align="center" border="0" cellpadding="0">
         <tbody>
@@ -600,7 +646,7 @@ img {
             <td width="75%" valign="top">
               <font color="#4973AB"><a href="hhttp://www.mdpi.com/2073-431X/6/3/25" target="_blank">Conceiving Human Interaction by Visualising Depth Data of Head Pose Changes and Emotion Recognition via Facial Expressions</a></font>
               <p><font color="#4973AB"><a href="http://gkalliatakis.com/" target="_blank">Grigorios Kalliatakis</a></font>, Alexandros Stergiou, <font color="#4973AB"><a href="https://nile.teicrete.gr/blog/person/dr-vidakis-nikolaos/" target="_blank">Nikolaos Vidakis</a></font></p>
-              <p><font color="#ADADAD"> Computers, 2017</font></p>
+              <p><b> Computers, 2017</b></p>
               <a href="http://www.mdpi.com/2073-431X/6/3/25" target="_blank"><u>[PDF]</u> </a><a href="https://github.com/GKalliatakis/BringDepthDataAlive" target="_blank"><u>[code]</u></a> <u onclick="Conceiving_Human_Interaction()">[bibtex]</u></a></p>
               <script>
                 function Conceiving_Human_Interaction() {
@@ -625,38 +671,6 @@ img {
 
 
 
-<!-- Third Parallax Image -->
-<div class="background3 display-container">
-  <div class="display-m">
-    <h2 class="xxlarge light-grey wide boxed middle fade">PROJECTS</h2>
-  </div>
-</div>
-
-<!-- Projects -->
-<div class="content container padding body">
-  <h3 class="middle">MY WORK</h3>
-  <p class="middle"><em>These are some of my latest projects from courses and pet projects.</em></p><br>
-
-
-  <!-- Bootstrapping for polling data from the EU referendum vote in the United Kingdom -->
-  <div class="row-padding middle boxed_grey">
-  <div class="row">
-
-
-    <!-- Hide this text on small devices -->
-    <div class="section">
-      <h6>Bootstrapping for polling data from the EU referendum vote in the United Kingdom</h6>
-      <p>This project presents the use of Bootstrapping (or also known as bagging), to normalise the features of the polling population in order to represent the entire population that is eligible to vote. Additionally, for representing connections between individual features during
-        bootstrapping, a nearest neighbour method is employed in order for the newly created examples to resemble others from the general population. This technique will be applied to data from the 2016 Referendum that held the question of the remain or exit of the United Kingdom from the European Union.<br />
-        <a href="photos/Bootstrap_polling/Bootstrapping for polling data from the EU referendum vote in the United Kingdom.pdf" target="_blank"><u>[PDF]</u></a> <a href="https://github.com/alexandrosstergiou/Bootstrap-for-polling" target="_blank"><u>[code]</u></a></p>
-      </div>
-    </div>
-  </div>
-
-  </div>
-
-
-
   <!-- Fourth Parallax Image -->
   <div class="background4 display-container">
     <div class="display-m">
@@ -668,22 +682,20 @@ img {
   <div class="content container padding body">
     <h3 class="middle">MODULES THAT I HAVE BEEN INVOLVED IN</h3>
 
-    <!-- Conceiving Human Interaction by Visualising Depth Data of Head Pose Changes and Emotion Recognition via Facial Expressions -->
+
     <div class="row-padding middle boxed_grey">
     <div class="row">
 
-
-      <!-- Hide this text on small devices -->
       <div class="section">
         <table width="900em" align="center" border="0em" cellpadding="0em">
           <tbody>
             <tr>
               <td width="25%" valign="top">
-                <img src="photos/INFOMCV_2018/eye_w_gears.jpg" width="150em" height="150em" alt="Fig1" style="margin-top=2%" ondragstart="return false;">
+                <img src="photos/INFOMCV_2018/eye.png" width="150em" height="150em" alt="Fig1" style="margin-top=2%" ondragstart="return false;">
               </td>
               <td width="75%" valign="center">
-                <font color="#4973AB"><a href="http://www.cs.uu.nl/docs/vakken/mcv/index.htm" target="_blank">INFOMCV (2017-2018), (2018-2019) - Computer Vision </a></font>
-                <p>Instructor for the Deep Learning/Neural Networks lectures</p>
+                <font color="#4973AB">INFOMCV (2019-2020) - Computer Vision (Master Course) </font>
+                <p> Lecturer for the Deep Learning lectures</p>
               </td>
             </tr>
           </tbody>
@@ -691,6 +703,105 @@ img {
       </div>
       </div>
     </div>
+
+    <div class="row-padding middle boxed_grey">
+    <div class="row">
+      <div class="section">
+        <table width="900em" align="center" border="0em" cellpadding="0em">
+          <tbody>
+            <tr>
+              <td width="25%" valign="top">
+                <img src="photos/INFOMCV_2018/eye.png" width="150em" height="150em" alt="Fig1" style="margin-top=2%" ondragstart="return false;">
+              </td>
+              <td width="75%" valign="center">
+                <font color="#4973AB">INFOMCV (2018-2019) - Computer Vision (Master Course) </font>
+                <p> Lecturer and Instructor for the Deep Learning/Neural Networks lectures</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </div>
+
+    <div class="row-padding middle boxed_grey">
+    <div class="row">
+    <div class="section">
+      <table width="900em" align="center" border="0em" cellpadding="0em">
+        <tbody>
+          <tr>
+            <td width="25%" valign="top">
+              <img src="photos/INFOMCV_2018/eye.png" width="150em" height="150em" alt="Fig1" style="margin-top=2%" ondragstart="return false;">
+            </td>
+            <td width="75%" valign="center">
+              <font color="#4973AB">INFOMCV (2017-2018) - Computer Vision (Master Course) </font>
+              <p>Instructor for the Deep Learning/Neural Networks lectures</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+  </div>
+
+    </div>
+
+
+    <!-- Third Parallax Image -->
+    <div class="background3 display-container">
+      <div class="display-m">
+        <h2 class="xxlarge light-grey wide boxed middle fade">PROJECTS</h2>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="content container padding body">
+      <h3 class="middle">PROJECTS WORKBENCH</h3>
+      <p class="middle"><em>These are some of my latest projects and code.</em></p><br>
+
+      <!-- Video 2 SQL databaes -->
+      <div class="row-padding middle boxed_grey">
+      <div class="row">
+
+        <div class="section">
+          <h6>Video dataset SQL converter</h6>
+          <p>A package made as a solution to the problem of using video inputs in Machine Learning models.
+            As extracting and storing frames in .JPEG/.PNG files will quickly increase the memory requirements and more importantly the number of inodes.
+            This package provides a convenient alternative. Video frames are stored as blobs at database file .db which can be read as quickly as the .JPEG files
+            but without the additional large memory requirements. <br />
+            <a href="https://github.com/alexandrosstergiou/dataset2database" target="_blank"><u>[code]</u></a></p>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Depth-wise Conv in Keras -->
+      <div class="row-padding middle boxed_grey">
+      <div class="row">
+
+        <div class="section">
+          <h6>Depth-wise 3D Convolutions for Keras</h6>
+          <p>An extension of separable convolutions for 3D volumes.
+             Performs volumetric convolutions for each channel of the input volume and will increase the output volume
+             based on the number of convolutional operations. <br />
+            <a href="https://github.com/alexandrosstergiou/keras-DepthwiseConv3D" target="_blank"><u>[code]</u></a></p>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Bootstrapping for polling data from the EU referendum vote in the United Kingdom -->
+      <div class="row-padding middle boxed_grey">
+      <div class="row">
+
+        <div class="section">
+          <h6>Bootstrapping for polling data from the 2016 EU referendum vote in the United Kingdom</h6>
+          <p>This project presents the use of Bootstrapping (or also known as bagging), to normalise the features of the polling population in order to represent the entire population that is eligible to vote. Additionally, for representing connections between individual features during
+            bootstrapping, a nearest neighbour method is employed in order for the newly created examples to resemble others from the general population. This technique will be applied to data from the 2016 Referendum that held the question of the remain or exit of the United Kingdom from the European Union.<br />
+            <a href="photos/Bootstrap_polling/Bootstrapping for polling data from the EU referendum vote in the United Kingdom.pdf" target="_blank"><u>[PDF]</u></a> <a href="https://github.com/alexandrosstergiou/Bootstrap-for-polling" target="_blank"><u>[code]</u></a></p>
+          </div>
+        </div>
+      </div>
 
     </div>
 
@@ -704,7 +815,7 @@ img {
 
 <!-- Affiliations Section -->
 <div class="content container body">
-  <h3 class="middle">AFFILIATIONS</h3>
+  <h3 class="middle">PRESENT & PAST AFFILIATIONS</h3>
   <div class="middle">
   	<a href="https://www.uu.nl/en/research/interaction-technology" target="_blank">
   		<img src="photos/affiliations/utrecht.png" hspace="4em" height="60em" />
