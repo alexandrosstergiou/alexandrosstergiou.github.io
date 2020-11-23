@@ -20,7 +20,7 @@
   width:1.4em;
   height:1.4em;
   font-size:1.75em;
-  color:#fff;
+  color:#FCFCFC;
   line-height:1.05em;
   border:0;
   cursor:pointer;
@@ -41,7 +41,7 @@
   opacity:0;
   font-size:.5em;
   font-weight:30em;
-  color:#FFF;
+  color:#FCFCFC;
   background:#000;
   content:attr(data-title);
   white-space:nowrap;
@@ -78,7 +78,7 @@
   }
 
 #social-platforms a:hover {
-    background-color: #4973AB;
+    background-color: #1E4258;
   box-shadow: 0 0.1em 0.1em 0 rgba(0, 0, 0, 0.45);
   }
 
@@ -184,7 +184,7 @@ a{
 
 footer {
 	background-color: black;
-	color: white;
+	color: #ADADAD;
 }
 
 
@@ -237,7 +237,7 @@ a:visited {
 
 /* Modal Content */
 .modal-content {
-    background-color: #FFF;
+    background-color: #ACACAC;
     margin: auto;
     padding: 6em;
     border: 1em solid #ADADAD;
@@ -283,8 +283,9 @@ a:visited {
 
 
 .content{
-	max-width:100em;
-	margin:auto
+	max-width:80em;
+	margin:auto;
+  background-color: #F4F4F4
 }
 
 .container:after,.row:after,.row-padding:after{
