@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Inter4K--About</title>
+<!-- core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/animate.min.css" rel="stylesheet">
+<link href="css/owl.carousel.css" rel="stylesheet">
+<link href="css/owl.transitions.css" rel="stylesheet">
+<link href="css/prettyPhoto.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+<!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+<link rel="shortcut icon" href="images/favicon.png">
+
+<script>
+  function displayBibtexForPublication(id) {
+    var elem = document.getElementById(id);
+
+    if (elem) {
+      elem.classList.toggle('hidden', elem.classList.contains('hidden') !== true);
+    }
+  }
+</script>
+
+</head>
+
+<body style="background-color:#3F7397;">
+  <header id="header">
+    <nav id="main-menu" class="navbar navbar-default navbar-fixed-top" role="banner" style="background-color:#fff;">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          <a class="navbar-brand" href="index.html"><img src="images/inter4k.png" width="100px" alt="logo"></a> </div>
+        <div class="collapse navbar-collapse navbar-right">
+          <ul class="nav navbar-nav">
+            <li class="scroll"><a href="index.html">Home</a></li>
+            <li class="scroll"><a href="download.html">Download</a></li>
+            <li class="scroll active"><a href="about.html">About</a></li>
+          </ul>
+        </div>
+      </div>
+      <!--/.container-->
+    </nav>
+    <!--/nav-->
+  </header>
+  <!--/header-->
+
+<!-- ABOUT -->
+
+<section id="about">
+        <div class="container tools-container">
+                <div class="features">
+                     <div class="col-sm-12 wow fadeInUp animated" data-wow-duration="300ms" data-wow-delay="0ms">
+                        <h2 class="section-title text-left" style="color:#fff">Papers</h2>
+                        <div class="media service-box">
+                          <div class="media-body">
+                            <h4 class="media-heading" style="color:#fff">Inter4K: Video Interpolation in 4K 60fps</h4>
+                            <p>Alexandros Stergiou. arXiv preprint, 2021.</p>
+                            <a class="btn btn-default btn-primary btn-sm" target="_blank" href="#">PDF</a> <a class="btn btn-default btn-primary btn-sm" onclick="displayBibtexForPublication('inter4K')">BibTex</a>
+                          </div>
+                          <p id="inter4K" class="hidden" style="color:#3F7397;text-align:left;border: .1em solid #fff;border-radius: .5em;padding: 10px; background-color: #fff">@article{stergiou2021inter4k,<br/>
+                            title={AdaPool: Exponential Adaptive Pooling for Information-retaining downsampling}, <br/>
+                            author={Stergiou, Alexandros and Poppe, Ronald}, <br/>
+                            journal={arXiv preprint}, <br/>
+                            year={2021}} </p>
+
+                        </div>
+                     </div>
+
+                    <div class="col-sm-12 wow fadeInUp animated">
+                        <h2 class="section-title text-left" style="color:#FFF">What is Inter4K?</h2>
+                        <p class="text-left">
+                        Inter4K in a benchmark dataset for video interpolation and super-resolution. It scales over multiple vide resolutions and frame rates creating challenging benchmarks. Inter4K provides 1K video with a 80-10-10 train-validation-test split. All videos have duration of 5 seconds for standardized benchmarking.</p>
+                    </div>
+
+                    <div id="made" class="col-sm-12 wow fadeInUp animated">
+
+                        <h2 class="section-title text-left" style="color:#fff">What benchmarks are measured by Inter4K?</h2>
+
+                        <ul>
+                        <li>Video frame interpolation</li>
+
+                        <li>Video restoration</li>
+
+                        <li>Video enhancement</li>
+
+                        <li>Video super-resolution</li>
+
+                        <li>Video denoising</li>
+
+                    </div>
+                </div><!--/.features-->
+            <!--/.row-->
+        </div><!--/.container-->
+    </section><!--/#about-->
+
+
+<!-- FACTS   -->
+<!--<footer id="footer">
+  <div class="container">
+    <p class="text-center">@ Activity-Net</p>
+  </div>
+</footer>-->
+
+
+</body>
+</html>
