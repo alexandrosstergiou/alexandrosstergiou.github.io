@@ -184,25 +184,25 @@ body, html {
 
 /* Second image*/
 .background2 {
-    background-image: url("backgrounds/76.jpg");
+    background-image: url("backgrounds/9.jpg");
     min-height: 60%;
 }
 
 /* Third image*/
 .background3 {
-    background-image: url("backgrounds/38.jpg");
+    background-image: url("backgrounds/10.jpg");
     min-height: 60%;
 }
 
 /* Fourth image*/
 .background4 {
-    background-image: url("backgrounds/80.jpg");
+    background-image: url("backgrounds/10.jpg");
     min-height: 60%;
 }
 
 /* Fifth image*/
 .background5 {
-    background-image: url("backgrounds/44.jpg");
+    background-image: url("backgrounds/6.jpg");
     min-height: 60%;
 }
 
@@ -424,6 +424,39 @@ img {
 <div class="content container padding body">
   <h3 class="middle">PUBLICATIONS LIST</h3>
   <p class="middle"><em>A full list can be found in my GoogleScholar profile.</em></p><br>
+
+
+  <h3 class="middle" style="margin-top:3em;">ARXIV PREPRINTS</h3>
+
+  <!-- AdaPool: Exponential Adaptive Pooling for Information-Retaining Downsampling -->
+  <div class="row-padding">
+    <div class="row">
+      <div class="section">
+        <div class="list-image big">
+          <img class="static"  src="photos/adaPool/adapool.png" width="100em" height="100em" alt="mindseye" style="margin:20px 0;" ondragstart="return false;">
+          <img class="active" src="photos/adaPool/adapool.gif" width="100em" height="100em" alt="mindseye-active" style="margin:20px 0" ondragstart="return false;">
+        </div>
+        <div class="list-description">
+          <p>Stergiou A., and<font color="#1E4258"><a href="https://rpoppe.wordpress.com/" target="_blank"> Poppe R.</a></font>,<b> AdaPool: Exponential Adaptive Pooling for Information-Retaining Downsampling</b>, arXiv, 2021</p>
+          <div class="links">
+
+            <a href="#" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
+            <a href="#" target="_blank" style="font-style:normal;">arXiv (coming soon)&#8201;&#8201;&#8201;</a>
+
+            <a href="https://github.com/alexandrosstergiou/adaPool" target="_blank"><p class="lab la-github">&#32;</p></a>
+            <a href="https://github.com/alexandrosstergiou/adaPool" target="_blank" style="font-style:normal;">code&#8201;&#8201;&#8201;</a>
+
+            <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('stergiou2021refining')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span> </i></a>
+          </div>
+          <p id="stergiou2021refining" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2021adapool,</br>
+            title={AdaPool: Exponential Adaptive Pooling for Information-Retaining Downsampling},</br>
+            author={Stergiou, Alexandros and Poppe, Ronald},</br>
+            journal={arXiv preprint},</br>
+            year={2021}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <h3 class="middle" style="margin-top:3em;">CONFERENCE PAPERS</h3>
 
@@ -776,7 +809,7 @@ img {
     </div>
   </div>
 
-  <!--
+
   <h3 class="middle" style="margin-top:5em;">DATASETS</h3>
 
   <div class="row-padding">
@@ -786,16 +819,27 @@ img {
         <img style="float: right;margin:0em 1em;" src="datasets/Inter4K/images/inter4k.png" width="100em" alt="Fig1" ondragstart="return false;">
       </div>
       <div class="list-description">
-        <font color="#1E4258">Inter4K: Video Interpolation in 4K 60fps </font>
+        <font color="#1E4258">Inter4K </font>
         <div class="links">
-          <a href="#" target="_blank"><i class="ai ai-open-access ai">&#8201;PDF</i>&#8201;  </a>
-          <a href="./datasets/Inter4K/index.html" target="_blank"><i class="fa fa-globe">&#8201;website</i>&#8201;  </a>
-          <a href="https://github.com/alexandrosstergiou/Inter4K" target="_blank"><i class="lab la-github">&#8201;code</i>&#8201;  </a>
+
+          <a href="#" target="_blank"><p class="ai ai-arxiv ai">
+          </p>&#32;  </a>
+          <a href="#" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;  </a>
+
+          <a href="./datasets/Inter4K/index.html" target="_blank"><p class="fa fa-globe">
+          </p>&#32; </a>
+           <a href="./datasets/Inter4K/index.html" target="_blank">website&#8201;&#8201;&#8201;  </a>
+
+
+          <a href="https://github.com/alexandrosstergiou/Inter4K" target="_blank"><p class="lab la-github"></p>&#32;</a>
+          <a href="https://github.com/alexandrosstergiou/Inter4K" target="_blank" style="font-style:normal;">code&#8201;&#8201;&#8201; </a>
+
           <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('inter4K')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span></i></a>
         </div>
-        <p id="inter4K" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2021inter4k,<br/>
-          title={Inter4K: Video Interpolation in 4K 60fps}, <br/>
-          author={Stergiou, Alexandros}, <br/>
+        <p id="inter4K" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2021adapool,<br/>
+          title={AdaPool: Exponential Adaptive Pooling for Information-Retaining Downsampling}, <br/>
+          author={Stergiou, Alexandros and Poppe, Ronald}, <br/>
+          journal={arXiv preprint}, <br/>
           year={2021}} </p>
       </div>
     </div>
@@ -805,7 +849,7 @@ img {
 </br>
 </br>
 </br>
- -->
+
 
  <h3 class="middle" style="margin-top:3em;">THESIS</h3>
 
@@ -825,8 +869,8 @@ img {
            <a href="https://dspace.library.uu.nl/handle/1874/403550" target="_blank"><p class="ai ai-open-access ai" >&#32;</p> </a>
            <a href="https://dspace.library.uu.nl/handle/1874/403550" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201;</a>
 
-           <a href="./thesis/thesis.pdf" target="_blank"><p class="las la-book"></p></a>
-           <a href="./thesis/thesis.pdf" target="_blank" style="font-style:normal;">Online book&#8201;&#8201;&#8201;</a>
+           <a href="https://arxiv.org/abs/2110.02120" target="_blank"><p class="ai ai-arxiv ai"></p></a>
+           <a href="https://arxiv.org/abs/2110.02120" target="_blank" style="font-style:normal;">Online book&#8201;&#8201;&#8201;</a>
 
            <a href="https://doi.org/​10.33540/789" target="_blank"><p class="ai ai-doi ai"></p></a>
            <a href="https://doi.org/​10.33540/789" target="_blank"style="font-style:normal;">DOI&#8201;&#8201;&#8201;  </a>
