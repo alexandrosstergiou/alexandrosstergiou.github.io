@@ -87,6 +87,91 @@
   z-index:50;
 }
 
+
+
+
+
+
+#project-platforms {
+  position:relative;
+  font-size:1.2rem;
+  text-align:center;
+  height:auto;
+  overflow:hidden;
+}
+
+#project-platforms a {
+  background: rgba(170, 170, 170, 0.1);
+  text-align:center;
+  position:relative;
+  display:inline-block;
+  width:1.4em;
+  height:1.4em;
+  font-size:1.75em;
+  color:#000;
+  line-height:1.05em;
+  border:0;
+  cursor:pointer;
+  margin:0.9em 0.2em;
+  padding:0.15em;
+  box-shadow: 0em 0.3em 0.3em 0em rgba(170, 170, 170, 0.65);
+  border-radius:0.2em 0.2em 0.2em 0.2em;
+  -webkit-transition:all .5s;
+  -moz-transition:all .5s;
+  transition:all .5s;
+}
+
+#project-platforms a span {
+  display:none;
+}
+
+#project-platforms a:after {
+  opacity:0;
+  font-size:.5em;
+  font-weight:30em;
+  color:#000;
+  background:#000;
+  content:attr(data-title);
+  white-space:nowrap;
+  display:block;
+  position:absolute;
+  left:0;
+  bottom:60em;
+  z-index:-5;
+  cursor:help;
+  padding:3em 8em;
+  -webkit-transition:all .5s;
+  -moz-transition:all .5s;
+  transition:all .5s;
+}
+
+#project-platforms a:before {
+  opacity:0;
+  display:block;
+  position:absolute;
+  bottom:5em;
+  left:50%;
+  margin-left:-5em;
+  z-index:9;
+  cursor:help;
+  content:'';
+  width:0;
+  height:0;
+  border-left:5em solid transparent;
+  border-right:5em solid transparent;
+  border-top:5em solid #000;
+  -webkit-transition:all .5s;
+  -moz-transition:all .5s;
+  transition:all .5s;
+  }
+
+#project-platforms a:hover {
+  background-color: #1E4258;
+  color:#fff;
+  box-shadow: 0 0.1em 0.1em 0 rgba(70, 70, 70, 0.45);
+  }
+
+
 .facebook:hover{
     background:#00ff00;
 }
