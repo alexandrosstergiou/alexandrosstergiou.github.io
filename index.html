@@ -2,7 +2,7 @@
 <html>
 <title>Alexandros Stergiou</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/design.css">
+<link rel="stylesheet" href="css/design_new.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
@@ -164,7 +164,7 @@ body, html {
     background-size: cover;
 }
 
-.background2, .background3, .background4, .background5 {
+.background2, .background3, .background4, .background5, .background6 {
     opacity: 0.9;
     background-attachment: fixed;
     background-position: center;
@@ -203,6 +203,12 @@ body, html {
 /* Fifth image*/
 .background5 {
     background-image: url("backgrounds/6.jpg");
+    min-height: 60%;
+}
+
+/* Six image*/
+.background6 {
+    background-image: url("backgrounds/94.jpg");
     min-height: 60%;
 }
 
@@ -245,7 +251,7 @@ img {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .clickable {
@@ -309,6 +315,85 @@ img {
       margin-right: -0.15em;
     }
 
+    .navbar {
+      overflow: hidden;
+      position: fixed;
+      top: 0;
+      z-index: 1;
+    }
+
+.navbar a {
+  float: left;
+  display: block;
+  color: inherit;
+  opacity: 1;
+  margin:0.01em 0.01em;
+  text-align: center;
+  padding: .4em .4em;
+  text-decoration: none;
+  font-size: .9em;
+}
+
+.navbar a:hover {
+  background: #000;
+}
+
+#nav-icon {
+  color: white;
+}
+
+#dropdown-menu {
+  position: fixed;
+  color: #fff;
+  width: 10em;
+}
+
+#dropdown-menu > ul {
+  list-style-type: none;
+  margin: 0;
+  overflow: auto;
+  padding: 0;
+  display:block;
+  width: inherit;
+  text-align: start;
+  color: #fff;
+  -webkit-transition:all .5s;
+  -moz-transition:all .5s;
+  transition:all .5s;
+  padding: 1.2em;
+  margin: -2em -.5em;
+}
+
+#dropdown-menu >ul li a{
+  display:inline-block;
+  padding:0px;
+  background:black;
+  width: 9em;
+  padding:0.3em;
+}
+
+#dropdown-menu >ul li a:hover{
+  box-shadow: 0em 0.2em 0.2em 0em rgba(0, 0, 0, 0.55);
+}
+
+#dropdown-menu > ul li:first-child a{
+  border-radius: 0.6em 0.6em 0 0;
+}
+
+#dropdown-menu > ul li:last-child a{
+  border-radius: 0 0 0.6em 0.6em;
+}
+
+.main {
+  padding: 16px;
+  margin-top: 30px;
+  height: 1500px; /* Used in this example to enable scrolling */
+}
+
+.transition {
+    -webkit-transition: all 0.5s ease-in-out;
+}
+
 </style>
 <head>
 	<link rel="apple-touch-icon" sizes="180x180" href="favicon.ico/apple-touch-icon.png">
@@ -341,6 +426,69 @@ img {
 </script>
 
 <script>
+  var bars = null;
+  var dropdown = null;
+  var whiteContainers = null;
+  var scrolledContainerIndex = null;
+
+  function toggleMenuVisibility() {
+    changeClass("nav-icon")
+    document.getElementById('dropdown-menu').classList.toggle('hidden');
+  }
+
+  function adjustNavMenuColor(scroll) {
+    var topOfContainer = -1;
+
+    if (!scroll) {
+      setTimeout(function() {
+        adjustNavMenuColor(document.body);
+      }, 1000);
+    } else {
+      for (var i = 0; i < whiteContainers.length; i++) {
+        var container = whiteContainers[i];
+
+        if (container.previousElementSibling) {
+          topOfContainer += container.previousElementSibling.clientHeight;
+        }
+
+        var bottomOfContainer = topOfContainer + container.clientHeight;
+
+        if (scroll.scrollY >= topOfContainer && scroll.scrollY <= bottomOfContainer) {
+          bars.style.color = "#000";
+          dropdown.style.color = "#000";
+          scrolledContainerIndex = i;
+          break;
+        } else if (bars.style.color === "rgb(0, 0, 0)" && i > scrolledContainerIndex) {
+          bars.style.color = "#fff";
+          dropdown.style.color = "#fff";
+          break;
+        }
+        topOfContainer += container.clientHeight;
+      }
+    }
+  }
+
+  function setupForScroll() {
+    bars = document.getElementById('nav-icon');
+    dropdown = document.getElementById('dropdown-menu');
+    whiteContainers = document.querySelectorAll('div.content.container');
+    adjustNavMenuColor(document.body);
+  }
+
+  function changeClass(id){
+    var navicon = document.getElementById(id);
+
+    if (navicon.className == "clickable las la-bars la"){
+      navicon.className = "clickable las la-times la";
+      document.getElementById('navbutton').style.backgroundColor = '#1E4258';
+    }else if (navicon.className == "clickable las la-times la"){
+      navicon.className = "clickable las la-bars la";
+      document.getElementById('navbutton').style.backgroundColor = '#000';
+    }
+  }
+</script>
+
+<script>
   function displayBibtexForPublication(id) {
     var elem = document.getElementById(id);
 
@@ -348,738 +496,831 @@ img {
       elem.classList.toggle('hidden', elem.classList.contains('hidden') !== true);
     }
   }
+
+  function displaymenuitems(items) {
+    for (var item in items) {
+      var elem = document.getElementById(item);
+      if (elem) {
+        elem.classList.toggle('hidden', elem.classList.contains('hidden') !== true);
+      }
+    }
+  }
+
+window.onload = function(){
+      document.getElementById("nav-icon").addEventListener('click', changeClass);
+  }
+
 </script>
 
 </head>
 
-<body>
+<body onload="setupForScroll()">
 
-<!-- Welcome Image -->
-<div class="backgrounds background1 display-container middle">
-  <img src="photos/me_circle.png" class="drop" width="200em" alt="Me">
-  <h3 class="white middle fade">Alexandros Stergiou</h3>
-   <h5 class="white middle fade">Research Associate at University of Bristol</h5>
-   <div>
-     <a class="white middle fade" href="mailto:alexandros.stergiou@bristol.ac.uk?Subject=Hello from a website visitor"><i class="fa fa-paper-plane"></i> alexandros.stergiou@bristol.ac.uk </a>
-   </div>
+  <div id="nav" class="navbar">
+    <div id="page-anchors">
+        <button id="navbutton" onclick="toggleMenuVisibility()"><div class="navbutton"><i id="nav-icon" class="clickable las la-bars la"></i></button>
 
-
-
-    <div id="social-platforms" style="margin-bottom:4em;">
-      <div class="fade">
-
-        <a class="tooltip" href="https://research-information.bris.ac.uk/en/persons/alexandros-g-stergiou" target="_blank" data-title="UU"><i class="las la-university" target="_blank"></i><span>UU personal page</span></a>
-
-        <a class="tooltip" href="https://github.com/alexandrosstergiou" target="_blank" data-title="GitHub"><i class="lab la-github"></i><span>GitHub</span></a>
-
-        <a class="tooltip" href="https://scholar.google.co.uk/citations?user=_E_Zs3kAAAAJ&hl=en&oi=sra" target="_blank" data-title="GoogleScholar"><i class="ai ai-google-scholar ai"></i><span>GoogleScholar</span></a>
-
-        <a class="tooltip" href="https://orcid.org/0000-0003-4706-4231" target="_blank" data-title="Orcid"><i class="ai ai-orcid ai"></i><span>Orcid</span></a>
-
-        <a class="tooltip" href="https://www.linkedin.com/in/alexandros-stergiou-b06a17128/" target="_blank" data-title="LinkedIn"><i class="lab la-linkedin-in"></i><span>LinkedIn</span></a>
-
-        <a class="tooltip" href="mailto:alexandros.stergiou@bristol.ac.uk?Subject=Hi! I would like your CV." data-title="CV"><i class="ai ai-cv ai"></i><span>cv</span></a>
-
-
+        <div id="dropdown-menu" class="hidden">
+          <ul>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#services">Services</a></li>
+          </ul>
+        </div>
       </div>
     </div>
-
-
-
-</div>
-
-<!-- About -->
-<div class="content container padding body" id="about">
-  <h3 class="middle">Short bio</h3>
-
-
-  <p class="middle"><em>My work is focused on Computer Vision and Machine Learning</em></p>
-
-  <div class="col section">
-
-    <p>
-    I am currently a postdoctoral Research Associate at Bristol University's <a href="https://uob-mavi.github.io/" target="_blank"><font color="#1E4258">  Machine Learning and Computer Vision Group (MaVi)</font></a> working with <a href="https://dimadamen.github.io/" target="_blank"><font color="#1E4258"> prof. Dima Damen</font></a> on video understanding.
-    I obtained my PhD at Utrecht University's Department of Information and Computing Science.
-    The topic of my thesis was on Machine Learning and Computer Vision for human action and interaction recognition in everyday
-    social settings, supervised by <a href="https://rpoppe.wordpress.com/" target="_blank"><font color="#1E4258"> dr. Ronald Poppe</font></a> and
-    <a href="https://www.uu.nl/staff/default.aspx?lng=NL&Profielpagina=RCVeltkamp&t=0" target="_blank"><font color="#1E4258"> prof. Remco C. Veltkamp</font></a>.
-    During my time in Utrecht I have also worked on improving the efficiency and explainabilty of spatio-temporal deep learning models, for scene understanding and classification of videos.
-    I have completed my Masters and Bachelor degrees in (Advanced) Computer Science at the University of Essex. I have also worked shortly at the <a href="https://www1.essex.ac.uk/iads/" target="_blank"><font color="#1E4258"> Institute for Analytics and Data Science (IADS)</font></a> for a summer project on Neural Networks for structured population data with <a href="https://www1.essex.ac.uk/csee/staff/profile.aspx?ID=4954" target="_blank"><font color="#1E4258"> dr. Spyros Samothrakis</font></a>.
-    </p>
-  </br>
-  </br>
-  </br>
   </div>
-</div>
 
 
-<!-- Second Parallax Image -->
-<div class="backgrounds background2 display-container">
-  <div class="display-m">
-    <h2 class="xxlarge light-grey wide boxed middle fade">PUBLICATIONS</h2>
-  </div>
-</div>
-
-<!-- Projects -->
-<div class="content container padding body">
-  <h3 class="middle">PUBLICATIONS LIST</h3>
-  <p class="middle"><em>A full list can be found in my GoogleScholar profile.</em></p><br>
-
-
-  <h3 class="middle" style="margin-top:3em;">ARXIV PREPRINTS</h3>
+  <!-- Welcome Image -->
+  <div class="backgrounds background1 display-container middle">
+    <img src="photos/me_circle.png" class="drop" width="200em" alt="Me">
+    <h3 class="white middle fade">Alexandros Stergiou</h3>
+     <h5 class="white middle fade">Research Associate at University of Bristol</h5>
+     <!--- Postdoc Researcher at Vrije Universiteit Brussel -->
+     <div>
+       <a class="white middle fade" href="mailto:alexandros.stergiou@bristol.ac.uk?Subject=Hello from a website visitor"><i class="fa fa-paper-plane"></i> alexandros.stergiou@bristol.ac.uk </a>
+       <!--- alexandros.stergiou@vub.be -->
+     </div>
 
 
-  <!-- Temporal Progressive Attention for Early Action Prediction -->
-  <div class="row-padding">
-    <div class="row">
-      <div class="section">
-        <div class="list-image big">
-          <img class="static"  src="photos/TemPr/TemPr.jpg" width="100em" height="100em" alt="mindseye" style="margin:20px 0;" ondragstart="return false;">
-          <img class="active" src="photos/TemPr/TemPr.gif" width="100em" height="100em" alt="mindseye-active" style="margin:20px 0" ondragstart="return false;">
+
+      <div id="social-platforms" style="margin-bottom:4em;">
+        <div class="fade">
+
+          <a class="tooltip" href="https://research-information.bris.ac.uk/en/persons/alexandros-g-stergiou" target="_blank" data-title="UU"><i class="las la-university" target="_blank"></i><span>UU personal page</span></a>
+
+          <a class="tooltip" href="https://github.com/alexandrosstergiou" target="_blank" data-title="GitHub"><i class="lab la-github"></i><span>GitHub</span></a>
+
+          <a class="tooltip" href="https://scholar.google.co.uk/citations?user=_E_Zs3kAAAAJ&hl=en&oi=sra" target="_blank" data-title="GoogleScholar"><i class="ai ai-google-scholar ai"></i><span>GoogleScholar</span></a>
+
+          <a class="tooltip" href="https://orcid.org/0000-0003-4706-4231" target="_blank" data-title="Orcid"><i class="ai ai-orcid ai"></i><span>Orcid</span></a>
+
+          <a class="tooltip" href="https://www.linkedin.com/in/alexandros-stergiou-b06a17128/" target="_blank" data-title="LinkedIn"><i class="lab la-linkedin-in"></i><span>LinkedIn</span></a>
+
+          <a class="tooltip" href="mailto:alexandros.stergiou@bristol.ac.uk?Subject=Hi! I would like your CV." data-title="CV"><i class="ai ai-cv ai"></i><span>cv</span></a>
+
+
         </div>
-        <div class="list-description">
-          <p>Stergiou A., and<font color="#1E4258"><a href="http://people.cs.bris.ac.uk/~damen/" target="_blank"> Damen D.</a></font>,<b> Temporal Progressive Attention for Early Action Prediction</b>, arXiv, 2022</p>
-          <div class="links">
+      </div>
+  </div>
 
-            <a href="http://arxiv.org/abs/2204.13340" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
-            <a href="http://arxiv.org/abs/2204.13340" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;</a>
+  <!-- About -->
+  <div class="content container padding body" id="about">
+    <h3 class="middle">Short bio</h3>
 
-            <a href="./project_pages/TemPr/index.html" target="_blank"><p class="fa fa-globe">
-            </p>&#32; </a>
-             <a href="./project_pages/TemPr/index.html" target="_blank">website&#8201;&#8201;&#8201;  </a>
 
-            <a href="https://github.com/alexandrosstergiou/progressive-action-prediction" target="_blank"><p class="lab la-github">&#32;</p></a>
-            <a href="https://github.com/alexandrosstergiou/progressive-action-prediction" target="_blank" style="font-style:normal;">code&#8201;&#8201;&#8201;</a>
+    <p class="middle"><em>My work is focused on Computer Vision and Machine Learning</em></p>
 
-            <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('stergiou2022temporal')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span> </i></a>
+    <div class="col section">
+
+      <p>
+      <!--- I am a postdoc Researcher at the Machine Learning and Signal Processing group at Vrije Universiteit Brussel working with <a href="http://homepages.vub.ac.be/~ndeligia/" target="_blank"><font color="#1E4258">prof. Nikos Deligiannis</font></a> on explainable artificial intelligence for multimodal visual computing. -->
+
+      I am a Research Associate at the Machine Learning and Computer Vision Group at the University of Bristol working with <a href="https://dimadamen.github.io/" target="_blank"><font color="#1E4258"> prof. Dima Damen</font></a> on video understanding.
+      I obtained my PhD from Utrecht University's Department of Information and Computing Science awhere I was lucky to be supervised by <a href="https://rpoppe.wordpress.com/" target="_blank"><font color="#1E4258"> dr. Ronald Poppe</font></a> and
+      <a href="https://www.uu.nl/staff/default.aspx?lng=NL&Profielpagina=RCVeltkamp&t=0" target="_blank"><font color="#1E4258"> prof. Remco C. Veltkamp</font></a>.
+      The topic of my thesis was based on Machine Learning and Computer Vision for human action and interaction recognition in everyday
+      social settings.
+      During my time in Utrecht, I also worked on improving the efficiency and explainabilty of spatio-temporal deep learning models, for scene understanding and classification of videos.
+      I have completed my Masters and Bachelor degrees in (Advanced) Computer Science at the University of Essex.
+      </p>
+    </br>
+    </br>
+    </br>
+    </div>
+  </div>
+
+
+  <!-- Second Parallax Image -->
+  <div class="backgrounds background2 display-container">
+    <div class="display-m">
+      <h2 class="xxlarge light-grey wide boxed middle fade">PUBLICATIONS</h2>
+    </div>
+  </div>
+
+  <!-- Projects -->
+  <div id="publications" class="content container padding body">
+    <h3 class="middle">PUBLICATIONS LIST</h3>
+    <p class="middle"><em>A full list can be found in my GoogleScholar profile.</em></p><br>
+
+
+    <h3 class="middle" style="margin-top:3em;">ARXIV PREPRINTS</h3>
+
+
+    <!-- Temporal Progressive Attention for Early Action Prediction -->
+    <div class="row-padding">
+      <div class="row">
+        <div class="section">
+          <div class="list-image big">
+            <img class="static"  src="photos/TemPr/TemPr.jpg" width="100em" height="100em" alt="mindseye" style="margin:20px 0;" ondragstart="return false;">
+            <img class="active" src="photos/TemPr/TemPr.gif" width="100em" height="100em" alt="mindseye-active" style="margin:20px 0" ondragstart="return false;">
           </div>
-          <p id="stergiou2022temporal" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2022temporal,</br>
-            title={Temporal Progressive Attention for Early Action Prediction},</br>
-            author={Stergiou, Alexandros and Damen, Dima},</br>
-            journal={arXiv preprint arXiv:2204.13340},</br>
-            year={2022}}</p>
-        </div>
-      </div>
-    </div>
-  </div>
+          <div class="list-description">
+            <p>Stergiou A., and<font color="#1E4258"><a href="http://people.cs.bris.ac.uk/~damen/" target="_blank"> Damen D.</a></font>,<b> Temporal Progressive Attention for Early Action Prediction</b>, arXiv, 2022</p>
+            <div class="links">
 
-  <!-- AdaPool: Exponential Adaptive Pooling for Information-Retaining Downsampling -->
-  <div class="row-padding">
-    <div class="row">
-      <div class="section">
-        <div class="list-image big">
-          <img class="static"  src="photos/adaPool/adapool.png" width="100em" height="100em" alt="mindseye" style="margin:20px 0;" ondragstart="return false;">
-          <img class="active" src="photos/adaPool/adapool.gif" width="100em" height="100em" alt="mindseye-active" style="margin:20px 0" ondragstart="return false;">
-        </div>
-        <div class="list-description">
-          <p>Stergiou A., and<font color="#1E4258"><a href="https://rpoppe.wordpress.com/" target="_blank"> Poppe R.</a></font>,<b> AdaPool: Exponential Adaptive Pooling for Information-Retaining Downsampling</b>, arXiv, 2021</p>
-          <div class="links">
+              <a href="http://arxiv.org/abs/2204.13340" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
+              <a href="http://arxiv.org/abs/2204.13340" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;</a>
 
-            <a href="#" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
-            <a href="https://arxiv.org/abs/2111.00772" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;</a>
+              <a href="./project_pages/TemPr/index.html" target="_blank"><p class="fa fa-globe">
+              </p>&#32; </a>
+               <a href="./project_pages/TemPr/index.html" target="_blank">website&#8201;&#8201;&#8201;  </a>
 
-            <a href="https://github.com/alexandrosstergiou/adaPool" target="_blank"><p class="lab la-github">&#32;</p></a>
-            <a href="https://github.com/alexandrosstergiou/adaPool" target="_blank" style="font-style:normal;">code&#8201;&#8201;&#8201;</a>
+              <a href="https://github.com/alexandrosstergiou/progressive-action-prediction" target="_blank"><p class="lab la-github">&#32;</p></a>
+              <a href="https://github.com/alexandrosstergiou/progressive-action-prediction" target="_blank" style="font-style:normal;">code&#8201;&#8201;&#8201;</a>
 
-            <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('stergiou2021ada')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span> </i></a>
+              <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('stergiou2022temporal')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span> </i></a>
+            </div>
+            <p id="stergiou2022temporal" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2022temporal,</br>
+              title={Temporal Progressive Attention for Early Action Prediction},</br>
+              author={Stergiou, Alexandros and Damen, Dima},</br>
+              journal={arXiv preprint arXiv:2204.13340},</br>
+              year={2022}}</p>
           </div>
-          <p id="stergiou2021ada" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2021adapool,</br>
-            title={AdaPool: Exponential Adaptive Pooling for Information-Retaining Downsampling},</br>
-            author={Stergiou, Alexandros and Poppe, Ronald},</br>
-            journal={arXiv preprint arXiv:2111.00772},</br>
-            year={2021}}</p>
         </div>
       </div>
     </div>
-  </div>
 
-  <h3 class="middle" style="margin-top:3em;">CONFERENCE PAPERS</h3>
-
-  <!-- Refining activation downsampling with SoftPool -->
-  <div class="row-padding">
-    <div class="row">
-      <div class="section">
-        <div class="list-image big">
-          <img class="static"  src="photos/SoftPool/softpool.png" width="100em" height="100em" alt="mindseye" style="margin:20px 0;" ondragstart="return false;">
-          <img class="active" src="photos/SoftPool/softpool_animated.gif" width="100em" height="100em" alt="mindseye-active" style="margin:20px 0" ondragstart="return false;">
-        </div>
-        <div class="list-description">
-          <p>Stergiou A., <font color="#1E4258"><a href="https://rpoppe.wordpress.com/" target="_blank"> Poppe R.</a></font>, and<font color="#1E4258"><a href="http://gkalliatakis.com/" target="_blank"> Kalliatakis G.</a></font>,<b> Refining activation downsampling with SoftPool</b>, International Conference on Computer Vision (ICCV), 2021</p>
-          <div class="links">
-            <a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Stergiou_Refining_Activation_Downsampling_With_SoftPool_ICCV_2021_paper.pdf" target="_blank"><p class="ai ai-open-access ai">&#32;</p></a>
-            <a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Stergiou_Refining_Activation_Downsampling_With_SoftPool_ICCV_2021_paper.pdf" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201;</a>
-
-            <a href="https://arxiv.org/abs/2101.00440" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
-            <a href="https://arxiv.org/abs/2101.00440" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;</a>
-
-            <a href="https://github.com/alexandrosstergiou/SoftPool" target="_blank"><p class="lab la-github">&#32;</p></a>
-            <a href="https://github.com/alexandrosstergiou/SoftPool" target="_blank" style="font-style:normal;">code&#8201;&#8201;&#8201;</a>
-
-            <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('stergiou2021refining')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span> </i></a>
+    <!-- AdaPool: Exponential Adaptive Pooling for Information-Retaining Downsampling -->
+    <div class="row-padding">
+      <div class="row">
+        <div class="section">
+          <div class="list-image big">
+            <img class="static"  src="photos/adaPool/adapool.png" width="100em" height="100em" alt="mindseye" style="margin:20px 0;" ondragstart="return false;">
+            <img class="active" src="photos/adaPool/adapool.gif" width="100em" height="100em" alt="mindseye-active" style="margin:20px 0" ondragstart="return false;">
           </div>
-          <p id="stergiou2021refining" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2021refining, <br/>
-            title={Refining activation downsampling with SoftPool}, <br/>
-            author={Stergiou, Alexandros and Poppe, Ronald and Kalliatakis, Grigorios}, <br/>
-            booktitle={IEEE International Conference on Computer Vision (ICCV)}, <br/>
-            year={2021}, <br/>
-            organization={IEEE}}</p>
-        </div>
-      </div>
-    </div>
-  </div>
+          <div class="list-description">
+            <p>Stergiou A., and<font color="#1E4258"><a href="https://rpoppe.wordpress.com/" target="_blank"> Poppe R.</a></font>,<b> AdaPool: Exponential Adaptive Pooling for Information-Retaining Downsampling</b>, arXiv, 2021</p>
+            <div class="links">
 
+              <a href="#" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
+              <a href="https://arxiv.org/abs/2111.00772" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;</a>
 
-  <!-- The Mind's Eye: Visualizing Class Agnostic Features of CNNs -->
-  <div class="row-padding">
-    <div class="row">
-      <div class="section">
-        <div class="list-image big">
-          <img class="static"  src="photos/Class_Agnostic/jellyfish_vis.png" width="100em" height="100em" alt="mindseye" style="margin:20px 0;" ondragstart="return false;">
-          <img class="active" src="photos/Class_Agnostic/jellyfish_vis.gif" width="100em" height="100em" alt="mindseye-active" style="margin:20px 0" ondragstart="return false;">
-        </div>
-        <div class="list-description">
-          <p>Stergiou A., <b>The Mind's Eye: Visualizing Class Agnostic Features of CNNs</b>,  International Confernce on Image Procesing (ICIP), 2021</p>
-          <div class="links">
-            <a href="https://ieeexplore.ieee.org/document/9506287" target="_blank"><p class="ai ai-closed-access ai">&#32;</p></a>
-            <a href="https://ieeexplore.ieee.org/document/9506287" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201;</a>
+              <a href="https://github.com/alexandrosstergiou/adaPool" target="_blank"><p class="lab la-github">&#32;</p></a>
+              <a href="https://github.com/alexandrosstergiou/adaPool" target="_blank" style="font-style:normal;">code&#8201;&#8201;&#8201;</a>
 
-            <a href="https://arxiv.org/abs/2101.12447" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
-            <a href="https://arxiv.org/abs/2101.12447" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;</a>
-
-            <a href="https://github.com/alexandrosstergiou/Class-Agnostic-Feature-Visualisation" target="_blank"><p class="lab la-github">&#32;</p></a>
-            <a href="https://github.com/alexandrosstergiou/Class-Agnostic-Feature-Visualisation" target="_blank" style="font-style:normal;">code&#8201;&#8201;&#8201;</a>
-
-            <a href="https://doi.org/10.1109/ICIP42928.2021.9506287" target="_blank"><p class="ai ai-doi ai">&#32;</p></a>
-            <a href="https://doi.org/10.1109/ICIP42928.2021.9506287" target="_blank" style="font-style:normal;">DOI&#8201;&#8201;&#8201;</a>
-
-            <a href="https://www.youtube.com/watch?v=Au3jaUdnPKM" target="_blank"><p class="lab la-youtube">&#32;</p></a>
-            <a href="https://www.youtube.com/watch?v=Au3jaUdnPKM" target="_blank" style="font-style:normal;">video&#8201;&#8201;&#8201;</a>
-
-            <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('stergiou2021mind')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span></i></a>
+              <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('stergiou2021ada')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span> </i></a>
+            </div>
+            <p id="stergiou2021ada" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2021adapool,</br>
+              title={AdaPool: Exponential Adaptive Pooling for Information-Retaining Downsampling},</br>
+              author={Stergiou, Alexandros and Poppe, Ronald},</br>
+              journal={arXiv preprint arXiv:2111.00772},</br>
+              year={2021}}</p>
           </div>
-          <p id="stergiou2021mind" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2021mind, <br/>
-            title = {The Mind's Eye: Visualizing Class-Agnostic Features of CNNs}, <br/>
-            author={Stergiou, Alexandros}, <br/>
-            booktitle={IEEE International Conference on Image Processing (ICIP)}, <br/>
-            year={2021}, <br/>
-            organization={IEEE}}</p>
         </div>
       </div>
     </div>
-  </div>
 
+    <h3 class="middle" style="margin-top:3em;">CONFERENCE PAPERS</h3>
 
-
-  <!-- Multi-Temporal Convolutions for Human ActionRecognition in Videos -->
-  <div class="row-padding">
-    <div class="row">
-      <div class="section">
-        <div class="list-image big">
-          <img class="static"  src="photos/MTConv/mt_convs.png" width="100em" height="100em" alt="mtconv" ondragstart="return false;">
-          <img class="active"  src="photos/MTConv/mt_convs.gif" width="100em" height="100em" alt="mtconv_active" ondragstart="return false;">
-        </div>
-        <div class="list-description">
-          <p> Stergiou A., and <font color="#1E4258"><a href="https://rpoppe.wordpress.com/" target="_blank"> Poppe R.</a></font>, <b>Multi-Temporal Convolutions for Human ActionRecognition in Videos</b>,  International Joint Conference of Neural Networks (IJCNN), 2021 </p>
-          <div class="links">
-            <a href="https://ieeexplore.ieee.org/document/9533515" target="_blank"><p class="ai ai-closed-access ai">&#32;</p></a>
-            <a href="https://ieeexplore.ieee.org/document/9533515" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201;</a>
-
-            <a href="https://arxiv.org/abs/2011.03949" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
-            <a href="https://arxiv.org/abs/2011.03949" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;</a>
-
-            <a href="https://github.com/alexandrosstergiou/Squeeze-and-Recursion-Temporal-Gates" target="_blank"><p class="lab la-github">&#32;</p></a>
-            <a href="https://github.com/alexandrosstergiou/Squeeze-and-Recursion-Temporal-Gates" target="_blank" style="font-style:normal;">code&#8201;&#8201;&#8201;</a>
-
-            <a href="https://doi.org/10.1109/IJCNN52387.2021.9533515" target="_blank"><p class="ai ai-doi ai">&#32;</p></a>
-            <a href="https://doi.org/10.1109/IJCNN52387.2021.9533515" target="_blank" style="font-style:normal;">DOI&#8201;&#8201;&#8201;</a>
-
-            <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('mtconv-2021')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span></i></a>
+    <!-- Refining activation downsampling with SoftPool -->
+    <div class="row-padding">
+      <div class="row">
+        <div class="section">
+          <div class="list-image big">
+            <img class="static"  src="photos/SoftPool/softpool.png" width="100em" height="100em" alt="mindseye" style="margin:20px 0;" ondragstart="return false;">
+            <img class="active" src="photos/SoftPool/softpool_animated.gif" width="100em" height="100em" alt="mindseye-active" style="margin:20px 0" ondragstart="return false;">
           </div>
-          <p id="mtconv-2021" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2021multi,<br/>
-            title={Multi-Temporal Convolutions for Human Action Recognition in Videos}, <br/>
-            author={Stergiou, Alexandros and Poppe, Ronald}, <br/>
-            booktitle={International Joint Conference of Neural Networks (IJCNN)}, <br/>
-            year={2021}, <br/>
-            organization={IEEE}}</p>
-        </div>
-      </div>
-    </div>
-  </div>
+          <div class="list-description">
+            <p>Stergiou A., <font color="#1E4258"><a href="https://rpoppe.wordpress.com/" target="_blank"> Poppe R.</a></font>, and<font color="#1E4258"><a href="http://gkalliatakis.com/" target="_blank"> Kalliatakis G.</a></font>,<b> Refining activation downsampling with SoftPool</b>, International Conference on Computer Vision (ICCV), 2021</p>
+            <div class="links">
+              <a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Stergiou_Refining_Activation_Downsampling_With_SoftPool_ICCV_2021_paper.pdf" target="_blank"><p class="ai ai-open-access ai">&#32;</p></a>
+              <a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Stergiou_Refining_Activation_Downsampling_With_SoftPool_ICCV_2021_paper.pdf" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201;</a>
 
+              <a href="https://arxiv.org/abs/2101.00440" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
+              <a href="https://arxiv.org/abs/2101.00440" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;</a>
 
-  <!-- Class Feature Pyramids for Video Explanation -->
-  <div class="row-padding">
-    <div class="row">
-      <div class="section">
-        <div class="list-image big">
-          <img class="static"  src="photos/Class_Feature_Pyramids/CFP.png" width="100em" height="100em" alt="feature-pyramids" ondragstart="return false;">
-          <img class="active"  src="photos/Class_Feature_Pyramids/Class_Feature_Pyramid.gif" width="100em" height="100em" alt="human-human-active" ondragstart="return false;">
-        </div>
-        <div class="list-description">
-          <p> Stergiou A., <font color="#1E4258"><a href="https://www.uu.nl/medewerkers/GKapidis" target="_blank">Kapidis G.</a></font>, <font color="#1E4258"><a href="http://gkalliatakis.com/" target="_blank"> Kalliatakis G.</a></font>,<font color="#1E4258"><a href="https://www.napier.ac.uk/people/christos-chrysoulas" target="_blank"> Chrysoulas C.</a></font>, <font color="#1E4258"><a href="https://rpoppe.wordpress.com/" target="_blank"> Poppe R.</a></font>, and <font color="#1E4258"><a href="https://www.uu.nl/staff/RCVeltkamp" target="_blank"> Veltkamp R.C.</a></font>, <b>Class Feature Pyramids for Video Explanation</b> Intenrantional Conference on Computer Vision Workshop (ICCVW), 2019</p>
-          <div class="links">
-            <a href="https://ieeexplore.ieee.org/abstract/document/9022210" target="_blank"><p class="ai ai-closed-access ai">&#32;</p></a>
-            <a href="https://ieeexplore.ieee.org/abstract/document/9022210" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201;</a>
+              <a href="https://github.com/alexandrosstergiou/SoftPool" target="_blank"><p class="lab la-github">&#32;</p></a>
+              <a href="https://github.com/alexandrosstergiou/SoftPool" target="_blank" style="font-style:normal;">code&#8201;&#8201;&#8201;</a>
 
-            <a href="https://arxiv.org/abs/1909.08611" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
-            <a href="https://arxiv.org/abs/1909.08611" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;</a>
-
-            <a href="https://github.com/alexandrosstergiou/Class_Feature_Visualization_Pyramid" target="_blank"><p class="lab la-github">&#32;</p></a>
-            <a href="https://github.com/alexandrosstergiou/Class_Feature_Visualization_Pyramid" target="_blank" style="font-style:normal;">code&#8201;&#8201;&#8201;</a>
-
-            <a href="https://doi.org/10.1109/ICCVW.2019.00524" target="_blank"><p class="ai ai-doi ai">&#32;</p></a>
-            <a href="https://doi.org/10.1109/ICCVW.2019.00524" target="_blank" style="font-style:normal;">DOI&#8201;&#8201;&#8201;</a>
-
-            <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('feature-pyramids-2020')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span></i></a>
+              <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('stergiou2021refining')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span> </i></a>
+            </div>
+            <p id="stergiou2021refining" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2021refining, <br/>
+              title={Refining activation downsampling with SoftPool}, <br/>
+              author={Stergiou, Alexandros and Poppe, Ronald and Kalliatakis, Grigorios}, <br/>
+              booktitle={IEEE International Conference on Computer Vision (ICCV)}, <br/>
+              year={2021}, <br/>
+              organization={IEEE}}</p>
           </div>
-          <p id="feature-pyramids-2020" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2019class, <br/>
-            title={Class Feature Pyramids for Video Explanation}, <br/>
-            author={Stergiou, Alexandros and Kapidis, Georgios and Kalliatakis, Grigorios and <br/>
-            Chrysoulas, Christos Poppe, Ronald and Veltkamp, Remco}, <br/>
-            booktitle={IEEE Intenrantional Conference on Computer Vision Workshops (ICCVW)}, <br/>
-            year={2019}, <br/>
-            organization={IEEE}}</p>
         </div>
       </div>
     </div>
-  </div>
 
 
-
-  <!-- Spatio-Temporal FAST 3D Convolutions for Human Action RecognitionRecognition -->
-  <div class="row-padding">
-    <div class="row">
-      <div class="section">
-        <div class="list-image big">
-          <img src="photos/FAST_conv/fast_v01.png" width="100em" height="100em" alt="FAST_conv" ondragstart="return false;">
-        </div>
-        <div class="list-description">
-          <p> Stergiou A., and <font color="#1E4258"><a href="https://rpoppe.wordpress.com/" target="_blank"> Poppe R.</a></font>, <b>Spatio-Temporal FAST 3D Convolutions for Human Action Recognition</b>, Intenrantional Conference on Machine Learning Applications (ICMLA), 2019</p>
-          <div class="links">
-            <a href="https://ieeexplore.ieee.org/abstract/document/8999121" target="_blank"><p class="ai ai-closed-access ai">&#32;</p></a>
-            <a href="https://ieeexplore.ieee.org/abstract/document/8999121" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201;</a>
-
-            <a href="https://arxiv.org/abs/1909.13474" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
-            <a href="https://arxiv.org/abs/1909.13474" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;</a>
-
-            <a href="https://doi.org/10.1109/ICMLA.2019.00036" target="_blank"><p class="ai ai-doi ai">&#32;</p></a>
-            <a href="https://doi.org/10.1109/ICMLA.2019.00036" target="_blank" style="font-style:normal;">DOI&#8201;&#8201;&#8201;</a>
-
-            <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('fast-conv-2019')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span></i></a>
+    <!-- The Mind's Eye: Visualizing Class Agnostic Features of CNNs -->
+    <div class="row-padding">
+      <div class="row">
+        <div class="section">
+          <div class="list-image big">
+            <img class="static"  src="photos/Class_Agnostic/jellyfish_vis.png" width="100em" height="100em" alt="mindseye" style="margin:20px 0;" ondragstart="return false;">
+            <img class="active" src="photos/Class_Agnostic/jellyfish_vis.gif" width="100em" height="100em" alt="mindseye-active" style="margin:20px 0" ondragstart="return false;">
           </div>
-          <p id="fast-conv-2019" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2019fast, <br/>
-            title={Spatio-Temporal FAST 3D Convolutions for Human Action Recognition}, <br/>
-            author={Stergiou, Alexandros and Poppe, Ronald}, <br/>
-            booktitle={IEEE Intenrantional Conference on Machine Learning Applications (ICMLA)}, <br/>
-            year={2019}, <br/>
-            organization={IEEE}}</p>
-        </div>
-      </div>
-    </div>
-  </div>
+          <div class="list-description">
+            <p>Stergiou A., <b>The Mind's Eye: Visualizing Class Agnostic Features of CNNs</b>,  International Confernce on Image Procesing (ICIP), 2021</p>
+            <div class="links">
+              <a href="https://ieeexplore.ieee.org/document/9506287" target="_blank"><p class="ai ai-closed-access ai">&#32;</p></a>
+              <a href="https://ieeexplore.ieee.org/document/9506287" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201;</a>
 
+              <a href="https://arxiv.org/abs/2101.12447" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
+              <a href="https://arxiv.org/abs/2101.12447" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;</a>
 
+              <a href="https://github.com/alexandrosstergiou/Class-Agnostic-Feature-Visualisation" target="_blank"><p class="lab la-github">&#32;</p></a>
+              <a href="https://github.com/alexandrosstergiou/Class-Agnostic-Feature-Visualisation" target="_blank" style="font-style:normal;">code&#8201;&#8201;&#8201;</a>
 
+              <a href="https://doi.org/10.1109/ICIP42928.2021.9506287" target="_blank"><p class="ai ai-doi ai">&#32;</p></a>
+              <a href="https://doi.org/10.1109/ICIP42928.2021.9506287" target="_blank" style="font-style:normal;">DOI&#8201;&#8201;&#8201;</a>
 
+              <a href="https://www.youtube.com/watch?v=Au3jaUdnPKM" target="_blank"><p class="lab la-youtube">&#32;</p></a>
+              <a href="https://www.youtube.com/watch?v=Au3jaUdnPKM" target="_blank" style="font-style:normal;">video&#8201;&#8201;&#8201;</a>
 
-
-
-  <!-- Saliency Tubes: Visual Explanations for Spatio-Temporal Convolutions -->
-  <div class="row-padding">
-    <div class="row">
-      <div class="section">
-        <div class="list-image big">
-          <img class="static"  src="photos/Saliency_Tubes/tubes_3d.jpg" width="100em" height="100em" alt="saliency-tubes" ondragstart="return false;">
-          <img class="active"  src="photos/Saliency_Tubes/saliency_tubes.gif" width="100em" height="100em" alt="human-human-active" ondragstart="return false;">
-        </div>
-        <div class="list-description">
-          <p> Stergiou A., <font color="#1E4258"><a href="https://www.uu.nl/medewerkers/GKapidis" target="_blank">Kapidis G.</a></font>, <font color="#1E4258"><a href="http://gkalliatakis.com/" target="_blank"> Kalliatakis G.</a></font>,<font color="#1E4258"><a href="https://www.napier.ac.uk/people/christos-chrysoulas" target="_blank"> Chrysoulas C.</a></font>,<font color="#1E4258"><a href="https://www.uu.nl/staff/RCVeltkamp" target="_blank"> Veltkamp R.C.</a></font>, and <font color="#1E4258"><a href="https://rpoppe.wordpress.com/" target="_blank"> Poppe R.</a></font>, <b>Saliency Tubes: Visual Explanations for Spatio-Temporal Convolutions</b>, International Confernce on Image Procesing (ICIP), 2019</p>
-          <div class="links">
-            <a href="https://ieeexplore.ieee.org/abstract/document/8803153" target="_blank"><p class="ai ai-closed-access ai">&#32;</p></a>
-            <a href="https://ieeexplore.ieee.org/abstract/document/8803153" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201;</a>
-
-            <a href="https://arxiv.org/abs/1902.01078" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
-            <a href="https://arxiv.org/abs/1902.01078" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;</a>
-
-            <a href="https://github.com/alexandrosstergiou/Saliency-Tubes-Visual-Explanations-for-Spatio-Temporal-Convolutions" target="_blank"><p class="lab la-github">&#32;</p></a>
-            <a href="https://github.com/alexandrosstergiou/Saliency-Tubes-Visual-Explanations-for-Spatio-Temporal-Convolutions" target="_blank" style="font-style:normal;">code&#8201;&#8201;&#8201;</a>
-
-            <a href="https://doi.org/10.1109/ICIP.2019.8803153" target="_blank"><p class="ai ai-doi ai">&#32;</p></a>
-            <a href="https://doi.org/10.1109/ICIP.2019.8803153" target="_blank" style="font-style:normal;">DOI&#8201;&#8201;&#8201;</a>
-
-            <a href="https://www.youtube.com/watch?v=JANUqoMc3ess" target="_blank"><p class="lab la-youtube">&#32;</p></a>
-            <a href="https://www.youtube.com/watch?v=JANUqoMc3ess" target="_blank" style="font-style:normal;">video&#8201;&#8201;&#8201;</a>
-
-
-            <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('saliency-tubes-2019')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span></i></a>
+              <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('stergiou2021mind')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span></i></a>
+            </div>
+            <p id="stergiou2021mind" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2021mind, <br/>
+              title = {The Mind's Eye: Visualizing Class-Agnostic Features of CNNs}, <br/>
+              author={Stergiou, Alexandros}, <br/>
+              booktitle={IEEE International Conference on Image Processing (ICIP)}, <br/>
+              year={2021}, <br/>
+              organization={IEEE}}</p>
           </div>
-          <p id="saliency-tubes-2019" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2019saliency,<br/>
-            title={Saliency Tubes: Visual Explanations for Spatio-Temporal Convolutions}, <br/>
-            author={Stergiou, Alexandros and Kapidis, Georgios and Kalliatakis, Grigorios and <br/>
-            Chrysoulas, Christos and Veltkamp, Remco and Poppe, Ronald}, <br/>
-            booktitle={IEEE International Conference on Image Processing (ICIP)}, <br/>
-            year={2019}, <br/>
-            organization={IEEE}}</p>
         </div>
       </div>
     </div>
-  </div>
 
 
-  <h3 class="middle" style="margin-top:3em;">JOURNAL PAPERS</h3>
 
-
-  <!-- Learn to cycle: Time-consistent feature discovery for action recognition -->
-  <div class="row-padding">
-    <div class="row">
-      <div class="section">
-        <div class="list-image big">
-          <img class="static"  src="photos/SRTG/SRTG.png" width="100em" height="100em" alt="learn2cycle" style="margin:20px 0;" ondragstart="return false;">
-          <img class="active" src="photos/SRTG/SRTG.gif" width="100em" height="100em" alt="srtg-active" style="margin:20px 0" ondragstart="return false;">
-        </div>
-        <div class="list-description">
-          <p> Stergiou A., and<font color="#1E4258"><a href="https://rpoppe.wordpress.com/" target="_blank"> Poppe R.</a></font>, <b>Learn to cycle: Time-consistent feature discovery for action recognition</b>, Pattern Recognition Letters, 2021</p>
-          <div class="links">
-            <a href="https://www.sciencedirect.com/science/article/pii/S0167865520304177?via%3Dihub" target="_blank"><p class="ai ai-open-access ai">&#32;</p></a>
-            <a href="https://www.sciencedirect.com/science/article/pii/S0167865520304177?via%3Dihub" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201;</a>
-
-            <a href="https://arxiv.org/abs/2006.08247" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
-            <a href="https://arxiv.org/abs/2006.08247" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;  </a>
-
-
-            <a href="https://github.com/alexandrosstergiou/Squeeze-and-Recursion-Temporal-Gates" target="_blank"><p class="lab la-github">&#32;</p></a>
-            <a href="https://github.com/alexandrosstergiou/Squeeze-and-Recursion-Temporal-Gates" target="_blank" style="font-style:normal;">code&#8201;&#8201;&#8201;</a>
-
-
-            <a href="https://doi.org/10.1016/j.patrec.2020.11.012" target="_blank"><p class="ai ai-doi ai">&#32;</p></a>
-            <a href="https://doi.org/10.1016/j.patrec.2020.11.012" target="_blank" style="font-style:normal;">DOI&#8201;&#8201;&#8201;</a>
-
-
-            <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('pattern-recog-2020')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span></i></a>
+    <!-- Multi-Temporal Convolutions for Human ActionRecognition in Videos -->
+    <div class="row-padding">
+      <div class="row">
+        <div class="section">
+          <div class="list-image big">
+            <img class="static"  src="photos/MTConv/mt_convs.png" width="100em" height="100em" alt="mtconv" ondragstart="return false;">
+            <img class="active"  src="photos/MTConv/mt_convs.gif" width="100em" height="100em" alt="mtconv_active" ondragstart="return false;">
           </div>
-          <p id="pattern-recog-2020" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2020learn, <br/>
-            title = {Learn to cycle: Time-consistent feature discovery for action recognition}, <br/>
-            author={Stergiou, Alexandros and Poppe, Ronald}, <br/>
-            journal = {Pattern Recognition Letters}, <br/>
-            volume ={141}, </br>
-            pages ={1--7}, </br>
-            year ={2021}, </br>
-            issn ={0167-8655}}</p>
-        </div>
-      </div>
-    </div>
-  </div>
+          <div class="list-description">
+            <p> Stergiou A., and <font color="#1E4258"><a href="https://rpoppe.wordpress.com/" target="_blank"> Poppe R.</a></font>, <b>Multi-Temporal Convolutions for Human ActionRecognition in Videos</b>,  International Joint Conference of Neural Networks (IJCNN), 2021 </p>
+            <div class="links">
+              <a href="https://ieeexplore.ieee.org/document/9533515" target="_blank"><p class="ai ai-closed-access ai">&#32;</p></a>
+              <a href="https://ieeexplore.ieee.org/document/9533515" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201;</a>
 
+              <a href="https://arxiv.org/abs/2011.03949" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
+              <a href="https://arxiv.org/abs/2011.03949" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;</a>
 
-  <!-- Learning Class-Specific Features with Class Regularization for Videos -->
-  <div class="row-padding">
-    <div class="row">
-      <div class="section">
-        <div class="list-image big">
-          <img class="static"  src="photos/Class_Reg/CR.png" width="100em" height="100em" alt="class-reg" ondragstart="return false;">
-          <img class="active"  src="photos/Class_Reg/CR.gif" width="100em" height="100em" alt="human-human-active" ondragstart="return false;">
-        </div>
-        <div class="list-description">
-          <p> Stergiou A., <font color="#1E4258"><a href="https://rpoppe.wordpress.com/" target="_blank"> Poppe R.</a></font>, and <font color="#1E4258"><a href="https://www.uu.nl/staff/RCVeltkamp" target="_blank"> Veltkamp R.C.</a></font>, <b>Learning Class-Specific Features with Class Regularization for Videos</b>,  Applied Sciences, 2020</p>
-          <div class="links">
-            <a href="https://www.mdpi.com/2076-3417/10/18/6241" target="_blank"><p class="ai ai-open-access ai">&#32;</p></a>
-            <a href="https://www.mdpi.com/2076-3417/10/18/6241" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201;</a>
+              <a href="https://github.com/alexandrosstergiou/Squeeze-and-Recursion-Temporal-Gates" target="_blank"><p class="lab la-github">&#32;</p></a>
+              <a href="https://github.com/alexandrosstergiou/Squeeze-and-Recursion-Temporal-Gates" target="_blank" style="font-style:normal;">code&#8201;&#8201;&#8201;</a>
 
-            <a href="https://doi.org/10.3390/app10186241" target="_blank"><p class="ai ai-doi ai">&#32;</p></a>
-            <a href="https://doi.org/10.3390/app10186241" target="_blank" style="font-style:normal;">DOI&#8201;&#8201;&#8201;  </a>
+              <a href="https://doi.org/10.1109/IJCNN52387.2021.9533515" target="_blank"><p class="ai ai-doi ai">&#32;</p></a>
+              <a href="https://doi.org/10.1109/IJCNN52387.2021.9533515" target="_blank" style="font-style:normal;">DOI&#8201;&#8201;&#8201;</a>
 
-
-            <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('class-reg-2020')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span></i></a>
+              <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('mtconv-2021')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span></i></a>
+            </div>
+            <p id="mtconv-2021" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2021multi,<br/>
+              title={Multi-Temporal Convolutions for Human Action Recognition in Videos}, <br/>
+              author={Stergiou, Alexandros and Poppe, Ronald}, <br/>
+              booktitle={International Joint Conference of Neural Networks (IJCNN)}, <br/>
+              year={2021}, <br/>
+              organization={IEEE}}</p>
           </div>
-          <p id="class-reg-2020" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2020learning, <br/>
-            title={Learning Class-Specific Features with Class Regularization for Videos}, <br/>
-            author={Stergiou, Alexandros and Poppe, Ronald and Veltkamp, Remco C}, <br/>
-            journal={Applied Sciences}, <br/>
-            volume={10}, <br/>
-            number={18}, <br/>
-            pages={6241}, <br/>
-            year={2020}, <br/>
-            publisher={Multidisciplinary Digital Publishing Institute}}</p>
         </div>
       </div>
     </div>
-  </div>
 
 
-  <!-- Analyzing Human to Human Interacions: A Survey -->
-  <div class="row-padding">
-    <div class="row">
+    <!-- Class Feature Pyramids for Video Explanation -->
+    <div class="row-padding">
+      <div class="row">
+        <div class="section">
+          <div class="list-image big">
+            <img class="static"  src="photos/Class_Feature_Pyramids/CFP.png" width="100em" height="100em" alt="feature-pyramids" ondragstart="return false;">
+            <img class="active"  src="photos/Class_Feature_Pyramids/Class_Feature_Pyramid.gif" width="100em" height="100em" alt="human-human-active" ondragstart="return false;">
+          </div>
+          <div class="list-description">
+            <p> Stergiou A., <font color="#1E4258"><a href="https://www.uu.nl/medewerkers/GKapidis" target="_blank">Kapidis G.</a></font>, <font color="#1E4258"><a href="http://gkalliatakis.com/" target="_blank"> Kalliatakis G.</a></font>,<font color="#1E4258"><a href="https://www.napier.ac.uk/people/christos-chrysoulas" target="_blank"> Chrysoulas C.</a></font>, <font color="#1E4258"><a href="https://rpoppe.wordpress.com/" target="_blank"> Poppe R.</a></font>, and <font color="#1E4258"><a href="https://www.uu.nl/staff/RCVeltkamp" target="_blank"> Veltkamp R.C.</a></font>, <b>Class Feature Pyramids for Video Explanation</b> Intenrantional Conference on Computer Vision Workshop (ICCVW), 2019</p>
+            <div class="links">
+              <a href="https://ieeexplore.ieee.org/abstract/document/9022210" target="_blank"><p class="ai ai-closed-access ai">&#32;</p></a>
+              <a href="https://ieeexplore.ieee.org/abstract/document/9022210" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201;</a>
+
+              <a href="https://arxiv.org/abs/1909.08611" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
+              <a href="https://arxiv.org/abs/1909.08611" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;</a>
+
+              <a href="https://github.com/alexandrosstergiou/Class_Feature_Visualization_Pyramid" target="_blank"><p class="lab la-github">&#32;</p></a>
+              <a href="https://github.com/alexandrosstergiou/Class_Feature_Visualization_Pyramid" target="_blank" style="font-style:normal;">code&#8201;&#8201;&#8201;</a>
+
+              <a href="https://doi.org/10.1109/ICCVW.2019.00524" target="_blank"><p class="ai ai-doi ai">&#32;</p></a>
+              <a href="https://doi.org/10.1109/ICCVW.2019.00524" target="_blank" style="font-style:normal;">DOI&#8201;&#8201;&#8201;</a>
+
+              <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('feature-pyramids-2020')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span></i></a>
+            </div>
+            <p id="feature-pyramids-2020" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2019class, <br/>
+              title={Class Feature Pyramids for Video Explanation}, <br/>
+              author={Stergiou, Alexandros and Kapidis, Georgios and Kalliatakis, Grigorios and <br/>
+              Chrysoulas, Christos Poppe, Ronald and Veltkamp, Remco}, <br/>
+              booktitle={IEEE Intenrantional Conference on Computer Vision Workshops (ICCVW)}, <br/>
+              year={2019}, <br/>
+              organization={IEEE}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Spatio-Temporal FAST 3D Convolutions for Human Action RecognitionRecognition -->
+    <div class="row-padding">
+      <div class="row">
+        <div class="section">
+          <div class="list-image big">
+            <img src="photos/FAST_conv/fast_v01.png" width="100em" height="100em" alt="FAST_conv" ondragstart="return false;">
+          </div>
+          <div class="list-description">
+            <p> Stergiou A., and <font color="#1E4258"><a href="https://rpoppe.wordpress.com/" target="_blank"> Poppe R.</a></font>, <b>Spatio-Temporal FAST 3D Convolutions for Human Action Recognition</b>, Intenrantional Conference on Machine Learning Applications (ICMLA), 2019</p>
+            <div class="links">
+              <a href="https://ieeexplore.ieee.org/abstract/document/8999121" target="_blank"><p class="ai ai-closed-access ai">&#32;</p></a>
+              <a href="https://ieeexplore.ieee.org/abstract/document/8999121" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201;</a>
+
+              <a href="https://arxiv.org/abs/1909.13474" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
+              <a href="https://arxiv.org/abs/1909.13474" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;</a>
+
+              <a href="https://doi.org/10.1109/ICMLA.2019.00036" target="_blank"><p class="ai ai-doi ai">&#32;</p></a>
+              <a href="https://doi.org/10.1109/ICMLA.2019.00036" target="_blank" style="font-style:normal;">DOI&#8201;&#8201;&#8201;</a>
+
+              <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('fast-conv-2019')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span></i></a>
+            </div>
+            <p id="fast-conv-2019" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2019fast, <br/>
+              title={Spatio-Temporal FAST 3D Convolutions for Human Action Recognition}, <br/>
+              author={Stergiou, Alexandros and Poppe, Ronald}, <br/>
+              booktitle={IEEE Intenrantional Conference on Machine Learning Applications (ICMLA)}, <br/>
+              year={2019}, <br/>
+              organization={IEEE}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <!-- Saliency Tubes: Visual Explanations for Spatio-Temporal Convolutions -->
+    <div class="row-padding">
+      <div class="row">
+        <div class="section">
+          <div class="list-image big">
+            <img class="static"  src="photos/Saliency_Tubes/tubes_3d.jpg" width="100em" height="100em" alt="saliency-tubes" ondragstart="return false;">
+            <img class="active"  src="photos/Saliency_Tubes/saliency_tubes.gif" width="100em" height="100em" alt="human-human-active" ondragstart="return false;">
+          </div>
+          <div class="list-description">
+            <p> Stergiou A., <font color="#1E4258"><a href="https://www.uu.nl/medewerkers/GKapidis" target="_blank">Kapidis G.</a></font>, <font color="#1E4258"><a href="http://gkalliatakis.com/" target="_blank"> Kalliatakis G.</a></font>,<font color="#1E4258"><a href="https://www.napier.ac.uk/people/christos-chrysoulas" target="_blank"> Chrysoulas C.</a></font>,<font color="#1E4258"><a href="https://www.uu.nl/staff/RCVeltkamp" target="_blank"> Veltkamp R.C.</a></font>, and <font color="#1E4258"><a href="https://rpoppe.wordpress.com/" target="_blank"> Poppe R.</a></font>, <b>Saliency Tubes: Visual Explanations for Spatio-Temporal Convolutions</b>, International Confernce on Image Procesing (ICIP), 2019</p>
+            <div class="links">
+              <a href="https://ieeexplore.ieee.org/abstract/document/8803153" target="_blank"><p class="ai ai-closed-access ai">&#32;</p></a>
+              <a href="https://ieeexplore.ieee.org/abstract/document/8803153" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201;</a>
+
+              <a href="https://arxiv.org/abs/1902.01078" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
+              <a href="https://arxiv.org/abs/1902.01078" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;</a>
+
+              <a href="https://github.com/alexandrosstergiou/Saliency-Tubes-Visual-Explanations-for-Spatio-Temporal-Convolutions" target="_blank"><p class="lab la-github">&#32;</p></a>
+              <a href="https://github.com/alexandrosstergiou/Saliency-Tubes-Visual-Explanations-for-Spatio-Temporal-Convolutions" target="_blank" style="font-style:normal;">code&#8201;&#8201;&#8201;</a>
+
+              <a href="https://doi.org/10.1109/ICIP.2019.8803153" target="_blank"><p class="ai ai-doi ai">&#32;</p></a>
+              <a href="https://doi.org/10.1109/ICIP.2019.8803153" target="_blank" style="font-style:normal;">DOI&#8201;&#8201;&#8201;</a>
+
+              <a href="https://www.youtube.com/watch?v=JANUqoMc3ess" target="_blank"><p class="lab la-youtube">&#32;</p></a>
+              <a href="https://www.youtube.com/watch?v=JANUqoMc3ess" target="_blank" style="font-style:normal;">video&#8201;&#8201;&#8201;</a>
+
+
+              <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('saliency-tubes-2019')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span></i></a>
+            </div>
+            <p id="saliency-tubes-2019" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2019saliency,<br/>
+              title={Saliency Tubes: Visual Explanations for Spatio-Temporal Convolutions}, <br/>
+              author={Stergiou, Alexandros and Kapidis, Georgios and Kalliatakis, Grigorios and <br/>
+              Chrysoulas, Christos and Veltkamp, Remco and Poppe, Ronald}, <br/>
+              booktitle={IEEE International Conference on Image Processing (ICIP)}, <br/>
+              year={2019}, <br/>
+              organization={IEEE}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <h3 class="middle" style="margin-top:3em;">JOURNAL PAPERS</h3>
+
+
+    <!-- Learn to cycle: Time-consistent feature discovery for action recognition -->
+    <div class="row-padding">
+      <div class="row">
+        <div class="section">
+          <div class="list-image big">
+            <img class="static"  src="photos/SRTG/SRTG.png" width="100em" height="100em" alt="learn2cycle" style="margin:20px 0;" ondragstart="return false;">
+            <img class="active" src="photos/SRTG/SRTG.gif" width="100em" height="100em" alt="srtg-active" style="margin:20px 0" ondragstart="return false;">
+          </div>
+          <div class="list-description">
+            <p> Stergiou A., and<font color="#1E4258"><a href="https://rpoppe.wordpress.com/" target="_blank"> Poppe R.</a></font>, <b>Learn to cycle: Time-consistent feature discovery for action recognition</b>, Pattern Recognition Letters, 2021</p>
+            <div class="links">
+              <a href="https://www.sciencedirect.com/science/article/pii/S0167865520304177?via%3Dihub" target="_blank"><p class="ai ai-open-access ai">&#32;</p></a>
+              <a href="https://www.sciencedirect.com/science/article/pii/S0167865520304177?via%3Dihub" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201;</a>
+
+              <a href="https://arxiv.org/abs/2006.08247" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
+              <a href="https://arxiv.org/abs/2006.08247" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;  </a>
+
+
+              <a href="https://github.com/alexandrosstergiou/Squeeze-and-Recursion-Temporal-Gates" target="_blank"><p class="lab la-github">&#32;</p></a>
+              <a href="https://github.com/alexandrosstergiou/Squeeze-and-Recursion-Temporal-Gates" target="_blank" style="font-style:normal;">code&#8201;&#8201;&#8201;</a>
+
+
+              <a href="https://doi.org/10.1016/j.patrec.2020.11.012" target="_blank"><p class="ai ai-doi ai">&#32;</p></a>
+              <a href="https://doi.org/10.1016/j.patrec.2020.11.012" target="_blank" style="font-style:normal;">DOI&#8201;&#8201;&#8201;</a>
+
+
+              <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('pattern-recog-2020')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span></i></a>
+            </div>
+            <p id="pattern-recog-2020" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2020learn, <br/>
+              title = {Learn to cycle: Time-consistent feature discovery for action recognition}, <br/>
+              author={Stergiou, Alexandros and Poppe, Ronald}, <br/>
+              journal = {Pattern Recognition Letters}, <br/>
+              volume ={141}, </br>
+              pages ={1--7}, </br>
+              year ={2021}, </br>
+              issn ={0167-8655}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Learning Class-Specific Features with Class Regularization for Videos -->
+    <div class="row-padding">
+      <div class="row">
+        <div class="section">
+          <div class="list-image big">
+            <img class="static"  src="photos/Class_Reg/CR.png" width="100em" height="100em" alt="class-reg" ondragstart="return false;">
+            <img class="active"  src="photos/Class_Reg/CR.gif" width="100em" height="100em" alt="human-human-active" ondragstart="return false;">
+          </div>
+          <div class="list-description">
+            <p> Stergiou A., <font color="#1E4258"><a href="https://rpoppe.wordpress.com/" target="_blank"> Poppe R.</a></font>, and <font color="#1E4258"><a href="https://www.uu.nl/staff/RCVeltkamp" target="_blank"> Veltkamp R.C.</a></font>, <b>Learning Class-Specific Features with Class Regularization for Videos</b>,  Applied Sciences, 2020</p>
+            <div class="links">
+              <a href="https://www.mdpi.com/2076-3417/10/18/6241" target="_blank"><p class="ai ai-open-access ai">&#32;</p></a>
+              <a href="https://www.mdpi.com/2076-3417/10/18/6241" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201;</a>
+
+              <a href="https://doi.org/10.3390/app10186241" target="_blank"><p class="ai ai-doi ai">&#32;</p></a>
+              <a href="https://doi.org/10.3390/app10186241" target="_blank" style="font-style:normal;">DOI&#8201;&#8201;&#8201;  </a>
+
+
+              <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('class-reg-2020')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span></i></a>
+            </div>
+            <p id="class-reg-2020" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2020learning, <br/>
+              title={Learning Class-Specific Features with Class Regularization for Videos}, <br/>
+              author={Stergiou, Alexandros and Poppe, Ronald and Veltkamp, Remco C}, <br/>
+              journal={Applied Sciences}, <br/>
+              volume={10}, <br/>
+              number={18}, <br/>
+              pages={6241}, <br/>
+              year={2020}, <br/>
+              publisher={Multidisciplinary Digital Publishing Institute}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Analyzing Human to Human Interacions: A Survey -->
+    <div class="row-padding">
+      <div class="row">
+        <div class="section">
+          <div class="list-image big">
+            <img src="photos/Understanding_human_to_human/interactions.png" width="100em" height="100em" alt="h2h_survey" ondragstart="return false;">
+          </div>
+          <div class="list-description">
+            <p> Stergiou A., and <font color="#1E4258"><a href="https://rpoppe.wordpress.com/" target="_blank">Poppe R.</a></font>, <b>Analyzing human-to-human interactions: a survey</b>, Computer Vision and Image Understanding, 2019</p>
+            <div class="links">
+              <a href="https://www.sciencedirect.com/science/article/abs/pii/S1077314219301158?via%3Dihub" target="_blank"><p class="ai ai-open-access ai">&#32;</p></a>
+              <a href="https://www.sciencedirect.com/science/article/abs/pii/S1077314219301158?via%3Dihub" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201; </a>
+
+              <a href="https://arxiv.org/abs/1808.00022" target="_blank"><p class="ai ai-arxiv ai">
+              </p>&#32;  </a>
+              <a href="https://arxiv.org/abs/1808.00022" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;  </a>
+
+              <a href="https://github.com/alexandrosstergiou/Inception_v3_TV_Human_Interactions" target="_blank"><p class="lab la-github"></p>&#32;</a>
+              <a href="https://github.com/alexandrosstergiou/Inception_v3_TV_Human_Interactions" target="_blank" style="font-style:normal;">code&#8201;&#8201;&#8201; </a>
+
+              <a href="https://doi.org/10.1016/j.cviu.2019.102799" target="_blank"><p class="ai ai-doi ai"></p></a>
+              <a href="https://doi.org/10.1016/j.cviu.2019.102799" target="_blank" style="font-style:normal;">DOI&#8201;&#8201;&#8201;</a>
+
+              <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('h2h-survey-2019')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span></i></a>
+            </div>
+            <p id="h2h-survey-2019" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2019analyzing,<br/>
+              author = {Stergiou, Alexandros and Poppe, Ronald}, <br/>
+              title = {Analyzing human-human interactions: a survey}, <br/>
+              journal = {Computer Vision and Image Understanding}, <br/>
+              volume = {188}, <br/>
+              pages = {102799}, <br/>
+              year = {2019}, <br/>
+              issn = {1077-3142}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <h3 class="middle" style="margin-top:5em;">DATASETS</h3>
+
+    <div class="row-padding">
+      <div class="row">
       <div class="section">
         <div class="list-image big">
-          <img src="photos/Understanding_human_to_human/interactions.png" width="100em" height="100em" alt="h2h_survey" ondragstart="return false;">
+          <img style="float: right;margin:0em 1em;" src="datasets/Inter4K/images/inter4k.png" width="100em" alt="Fig1" ondragstart="return false;">
         </div>
         <div class="list-description">
-          <p> Stergiou A., and <font color="#1E4258"><a href="https://rpoppe.wordpress.com/" target="_blank">Poppe R.</a></font>, <b>Analyzing human-to-human interactions: a survey</b>, Computer Vision and Image Understanding, 2019</p>
+          <font color="#1E4258">Inter4K </font>
           <div class="links">
-            <a href="https://www.sciencedirect.com/science/article/abs/pii/S1077314219301158?via%3Dihub" target="_blank"><p class="ai ai-open-access ai">&#32;</p></a>
-            <a href="https://www.sciencedirect.com/science/article/abs/pii/S1077314219301158?via%3Dihub" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201; </a>
 
-            <a href="https://arxiv.org/abs/1808.00022" target="_blank"><p class="ai ai-arxiv ai">
+            <a href="#" target="_blank"><p class="ai ai-arxiv ai">
             </p>&#32;  </a>
-            <a href="https://arxiv.org/abs/1808.00022" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;  </a>
+            <a href="#" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;  </a>
 
-            <a href="https://github.com/alexandrosstergiou/Inception_v3_TV_Human_Interactions" target="_blank"><p class="lab la-github"></p>&#32;</a>
-            <a href="https://github.com/alexandrosstergiou/Inception_v3_TV_Human_Interactions" target="_blank" style="font-style:normal;">code&#8201;&#8201;&#8201; </a>
+            <a href="./datasets/Inter4K/index.html" target="_blank"><p class="fa fa-globe">
+            </p>&#32; </a>
+             <a href="./datasets/Inter4K/index.html" target="_blank">website&#8201;&#8201;&#8201;  </a>
 
-            <a href="https://doi.org/10.1016/j.cviu.2019.102799" target="_blank"><p class="ai ai-doi ai"></p></a>
-            <a href="https://doi.org/10.1016/j.cviu.2019.102799" target="_blank" style="font-style:normal;">DOI&#8201;&#8201;&#8201;</a>
 
-            <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('h2h-survey-2019')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span></i></a>
+            <a href="https://github.com/alexandrosstergiou/Inter4K" target="_blank"><p class="lab la-github"></p>&#32;</a>
+            <a href="https://github.com/alexandrosstergiou/Inter4K" target="_blank" style="font-style:normal;">code&#8201;&#8201;&#8201; </a>
+
+            <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('inter4K')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span></i></a>
           </div>
-          <p id="h2h-survey-2019" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2019analyzing,<br/>
-            author = {Stergiou, Alexandros and Poppe, Ronald}, <br/>
-            title = {Analyzing human-human interactions: a survey}, <br/>
-            journal = {Computer Vision and Image Understanding}, <br/>
-            volume = {188}, <br/>
-            pages = {102799}, <br/>
-            year = {2019}, <br/>
-            issn = {1077-3142}}</p>
+          <p id="inter4K" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2021adapool,<br/>
+            title={AdaPool: Exponential Adaptive Pooling for Information-Retaining Downsampling}, <br/>
+            author={Stergiou, Alexandros and Poppe, Ronald}, <br/>
+            journal={arXiv preprint}, <br/>
+            year={2021}} </p>
         </div>
       </div>
-    </div>
-  </div>
-
-
-  <h3 class="middle" style="margin-top:5em;">DATASETS</h3>
-
-  <div class="row-padding">
-    <div class="row">
-    <div class="section">
-      <div class="list-image big">
-        <img style="float: right;margin:0em 1em;" src="datasets/Inter4K/images/inter4k.png" width="100em" alt="Fig1" ondragstart="return false;">
-      </div>
-      <div class="list-description">
-        <font color="#1E4258">Inter4K </font>
-        <div class="links">
-
-          <a href="#" target="_blank"><p class="ai ai-arxiv ai">
-          </p>&#32;  </a>
-          <a href="#" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;  </a>
-
-          <a href="./datasets/Inter4K/index.html" target="_blank"><p class="fa fa-globe">
-          </p>&#32; </a>
-           <a href="./datasets/Inter4K/index.html" target="_blank">website&#8201;&#8201;&#8201;  </a>
-
-
-          <a href="https://github.com/alexandrosstergiou/Inter4K" target="_blank"><p class="lab la-github"></p>&#32;</a>
-          <a href="https://github.com/alexandrosstergiou/Inter4K" target="_blank" style="font-style:normal;">code&#8201;&#8201;&#8201; </a>
-
-          <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('inter4K')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span></i></a>
-        </div>
-        <p id="inter4K" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2021adapool,<br/>
-          title={AdaPool: Exponential Adaptive Pooling for Information-Retaining Downsampling}, <br/>
-          author={Stergiou, Alexandros and Poppe, Ronald}, <br/>
-          journal={arXiv preprint}, <br/>
-          year={2021}} </p>
       </div>
     </div>
-    </div>
-  </div>
 
-</br>
-</br>
-</br>
+    </br>
+    </br>
+    </br>
 
 
- <h3 class="middle" style="margin-top:3em;">THESIS</h3>
+   <h3 class="middle" style="margin-top:3em;">THESIS</h3>
 
 
- <!-- Efficient Modelling Across Time of Human Actions and Interactions -->
- <div class="row-padding">
-   <div class="row">
-     <div class="section">
-       <div class="list-image big">
-         <img class="static" src="photos/thesis/cover.jpg" width="100em" height="100em" alt="thesis-static" ondragstart="return false;">
-         <img class="active"  src="photos/thesis/covers.gif" width="100em" height="100em" alt="thesis-active" ondragstart="return false;">
-       </div>
-       <div class="list-description">
-         <p> Stergiou A.G., <b>Efficient Modelling Across Time of Human Actions and Interactions
-</b>, Utrecht University 2021</p>
-         <div class="links">
-           <a href="https://dspace.library.uu.nl/handle/1874/403550" target="_blank"><p class="ai ai-open-access ai" >&#32;</p> </a>
-           <a href="https://dspace.library.uu.nl/handle/1874/403550" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201;</a>
-
-           <a href="https://arxiv.org/abs/2110.02120" target="_blank"><p class="ai ai-arxiv ai"></p></a>
-           <a href="https://arxiv.org/abs/2110.02120" target="_blank" style="font-style:normal;">Online book&#8201;&#8201;&#8201;</a>
-
-           <a href="https://doi.org/​10.33540/789" target="_blank"><p class="ai ai-doi ai"></p></a>
-           <a href="https://doi.org/​10.33540/789" target="_blank"style="font-style:normal;">DOI&#8201;&#8201;&#8201;  </a>
-
-           <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('thesis')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span></i></a>
+   <!-- Efficient Modelling Across Time of Human Actions and Interactions -->
+   <div class="row-padding">
+     <div class="row">
+       <div class="section">
+         <div class="list-image big">
+           <img class="static" src="photos/thesis/cover.jpg" width="100em" height="100em" alt="thesis-static" ondragstart="return false;">
+           <img class="active"  src="photos/thesis/covers.gif" width="100em" height="100em" alt="thesis-active" ondragstart="return false;">
          </div>
-         <p id="thesis" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@phdthesis{stergiou2021efficient,</br>
-           title={Efficient Modelling Across Time of Human Actions and Interactions}, </br>
-           author={Stergiou, Alexandros Georgios}, </br>
-           year={2021},</br>
-           school={Utrecht University}}</p>
+         <div class="list-description">
+           <p> Stergiou A.G., <b>Efficient Modelling Across Time of Human Actions and Interactions</b>, Utrecht University 2021</p>
+           <div class="links">
+             <a href="https://dspace.library.uu.nl/handle/1874/403550" target="_blank"><p class="ai ai-open-access ai" >&#32;</p> </a>
+             <a href="https://dspace.library.uu.nl/handle/1874/403550" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201;</a>
+
+             <a href="https://arxiv.org/abs/2110.02120" target="_blank"><p class="ai ai-arxiv ai"></p></a>
+             <a href="https://arxiv.org/abs/2110.02120" target="_blank" style="font-style:normal;">Online book&#8201;&#8201;&#8201;</a>
+
+             <a href="https://doi.org/​10.33540/789" target="_blank"><p class="ai ai-doi ai"></p></a>
+             <a href="https://doi.org/​10.33540/789" target="_blank"style="font-style:normal;">DOI&#8201;&#8201;&#8201;  </a>
+
+             <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('thesis')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span></i></a>
+           </div>
+           <p id="thesis" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@phdthesis{stergiou2021efficient,</br>
+             title={Efficient Modelling Across Time of Human Actions and Interactions}, </br>
+             author={Stergiou, Alexandros Georgios}, </br>
+             year={2021},</br>
+             school={Utrecht University}}</p>
+         </div>
        </div>
      </div>
    </div>
- </div>
-
-
-</div>
-
-
-
-<!-- Fifth Parallax Image -->
-<div class="backgrounds background5 display-container">
-  <div class="display-m">
-     <h2 class="xxlarge light-grey wide boxed fade" align="middle">EXPERIENCE</h2>
-  </div>
-</div>
-
-<!-- EXPERIENCE -->
-<div class="content container padding body">
-
-  <h3 class="middle" style="margin-top:2em;">ACCADEMIC APPOINTMENTS</h3>
-
-  <div class="row-padding">
-  <div class="row">
-    <div class="section">
-      <div class="list-image small">
-        <img style="float: right;margin:0em 1em;" src="photos/affiliations/UoB.png" width="50 em" height="50 em" alt="aff1" ondragstart="return false;">
-      </div>
-      <div class="list-description">
-        August 2021 - now
-        <br> Postdoctoral Research Associate at University of Bristol, Bristol, UK
-      </br>
-      </br>
-      </div>
-    </div>
-    </div>
   </div>
 
 
-<h3 class="middle" style="margin-top:2em;">EDUCATION</h3>
 
-  <div class="row-padding">
-  <div class="row">
-    <div class="section">
-      <div class="list-image small">
-        <img style="float: right;margin:0em 1em;" src="photos/affiliations/utrecht.png" width="50 em" height="50 em" alt="aff1" ondragstart="return false;">
-      </div>
-      <div class="list-description">
-        September 2017 - September 2021
-        <br> PhD student at Utrecht University, Utrecht, NL
-        <br> Thesis title: Efficient Modelling Across Time of Human Actions and Interactions
-        <br> Supervisor: prof. Remco C. Veltkamp, Co-Supervisor: dr. Ronald Poppe
-      </div>
-    </div>
+  <!-- Fifth Parallax Image -->
+  <div class="backgrounds background5 display-container">
+    <div class="display-m">
+       <h2 class="xxlarge light-grey wide boxed fade" align="middle">EXPERIENCE</h2>
     </div>
   </div>
 
+  <!-- EXPERIENCE -->
+  <div id="experience" class="content container padding body">
 
-  <div class="row-padding">
-  <div class="row">
-    <div class="section">
-      <div class="list-image small ">
-        <img style="float: right;margin:0em 1em;" src="photos/affiliations/essex.png" width="50 em" height="50 em" alt="aff2" ondragstart="return false;">
-      </div>
-      <div class="list-description">
-        September 2016 - September 2017
-        <br> MSc student in Advanced Computer Science at University of Essex, Colchester, UK
-        <br> Dissertation title: The Driver's Assistant: Utilising Synthetic Data Generation and Deep Learning for Traffic Sign Classification
-        <br> Supervisor: dr. Adian Clark
-      </div>
-    </div>
-    </div>
-  </div>
+    <h3 class="middle" style="margin-top:2em;">ACCADEMIC APPOINTMENTS</h3>
 
-  <div class="row-padding">
-  <div class="row">
-    <div class="section">
-      <div class="list-image small ">
-        <img style="float: right;margin:0em 1em;" src="photos/affiliations/essex.png" width="50 em" height="50 em" alt="aff2" ondragstart="return false;">
-      </div>
-      <div class="list-description">
-        September 2013 - September 2016
-        <br> BSc student in Computer Science at University of Essex, Colchester, UK
+    <!--
+    <div class="row-padding">
+    <div class="row">
+      <div class="section">
+        <div class="list-image small">
+          <img style="float: right;margin:0em 1em;" src="photos/affiliations/VUB.png" width="50 em" height="50 em" alt="aff1" ondragstart="return false;">
+        </div>
+        <div class="list-description">
+          October 2022 - now
+          <br> Postdoctoral Researcher at Vrije Universiteit Brussel, Brussels, BE
+          <br> PI: <a href="http://www.etrovub.be/people/member/about-bio/ndeligia/" target="_blank"><font color="#1E4258"> prof. Nikos Deligiannis</font></a>
         </br>
         </br>
+        </div>
+      </div>
       </div>
     </div>
+    -->
+
+
+    <div class="row-padding">
+    <div class="row">
+      <div class="section">
+        <div class="list-image small">
+          <img style="float: right;margin:0em 1em;" src="photos/affiliations/UoB.png" width="50 em" height="50 em" alt="aff1" ondragstart="return false;">
+        </div>
+        <div class="list-description">
+          August 2021 - September 2022
+          <br> Research Associate at University of Bristol, Bristol, UK
+          <br> PI: <a href="https://dimadamen.github.io/" target="_blank"><font color="#1E4258"> prof. Dima Damen</font></a>
+        </br>
+        </br>
+        </div>
+      </div>
+      </div>
+    </div>
+
+
+    <h3 class="middle" style="margin-top:2em;">EDUCATION</h3>
+
+      <div class="row-padding">
+      <div class="row">
+        <div class="section">
+          <div class="list-image small">
+            <img style="float: right;margin:0em 1em;" src="photos/affiliations/utrecht.png" width="50 em" height="50 em" alt="aff1" ondragstart="return false;">
+          </div>
+          <div class="list-description">
+            September 2017 - September 2021
+            <br> PhD student at Utrecht University, Utrecht, NL
+            <br> Thesis title: Efficient Modelling Across Time of Human Actions and Interactions
+            <br> Supervisor: <a href="https://rpoppe.wordpress.com/" target="_blank"><font color="#1E4258"> dr. Ronald Poppe</font></a> and
+            <a href="https://www.uu.nl/staff/default.aspx?lng=NL&Profielpagina=RCVeltkamp&t=0" target="_blank"><font color="#1E4258"> prof. Remco C. Veltkamp</font></a>
+          </div>
+        </div>
+        </div>
+      </div>
+
+
+      <div class="row-padding">
+      <div class="row">
+        <div class="section">
+          <div class="list-image small ">
+            <img style="float: right;margin:0em 1em;" src="photos/affiliations/essex.png" width="50 em" height="50 em" alt="aff2" ondragstart="return false;">
+          </div>
+          <div class="list-description">
+            September 2016 - September 2017
+            <br> MSc student in Advanced Computer Science at University of Essex, Colchester, UK
+            <br> Dissertation title: The Driver's Assistant: Utilising Synthetic Data Generation and Deep Learning for Traffic Sign Classification
+            <br> Supervisor: <a href="https://www.essex.ac.uk/people/clark65804/adrian-clark" target="_blank"><font color="#1E4258"> dr. Adrian Clark</font></a>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div class="row-padding">
+      <div class="row">
+        <div class="section">
+          <div class="list-image small ">
+            <img style="float: right;margin:0em 1em;" src="photos/affiliations/essex.png" width="50 em" height="50 em" alt="aff2" ondragstart="return false;">
+          </div>
+          <div class="list-description">
+            September 2013 - September 2016
+            <br> BSc student in Computer Science at University of Essex, Colchester, UK
+            </br>
+            </br>
+          </div>
+        </div>
+        </div>
+      </div>
+
+    </br>
+    </br>
+    </br>
+  </div>
+
+  <!-- Fourth Parallax Image -->
+  <div class="backgrounds background4 display-container">
+    <div class="display-m">
+      <h2 class="xxlarge light-grey wide boxed middle fade">ACTIVITIES</h2>
     </div>
   </div>
 
-</br>
-</br>
-</br>
-</div>
-
-<!-- Fourth Parallax Image -->
-<div class="backgrounds background4 display-container">
-  <div class="display-m">
-    <h2 class="xxlarge light-grey wide boxed middle fade">SERVICES</h2>
-  </div>
-</div>
-
-<!-- Modules -->
-<div class="content container padding body">
+  <!-- Modules -->
+  <div id="services" class="content container padding body">
 
 
-  <h3 class="middle" style="margin-top:2em;">TEACHING</h3>
+    <h3 class="middle" style="margin-top:2em;">TEACHING</h3>
 
-  <div class="row-padding">
-  <div class="row">
+    <div class="row-padding">
+    <div class="row">
+
+      <div class="section">
+        <div class="list-image small">
+          <img style="float: right;margin:0em 1em;" src="photos/services/utrecht.png" width="60em" height="60em" alt="Fig1" ondragstart="return false;">
+        </div>
+        <div class="list-description">
+          <font color="#1E4258">Lecturer for INFOMCV (Masters course) Spring 2018, 2019 & 2020 </font>
+          <br> Lecturer and Instructor for the Deep Learning/Neural Networks lectures
+        </div>
+      </div>
+      </div>
+    </div>
+
+
+    <h3 class="middle" style="margin-top:2em;">REVIEWING</h3>
 
     <div class="section">
       <div class="list-image small">
-        <img style="float: right;margin:0em 1em;" src="photos/services/utrecht.png" width="60em" height="60em" alt="Fig1" ondragstart="return false;">
+        <img style="float: right;margin:0em 1em;" src="photos/services/cvf.png" width="60em" height="60em" alt="Fig1" ondragstart="return false;">
       </div>
       <div class="list-description">
-        <font color="#1E4258">Lecturer for INFOMCV (Masters course) Spring 2018, 2019 & 2020 </font>
-        <br> Lecturer and Instructor for the Deep Learning/Neural Networks lectures
+        <font color="#1E4258">Reviewer for CVF conferences:</font> CVPR2022, ECCV2022
+        <br>
       </div>
     </div>
+
+    <div class="section">
+      <div class="list-image small">
+        <img style="float: right;margin:0em 1em;" src="photos/services/elsevier.png" width="60em" height="60em" alt="Fig1" ondragstart="return false;">
+      </div>
+      <div class="list-description">
+        <font color="#1E4258">Reviewer for Elsevier journals:</font> Pattern Recognition
+        <br>
+      </div>
     </div>
+
+    <div class="section">
+      <div class="list-image small">
+        <img style="float: right;margin:0em 1em;" src="photos/services/springer.png" width="60em" height="60em" alt="Fig1" ondragstart="return false;">
+      </div>
+      <div class="list-description">
+        <font color="#1E4258">Reviewer for Springer Nature journals:</font> IJCV
+        <br>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="list-image small">
+        <img style="float: right;margin:0em 1em;" src="photos/services/ieee.png" width="60em" height="60em" alt="Fig1" ondragstart="return false;">
+      </div>
+      <div class="list-description">
+        <font color="#1E4258">Reviewer for IEEE journals:</font> TIP
+        <br>
+      </div>
+    </div>
+
+
+    </div>
+
+
+
+
+
+    <!-- Fourth Parallax Image
+    <div class="backgrounds background6 display-container">
+      <div class="display-m">
+        <h2 class="xxlarge light-grey wide boxed middle fade">CODE</h2>
+      </div>
+    </div>
+
+    <div class="content container padding body">
+
+
+      <h3 class="middle" style="margin-top:2em;">PYPI PACKAGES</h3>
+
+      <div class="row-padding">
+      <div class="row">
+
+        <div class="section">
+          <div class="list-image small">
+            <img style="float: right;margin:0em 1em;" src="photos/services/utrecht.png" width="60em" height="60em" alt="Fig1" ondragstart="return false;">
+          </div>
+          <div class="list-description">
+            <font color="#1E4258">Lecturer for INFOMCV (Masters course) Spring 2018, 2019 & 2020 </font>
+            <br> Lecturer and Instructor for the Deep Learning/Neural Networks lectures
+          </div>
+        </div>
+        </div>
+      </div>
+
+
+      </div>
+      -->
   </div>
 
-
-  <h3 class="middle" style="margin-top:2em;">REVIEW</h3>
-
-  <div class="section">
-    <div class="list-image small">
-      <img style="float: right;margin:0em 1em;" src="photos/services/cvf.png" width="60em" height="60em" alt="Fig1" ondragstart="return false;">
-    </div>
-    <div class="list-description">
-      <font color="#1E4258">Reviewer for CVF conferences:</font> CVPR2022, ECCV2022
-      <br>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="list-image small">
-      <img style="float: right;margin:0em 1em;" src="photos/services/elsevier.png" width="60em" height="60em" alt="Fig1" ondragstart="return false;">
-    </div>
-    <div class="list-description">
-      <font color="#1E4258">Reviewer for Elsevier journals:</font> Pattern Recognition
-      <br>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="list-image small">
-      <img style="float: right;margin:0em 1em;" src="photos/services/springer.png" width="60em" height="60em" alt="Fig1" ondragstart="return false;">
-    </div>
-    <div class="list-description">
-      <font color="#1E4258">Reviewer for Springer Nature journals:</font> IJCV
-      <br>
-    </div>
-  </div>
-
-
-  </div>
-</div>
-
-  </div>
-
-<div class="middle"><p class="light-grey" style="color:#ccc">&copy; Alexandros Stergiou</p></div>
+  <div class="middle"><p class="light-grey" style="color:#ccc">&copy; Alexandros Stergiou</p></div>
 
 </body>
 </html>
