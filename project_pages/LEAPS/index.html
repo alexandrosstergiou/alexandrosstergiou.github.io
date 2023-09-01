@@ -1,0 +1,1276 @@
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+
+<style>
+    video {
+        position: absolute;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 25em;
+        -o-object-fit: cover;
+           object-fit: cover;
+        -o-object-position: center;
+           object-position: center;
+      }
+    
+    .nochange:hover {
+    color:inherit;
+    }
+
+    .carousel-container {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 15px;
+    }
+
+    .carousel-control {
+        border-radius: 25px;
+        background: black;
+        margin-top: 65px;
+    }
+
+    #dribblingCarousel-singleview .carousel-control,
+    #trumpetCarousel-singleview .carousel-control,
+    #jugglingCarousel-singleview .carousel-control {
+        height: 33px;
+        width: 30px !important;
+    }
+
+    
+
+    .left.carousel-control {
+        left: 0px;
+    }
+
+    .carousel-indicators {
+        width: 100px !important;
+        bottom: 10px !important;
+        left: 42% !important;
+        margin: 0 !important;
+        border-radius: 25px;
+        background: black;
+        opacity: .5;
+    }
+
+    .carousel-indicators:hover {
+        opacity: 1;
+    }
+
+    #dribblingCarousel-multiview .carousel-inner .item.active,
+    #trumpetCarousel-multiview .carousel-inner .item.active,
+    #jugglingCarousel-multiview .carousel-inner .item.active {
+        display: flex;
+    }
+
+    #dribblingCarousel-singleview,
+    #trumpetCarousel-singleview,
+    #juggingCarousel-singleview {
+        display: none;
+    }
+
+    .gif-container {
+        position: relative;
+        text-align: center;
+        margin-right: 1em;
+        margin-left: 1em;
+
+    }
+
+    .gif-container img {
+        height: auto;
+        width: 100%;
+        max-width: 182px;
+    }
+
+    .carousel-inner .item img {
+        margin: 0 auto 0 auto;
+    }
+
+    .caption {
+        position: absolute;
+        bottom: 10em;
+        color: white;
+        margin: auto 0 auto 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .caption h3 {
+        font-size: 1.2em;
+    }
+
+    .caption.short-text {
+        width: 100%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+    }
+    .caption.med-text {
+        margin-left: 28%;
+    }
+    .caption.long-text {
+        margin-left: 18%;
+    }
+
+    @media(min-width: 992px) {
+        .carousel-control {
+            height: 50px;
+            width: 50px !important;
+        }
+    }
+
+    
+    @media(min-width: 768px) and (max-width: 992px) {
+        .carousel-control {
+            top: -18px !important;
+        }
+    }
+
+    @media(max-width: 992px) {
+        .carousel-control {
+            height: 35px;
+            width: 35px !important;
+            top: -18px !important;
+        }
+
+        .carousel-control span {
+            font-size: 1em !important;
+        }
+    }
+
+    @media(min-width: 768px) {
+        #dribblingCarousel-singleview,
+        #trumpetCarousel-singleview,
+        #jugglingCarousel-singleview {
+            display: none;
+        }
+        
+        .right.carousel-control {
+            right: 0px !important;
+        }
+    }
+
+    @media(min-width: 768px) and (max-width: 992px) {
+        .carousel-control span {
+            padding-top: 5px;
+        }
+    }
+
+    @media(max-width: 768px) {
+        #dribblingCarousel-multiview,
+        #trumpetCarousel-multiview,
+        #jugglingCarousel-multiview {
+            display: none;
+        }
+
+        #dribblingCarousel-singleview,
+        #trumpetCarousel-singleview,
+        #jugglingCarousel-singleview {
+            display: block;
+        }
+
+        .carousel-control {
+            top: 3px !important;
+        }
+        
+        .right.carousel-control {
+            right: 0px !important;
+        }
+
+        .carousel-container {
+            justify-content: center;
+        }
+    }
+
+    @media(max-width: 404px) {
+        .carousel-container {
+            flex-wrap: wrap;
+        }
+
+        .gif-container {
+            margin-right: 0;
+            padding-bottom: 5px;
+        }
+    }
+
+    @media(max-width: 200px) {
+        .caption h3 {
+            font-size: 1em;
+        }
+    }
+</style>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-29YV7SY3QT"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-29YV7SY3QT');
+    </script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Leaping Into Memories: Space-Time Deep Feature Synthesis</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../favicon.ico/apple-touch-icon.png">
+  	<link rel="icon" type="../../image/png" sizes="32x32" href="../../favicon.ico/favicon-32x32.png">
+  	<link rel="icon" type="../../image/png" sizes="16x16" href="../../favicon.ico/favicon-16x16.png">
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="../../css/design.css">
+    <link rel="stylesheet" href="../../academicons/css/academicons.min.css"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+</head>
+
+<body>
+    <div id="main" class="row">
+        <div>
+        <div class="row">
+           <div class="display-container middle">
+                <video playsinline autoplay muted loop>
+                    <source src="img/animated.mp4" type="video/mp4">
+                </video>
+            </div>
+            <h2 class="black col-md-12 text-center" style="margin-top:1em;color:white;">
+                <b>Leaping Into Memories: Space-Time Deep Feature Synthesis</b>
+            </h2>
+            <h4 class="white col-md-12 text-center" style="margin-top:.5em;color:white;">
+                ICCV 2023
+            </h4>
+        </div>
+        <div class="row" style="margin-top:1em;margin-bottom:.5em;color:white;">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        
+                        <a href="https://alexandrosstergiou.github.io/" target="_blank" class="nochange">
+                          <font size="4px">Alexandros Stergiou</font>
+                        </a>
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <a href="https://scholar.google.co.uk/citations?view_op=list_works&hl=en&hl=en&user=iUGMLcYAAAAJ" target="_blank" class="nochange">
+                            <font size="4px">Nikos Deligiannis</font>
+                        </a>
+                    </li>
+                    </ul>
+                    <ul class="list-inline">
+                      <font size="4px">Vrije Universiteit Brussel & imec</font>
+                      &nbsp; &nbsp; &nbsp;
+                    </ul>
+                    
+            </div>
+        </div>
+
+
+        <div class="row" style="margin-top:1em;margin-bottom:.5em;">
+                <div class="col-md-6 col-md-offset-3 text-center">
+                  <div id="social-platforms">
+                    <a href="http://alexandrosstergiou.github.io" target="_blank" data-title="CVF" style="background:black;"><img class="static" src="img/logo/cvf.png" width="85%" height=auto; style="vertical-align:middle;margin:20% 0px"/></a>
+                    <a href="https://arxiv.org/abs/2303.09941" target="_blank" data-title="ArXiv" style="background:black;"><i class="ai ai-arxiv ai"></i><span>ArXiv</span></a>
+                    <a href="https://github.com/alexandrosstergiou/Leaping-Into-Memories" target="_blank" data-title="GitHub" style="background:black;"><i class="lab la-github"></i><span>GitHub</span></a>
+                    <a href="https://youtu.be/dcmd8U47BT8" target="_blank" data-title="YouTube" style="background:black;"><i class="lab la-youtube"></i><span>YouTube</span></a>
+              </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+
+    
+
+    <div class="row" style="margin-top:2em;">
+        <div class="content container padding body">
+            <img class="static" src="img/leaps.png"  width="90%" height="40%";/>
+            <br>
+            <br>
+            <h2>
+                Abstract
+            </h2>
+            <p class="text-justify">
+                The success of deep learning models has led to their adaptation and adoption by prominent video understanding methods. The majority of these approaches encode features in a joint space-time modality for which the inner workings and learned representations are difficult to visually interpret. We propose <b>LEA</b>rned <b>P</b>reconscious <b>S</b>ynthesis (LEAPS), an architecture-independent method for synthesizing videos from the internal spatiotemporal representations of models. Using a stimulus video and a target class, we prime a fixed space-time model and iteratively optimize a video initialized with random noise. Additional regularizers are used to improve the feature diversity of the synthesized videos alongside the cross-frame temporal coherence of motions. We quantitatively and qualitatively evaluate the applicability of LEAPS by inverting a range of spatiotemporal convolutional and attention-based architectures trained on Kinetics-400, which to the best of our knowledge has not been previously accomplished. 
+        </div>
+    </div>
+    <br>
+
+
+    <!--
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h2>
+                Overview
+            </h2>
+            <div class="text-center">
+                <div style="position:relative;padding-top:56.25%;">
+                    <iframe src="https://youtube.com/embed/rGR5tJUAFpc" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    -->
+
+    <div class="row" style="margin-top:2em;">
+        <div class="content container padding body">
+            <h2>
+                Synthesized videos
+            </h2>
+            <br>
+            <p>
+                Use the arrows to navigate over synthesized videos from different inverted models.
+            </p>
+            <br>
+            <div class="carousel-container">
+                <div class="gif-container">
+                    <img src="img/synth_videos/dribbling_basketball_gif/stimuli.gif" alt="Stimuli" height="183">
+                    <div class="caption short-text">
+                        <h3>Stimulus video</h3>
+                    </div>
+                </div>
+                &nbsp; &nbsp; &nbsp; &nbsp;
+                <div id="dribblingCarousel-multiview" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#dribblingCarousel-multiview" data-slide-to="0" class="active"></li>
+                        <li data-target="#dribblingCarousel-multiview" data-slide-to="1"></li>
+                        <li data-target="#dribblingCarousel-multiview" data-slide-to="2"></li>
+                        <li data-target="#dribblingCarousel-multiview" data-slide-to="3"></li>
+                    </ol>
+                
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="gif-container">
+                                <img src="img/synth_videos/dribbling_basketball_gif/r3d.gif" alt="3D R50">
+                                <div class="caption short-text">
+                                    <h3>3D R50</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/dribbling_basketball_gif/2plus1.gif" alt="(2+1)D R50">
+                                <div class="caption short-text">
+                                    <h3>(2+1)D R50</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/dribbling_basketball_gif/csn.gif" alt="CSN R50">
+                                <div class="caption short-text">
+                                    <h3>CSN R50</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/dribbling_basketball_gif/x3d_xs.gif" alt="X3Dxs">
+                                <div class="caption short-text">
+                                    <h3>X3D<sub>XS</sub></h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="gif-container">
+                                <img src="img/synth_videos/dribbling_basketball_gif/x3d_s.gif" alt="X3Ds">
+                                <div class="caption short-text">
+                                    <h3>X3D<sub>S</sub></h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/dribbling_basketball_gif/x3d_m.gif" alt="X3Dm">
+                                <div class="caption short-text">
+                                    <h3>X3D<sub>M</sub></h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/dribbling_basketball_gif/x3d_l.gif" alt="X3Dl">
+                                <div class="caption short-text">
+                                    <h3>X3D<sub>L</sub></h3>
+                                </div>
+                            </div>  
+                            <div class="gif-container">
+                                <img src="img/synth_videos/dribbling_basketball_gif/timesformer.gif" alt="Timesformer">
+                                <div class="caption short-text">
+                                    <h3>Timesformer</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="gif-container">
+                                <img src="img/synth_videos/dribbling_basketball_gif/swin_t.gif" alt="Swin_t">
+                                <div class="caption short-text">
+                                    <h3>Video Swin-T</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/dribbling_basketball_gif/swin_s.gif" alt="Swin_s">
+                                <div class="caption short-text">
+                                    <h3>Video Swin-S</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/dribbling_basketball_gif/swin_b.gif" alt="Swin_b">
+                                <div class="caption short-text">
+                                    <h3>Video Swin-B</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/dribbling_basketball_gif/mvitv2_s.gif" alt="Mvitv2_s">
+                                <div class="caption short-text">
+                                    <h3>MViTv2-S</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="gif-container">
+                                <img src="img/synth_videos/dribbling_basketball_gif/mvitv2_b.gif" alt="Mvitv2_b">
+                                <div class="caption short-text">
+                                    <h3>MViTv2-B</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/dribbling_basketball_gif/rev_mvit.gif" alt="Rev_mvit">
+                                <div class="caption short-text">
+                                    <h3>rev-MViT-B</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/dribbling_basketball_gif/uniformerv2_b.gif" alt="Uniformerv2_b">
+                                <div class="caption short-text">
+                                    <h3>UniFormerv2-B</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/dribbling_basketball_gif/uniformerv2_l.gif" alt="Uniformerv2_l">
+                                <div class="caption short-text">
+                                    <h3>UniFormerv2-L</h3>
+                                </div>
+                            </div>                      
+                        </div>
+                    </div>
+                
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#dribblingCarousel-multiview" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#dribblingCarousel-multiview" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+  
+                <div id="dribblingCarousel-singleview" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators
+                    <ol class="carousel-indicators">
+                        <li data-target="#dribblingCarousel-singleview" data-slide-to="0" class="active"></li>
+                        <li data-target="#dribblingCarousel-singleview" data-slide-to="1"></li>
+                        <li data-target="#dribblingCarousel-singleview" data-slide-to="2"></li>
+                        <li data-target="#dribblingCarousel-singleview" data-slide-to="3"></li>
+                        <li data-target="#dribblingCarousel-singleview" data-slide-to="4"></li>
+                        <li data-target="#dribblingCarousel-singleview" data-slide-to="5"></li>
+                        <li data-target="#dribblingCarousel-singleview" data-slide-to="6"></li>
+                        <li data-target="#dribblingCarousel-singleview" data-slide-to="7"></li>
+                        <li data-target="#dribblingCarousel-singleview" data-slide-to="8"></li>
+                        <li data-target="#dribblingCarousel-singleview" data-slide-to="9"></li>
+                        <li data-target="#dribblingCarousel-singleview" data-slide-to="10"></li>
+                        <li data-target="#dribblingCarousel-singleview" data-slide-to="11"></li>
+                        <li data-target="#dribblingCarousel-singleview" data-slide-to="12"></li>
+                        <li data-target="#dribblingCarousel-singleview" data-slide-to="13"></li>
+                        <li data-target="#dribblingCarousel-singleview" data-slide-to="14"></li>
+                        <li data-target="#dribblingCarousel-singleview" data-slide-to="15"></li>
+                    </ol> -->
+                
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="img/synth_videos/dribbling_basketball_gif/r3d.gif" alt="R3d">
+                            <div class="caption short-text">
+                                <h3>3D R50</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/dribbling_basketball_gif/2plus1.gif" alt="2Plus1">
+                            <div class="caption short-text">
+                                <h3>(2+1)D R50</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/dribbling_basketball_gif/csn.gif" alt="CSN">
+                            <div class="caption short-text">
+                                <h3>CSN R50</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/dribbling_basketball_gif/x3d_xs.gif" alt="X3d_xs">
+                            <div class="caption short-text">
+                                <h3>X3D<sub>XS</sub></h3>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="img/synth_videos/dribbling_basketball_gif/x3d_s.gif" alt="X3d_s">
+                            <div class="caption short-text">
+                                <h3>X3D<sub>S</sub></h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/dribbling_basketball_gif/x3d_m.gif" alt="X3d_m">
+                            <div class="caption short-text">
+                                <h3>X3D<sub>M</sub></h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/dribbling_basketball_gif/x3d_l.gif" alt="X3d_l">
+                            <div class="caption short-text">
+                                <h3>X3D<sub>L</sub></h3>
+                            </div>
+                        </div>  
+                        <div class="item">
+                            <img src="img/synth_videos/dribbling_basketball_gif/timesformer.gif" alt="Timesformer">
+                            <div class="caption long-text">
+                                <h3>Timesformer</h3>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="img/synth_videos/dribbling_basketball_gif/swin_t.gif" alt="Swin_t">
+                            <div class="caption short-text">
+                                <h3>Video Swin-T</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/dribbling_basketball_gif/swin_s.gif" alt="Swin_s">
+                            <div class="caption short-text">
+                                <h3>Video Swin-S</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/dribbling_basketball_gif/swin_b.gif" alt="Swin_b">
+                            <div class="caption short-text">
+                                <h3>Video Swin-B</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/dribbling_basketball_gif/mvitv2_s.gif" alt="Mvitv2_s">
+                            <div class="caption med-text">
+                                <h3>MViTv2-S</h3>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="img/synth_videos/dribbling_basketball_gif/mvitv2_b.gif" alt="Mvitv2_b">
+                            <div class="caption med-text">
+                                <h3>MViTv2-B</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/dribbling_basketball_gif/rev_mvit.gif" alt="Rev_mvit">
+                            <div class="caption med-text">
+                                <h3>rev-MViT-B</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/dribbling_basketball_gif/uniformerv2_b.gif" alt="Uniformerv2_b">
+                            <div class="caption long-text">
+                                <h3>UniFormerv2-B</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/dribbling_basketball_gif/uniformerv2_l.gif" alt="Uniformerv2_l">
+                            <div class="caption long-text">
+                                <h3>UniFormerv2-L</h3>
+                            </div>
+                        </div>                      
+                    </div>
+                
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#dribblingCarousel-singleview" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#dribblingCarousel-singleview" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="carousel-container">
+                <div class="gif-container">
+                    <img src="img/synth_videos/juggling_balls_gif/stimuli.gif" alt="Stimuli" height="183">
+                    <div class="caption short-text">
+                        <h3>Stimulus video</h3>
+                    </div>
+                </div>
+                &nbsp; &nbsp; &nbsp; &nbsp;
+                <div id="jugglingCarousel-multiview" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#jugglingCarousel-multiview" data-slide-to="0" class="active"></li>
+                        <li data-target="#jugglingCarousel-multiview" data-slide-to="1"></li>
+                        <li data-target="#jugglingCarousel-multiview" data-slide-to="2"></li>
+                        <li data-target="#jugglingCarousel-multiview" data-slide-to="3"></li>
+                    </ol>
+                
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="gif-container">
+                                <img src="img/synth_videos/juggling_balls_gif/r3d.gif" alt="R3d">
+                                <div class="caption short-text">
+                                    <h3>3D R50</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/juggling_balls_gif/2plus1.gif" alt="2Plus1">
+                                <div class="caption short-text">
+                                    <h3>(2+1)D R50</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/juggling_balls_gif/csn.gif" alt="CSN">
+                                <div class="caption short-text">
+                                    <h3>CSN R50</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/juggling_balls_gif/x3d_xs.gif" alt="X3d_xs">
+                                <div class="caption short-text">
+                                    <h3>X3D<sub>XS</sub></h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="gif-container">
+                                <img src="img/synth_videos/juggling_balls_gif/x3d_s.gif" alt="X3d_s">
+                                <div class="caption short-text">
+                                    <h3>X3D<sub>S</sub></h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/juggling_balls_gif/x3d_m.gif" alt="X3d_m">
+                                <div class="caption short-text">
+                                    <h3>X3D<sub>M</sub></h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/juggling_balls_gif/x3d_l.gif" alt="X3d_l">
+                                <div class="caption short-text">
+                                    <h3>X3D<sub>L</sub></h3>
+                                </div>
+                            </div>  
+                            <div class="gif-container">
+                                <img src="img/synth_videos/juggling_balls_gif/timesformer.gif" alt="Timesformer">
+                                <div class="caption long-text">
+                                    <h3>Timesformer</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="gif-container">
+                                <img src="img/synth_videos/juggling_balls_gif/swin_t.gif" alt="Swin_t">
+                                <div class="caption short-text">
+                                    <h3>Video Swin-T</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/juggling_balls_gif/swin_s.gif" alt="Swin_s">
+                                <div class="caption short-text">
+                                    <h3>Video Swin-S</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/juggling_balls_gif/swin_b.gif" alt="Swin_b">
+                                <div class="caption short-text">
+                                    <h3>Video Swin-B</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/juggling_balls_gif/mvitv2_s.gif" alt="Mvitv2_s">
+                                <div class="caption med-text">
+                                    <h3>MViTv2-S</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="gif-container">
+                                <img src="img/synth_videos/juggling_balls_gif/mvitv2_b.gif" alt="Mvitv2_b">
+                                <div class="caption med-text">
+                                    <h3>MViTv2-B</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/juggling_balls_gif/rev_mvit.gif" alt="Rev_mvit">
+                                <div class="caption med-text">
+                                    <h3>rev-MViT-B</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/juggling_balls_gif/uniformerv2_b.gif" alt="Uniformerv2_b">
+                                <div class="caption long-text">
+                                    <h3>UniFormerv2-B</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/juggling_balls_gif/uniformerv2_l.gif" alt="Uniformerv2_l">
+                                <div class="caption long-text">
+                                    <h3>UniFormerv2-L</h3>
+                                </div>
+                            </div>                      
+                        </div>
+                    </div>
+                
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#jugglingCarousel-multiview" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#jugglingCarousel-multiview" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+  
+                <div id="jugglingCarousel-singleview" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators
+                    <ol class="carousel-indicators">
+                        <li data-target="#jugglingCarousel-singleview" data-slide-to="0" class="active"></li>
+                        <li data-target="#jugglingCarousel-singleview" data-slide-to="1"></li>
+                        <li data-target="#jugglingCarousel-singleview" data-slide-to="2"></li>
+                        <li data-target="#jugglingCarousel-singleview" data-slide-to="3"></li>
+                        <li data-target="#jugglingCarousel-singleview" data-slide-to="4"></li>
+                        <li data-target="#jugglingCarousel-singleview" data-slide-to="5"></li>
+                        <li data-target="#jugglingCarousel-singleview" data-slide-to="6"></li>
+                        <li data-target="#jugglingCarousel-singleview" data-slide-to="7"></li>
+                        <li data-target="#jugglingCarousel-singleview" data-slide-to="8"></li>
+                        <li data-target="#jugglingCarousel-singleview" data-slide-to="9"></li>
+                        <li data-target="#jugglingCarousel-singleview" data-slide-to="10"></li>
+                        <li data-target="#jugglingCarousel-singleview" data-slide-to="11"></li>
+                        <li data-target="#jugglingCarousel-singleview" data-slide-to="12"></li>
+                        <li data-target="#jugglingCarousel-singleview" data-slide-to="13"></li>
+                        <li data-target="#jugglingCarousel-singleview" data-slide-to="14"></li>
+                        <li data-target="#jugglingCarousel-singleview" data-slide-to="15"></li>
+                    </ol> -->
+                
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="img/synth_videos/juggling_balls_gif/r3d.gif" alt="R3d">
+                            <div class="caption short-text">
+                                <h3>3D R50</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/2plus1.gif" alt="2Plus1">
+                            <div class="caption short-text">
+                                <h3>(2+1)D R50</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/csn.gif" alt="CSN">
+                            <div class="caption short-text">
+                                <h3>CSN R50</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/x3d_xs.gif" alt="X3d_xs">
+                            <div class="caption short-text">
+                                <h3>X3D<sub>XS</sub></h3>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/x3d_s.gif" alt="X3d_s">
+                            <div class="caption short-text">
+                                <h3>X3D<sub>S</sub></h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/x3d_m.gif" alt="X3d_m">
+                            <div class="caption short-text">
+                                <h3>X3D<sub>M</sub></h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/x3d_l.gif" alt="X3d_l">
+                            <div class="caption short-text">
+                                <h3>X3D<sub>L</sub></h3>
+                            </div>
+                        </div>  
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/timesformer.gif" alt="Timesformer">
+                            <div class="caption long-text">
+                                <h3>Timesformer</h3>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/swin_t.gif" alt="Swin_t">
+                            <div class="caption short-text">
+                                <h3>Video Swin-T</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/swin_s.gif" alt="Swin_s">
+                            <div class="caption short-text">
+                                <h3>Video Swin-S</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/swin_b.gif" alt="Swin_b">
+                            <div class="caption short-text">
+                                <h3>Video Swin-B </h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/mvitv2_s.gif" alt="Mvitv2_s">
+                            <div class="caption med-text">
+                                <h3>MViTv2-S</h3>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/mvitv2_b.gif" alt="Mvitv2_b">
+                            <div class="caption med-text">
+                                <h3>MViTv2-B</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/rev_mvit.gif" alt="Rev_mvit">
+                            <div class="caption med-text">
+                                <h3>rev-MViT-B</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/uniformerv2_b.gif" alt="Uniformerv2_b">
+                            <div class="caption long-text">
+                                <h3>UniFormerv2-B</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/uniformerv2_l.gif" alt="Uniformerv2_l">
+                            <div class="caption long-text">
+                                <h3>UniFormerv2-B</h3>
+                            </div>
+                        </div>                      
+                    </div>
+                
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#jugglingCarousel-singleview" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#jugglingCarousel-singleview" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="carousel-container">
+                <div class="gif-container">
+                    <img src="img/synth_videos/playing_trumpet/stimuli.gif" alt="Stimuli" height="183">
+                    <div class="caption short-text">
+                        <h3>Stimulus video</h3>
+                    </div>
+                </div>
+                &nbsp; &nbsp; &nbsp; &nbsp;
+                <div id="trumpetCarousel-multiview" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#trumpetCarousel-multiview" data-slide-to="0" class="active"></li>
+                        <li data-target="#trumpetCarousel-multiview" data-slide-to="1"></li>
+                        <li data-target="#trumpetCarousel-multiview" data-slide-to="2"></li>
+                        <li data-target="#trumpetCarousel-multiview" data-slide-to="3"></li>
+                    </ol>
+                
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="gif-container">
+                                <img src="img/synth_videos/playing_trumpet/r3d.gif" alt="R3d">
+                                <div class="caption short-text">
+                                    <h3>3D R50</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/playing_trumpet/2plus1.gif" alt="2Plus1">
+                                <div class="caption short-text">
+                                    <h3>(2+1)D R50</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/playing_trumpet/csn.gif" alt="CSN">
+                                <div class="caption short-text">
+                                    <h3>CSN R50</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/playing_trumpet/x3d_xs.gif" alt="X3d_xs">
+                                <div class="caption short-text">
+                                    <h3>X3D<sub>XS</sub></h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="gif-container">
+                                <img src="img/synth_videos/playing_trumpet/x3d_s.gif" alt="X3d_s">
+                                <div class="caption short-text">
+                                    <h3>X3D<sub>S</sub></h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/playing_trumpet/x3d_m.gif" alt="X3d_m">
+                                <div class="caption short-text">
+                                    <h3>X3D<sub>M</sub></h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/playing_trumpet/x3d_l.gif" alt="X3d_l">
+                                <div class="caption short-text">
+                                    <h3>X3D<sub>L</sub></h3>
+                                </div>
+                            </div>  
+                            <div class="gif-container">
+                                <img src="img/synth_videos/playing_trumpet/timesformer.gif" alt="Timesformer">
+                                <div class="caption long-text">
+                                    <h3>Timesformer</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="gif-container">
+                                <img src="img/synth_videos/playing_trumpet/swin_t.gif" alt="Swin_t">
+                                <div class="caption short-text">
+                                    <h3>Video Swin-T</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/playing_trumpet/swin_s.gif" alt="Swin_s">
+                                <div class="caption short-text">
+                                    <h3>Video Swin-S</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/playing_trumpet/swin_b.gif" alt="Swin_b">
+                                <div class="caption short-text">
+                                    <h3>Video Swin-B</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/playing_trumpet/mvitv2_s.gif" alt="Mvitv2_s">
+                                <div class="caption med-text">
+                                    <h3>MViTv2-S</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="gif-container">
+                                <img src="img/synth_videos/playing_trumpet/mvitv2_b.gif" alt="Mvitv2_b">
+                                <div class="caption med-text">
+                                    <h3>MViTv2-B</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/playing_trumpet/rev_mvit.gif" alt="Rev_mvit">
+                                <div class="caption med-text">
+                                    <h3>rev-MViT-B</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/playing_trumpet/uniformerv2_b.gif" alt="Uniformerv2_b">
+                                <div class="caption long-text">
+                                    <h3>UniFormerv2-B</h3>
+                                </div>
+                            </div>
+                            <div class="gif-container">
+                                <img src="img/synth_videos/playing_trumpet/uniformerv2_l.gif" alt="Uniformerv2_l">
+                                <div class="caption long-text">
+                                    <h3>UniFormerv2-L</h3>
+                                </div>
+                            </div>                      
+                        </div>
+                    </div>
+                
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#trumpetCarousel-multiview" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#trumpetCarousel-multiview" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+  
+                <div id="trumpetCarousel-singleview" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators
+                    <ol class="carousel-indicators">
+                        <li data-target="#trumpetCarousel-singleview" data-slide-to="0" class="active"></li>
+                        <li data-target="#trumpetCarousel-singleview" data-slide-to="1"></li>
+                        <li data-target="#trumpetCarousel-singleview" data-slide-to="2"></li>
+                        <li data-target="#trumpetCarousel-singleview" data-slide-to="3"></li>
+                        <li data-target="#trumpetCarousel-singleview" data-slide-to="4"></li>
+                        <li data-target="#trumpetCarousel-singleview" data-slide-to="5"></li>
+                        <li data-target="#trumpetCarousel-singleview" data-slide-to="6"></li>
+                        <li data-target="#trumpetCarousel-singleview" data-slide-to="7"></li>
+                        <li data-target="#trumpetCarousel-singleview" data-slide-to="8"></li>
+                        <li data-target="#trumpetCarousel-singleview" data-slide-to="9"></li>
+                        <li data-target="#trumpetCarousel-singleview" data-slide-to="10"></li>
+                        <li data-target="#trumpetCarousel-singleview" data-slide-to="11"></li>
+                        <li data-target="#trumpetCarousel-singleview" data-slide-to="12"></li>
+                        <li data-target="#trumpetCarousel-singleview" data-slide-to="13"></li>
+                        <li data-target="#trumpetCarousel-singleview" data-slide-to="14"></li>
+                        <li data-target="#trumpetCarousel-singleview" data-slide-to="15"></li>
+                    </ol> -->
+                
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="img/synth_videos/juggling_balls_gif/r3d.gif" alt="R3d">
+                            <div class="caption short-text">
+                                <h3>3D R50</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/2plus1.gif" alt="2Plus1">
+                            <div class="caption short-text">
+                                <h3>(2+1)D R50</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/csn.gif" alt="CSN">
+                            <div class="caption short-text">
+                                <h3>CSN R50</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/x3d_xs.gif" alt="X3d_xs">
+                            <div class="caption short-text">
+                                <h3>X3D<sub>XS</sub></h3>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/x3d_s.gif" alt="X3d_s">
+                            <div class="caption short-text">
+                                <h3>X3D<sub>S</sub></h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/x3d_m.gif" alt="X3d_m">
+                            <div class="caption short-text">
+                                <h3>X3D<sub>M</sub></h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/x3d_l.gif" alt="X3d_l">
+                            <div class="caption short-text">
+                                <h3>X3D<sub>L</sub></h3>
+                            </div>
+                        </div>  
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/timesformer.gif" alt="Timesformer">
+                            <div class="caption long-text">
+                                <h3>Timesformer</h3>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/swin_t.gif" alt="Swin_t">
+                            <div class="caption short-text">
+                                <h3>Video Swin-T</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/swin_s.gif" alt="Swin_s">
+                            <div class="caption short-text">
+                                <h3>Video Swin-S</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/swin_b.gif" alt="Swin_b">
+                            <div class="caption short-text">
+                                <h3>Video Swin-B </h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/mvitv2_s.gif" alt="Mvitv2_s">
+                            <div class="caption med-text">
+                                <h3>MViTv2-S</h3>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/mvitv2_b.gif" alt="Mvitv2_b">
+                            <div class="caption med-text">
+                                <h3>MViTv2-B</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/rev_mvit.gif" alt="Rev_mvit">
+                            <div class="caption med-text">
+                                <h3>rev-MViT-B</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/uniformerv2_b.gif" alt="Uniformerv2_b">
+                            <div class="caption long-text">
+                                <h3>UniFormerv2-B</h3>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="img/synth_videos/juggling_balls_gif/uniformerv2_l.gif" alt="Uniformerv2_l">
+                            <div class="caption long-text">
+                                <h3>UniFormerv2-B</h3>
+                            </div>
+                        </div>                      
+                    </div>
+                
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#trumpetCarousel-singleview" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#trumpetCarousel-singleview" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <br>
+
+
+    <div class="row" style="margin-top:2em;">
+        <div class="content container padding body">
+                <h2>
+                    Method
+                </h2>
+                
+                <br>
+                <h4>
+                    Model priming
+                </h4>
+                <p>
+                    Motivated by visual priming in cognitive science, we demonstrate that learned representations of video models can become accessible through <i>model priming</i>. By using a video stimulus \( \mathbf{x} \) and a parameterized input \( \mathbf{x}^{*} \), we iteratively synthesize the dominant learned concepts corresponding to actions. We define a priming loss based on the difference between internal representations inferred from the stimulus video and those from the optimized across model layers. 
+                    
+                    $$
+                    \underset{prim}{\mathcal{L}}(\mathbf{x}^{*},\mathbf{v}) \! = \!\! \; \frac{1}{L} \sum_{l \in \mathbf{\Lambda}} \lambda_{l} \; JVS \left( \mu \!\left( \textbf{z}^{l}(\mathbf{x}^{*}) \right) \!,\mu \!\left(\textbf{z}^{l}(\mathbf{v})\right) \right) 
+                    $$
+                    
+                    where \( \mu \!\left( \textbf{z}^{l}(\mathbf{x}) \right) \) and \( \mu \!\left( \textbf{z}^{l}(\mathbf{x}^{*}) \right) \) are mean embeddings vectors for the stimulus and parameterized input for all layer \(l \in \mathbf{\Lambda} \) layers . We use denotes the Jaccard vector similarity \( JVS(\cdot) \) to compare them.
+                    
+                    Due to the vastness of the feature space when optimizing the input, we include two additional regularization terms as constraints.
+
+                </p>
+                <br>
+                <h4>
+                    Temporal Coherence Regularization
+                </h4>
+                <div class="section">
+                    <div class="list-image small">
+                      <img style="float: right;margin:0em 1em;" src="img/leaps_temporal_coherence.png" width="40%" height="40%" alt="Fig1" ondragstart="return false;">
+                    </div>
+                    <div class="list-description">
+                        For the first regularizer, we aim to enforce similarity between representations of consecutive frames in order to enable consistent feature transitions in the synthesized video. Therefore, we include a coherence regularizer. We use embeddings \( \mathbf{z}^{L}(\mathbf{x}^{*})_{t_1} \) and \( \mathbf{z}^{L}(\mathbf{x}^{*})_{t_2} \) at temporal locations \(t_1\) and \(t_2\). For consecutive \(t_1\) and \(t_2\) locations we enforce similarity while we increase their divergence in non-consecutive cases.
+
+                        $$
+                        \underset{coh}{\mathcal{R}}(\mathbf{x}^{*}) \! = \! \begin{cases}
+                            || \mathbf{z}^{L}(\mathbf{x}^{*})_{t_1} \! - \! \mathbf{z}^{L}(\mathbf{x}^{*})_{t_2} ||_1 , \text{if consecutive}\\
+                            \text{max}\!\left( 0,\delta \! - \!|| \mathbf{z}^{L}(\mathbf{x}^{*})_{t_1} \! - \! \mathbf{z}^{L}(\mathbf{x}^{*})_{t_2} ||_1 \right) \! , \text{elsewise}
+                        \end{cases}
+                        $$
+
+                        Although the regularizer can be applied to any layer, in practice, using all layers enforces a very strong regularization, producing synthesized videos with minimal to no cross-frame variations (effect shown at the figure at the right).
+                    </div>
+                  </div>
+                <br>
+                <h4>
+                    Feature Diversity Regularization
+                </h4>
+                <p>
+                    Despite priming providing a strong signal with which the input can be updated, the diversity of features is limited compared to observing multiple instances. Thus, class features varying from those in the stimulus, or features not present in the stimulus, may not be explored during optimization. To enhance the search space we include an additional domain-specific verifier network and feature diversity regularizer. We use the batch norm mean and variance to approximate the expected mean and variance.
+                </p>
+                <br>
+                <p>
+                    The final LEAPS objective if formulated as the combination of model priming, temporal coherence, and feature diversity regularizers.
+
+                    $$
+                    \mathcal{L}(\mathbf{x}^{*},\mathbf{v}, y) \! = \! \underset{CE}{\mathcal{L}}(\mathbf{x}^{*},y) + \underset{prim}{\mathcal{L}}(\mathbf{x}^{*},\mathbf{v}) + r \mathcal{R}(\mathbf{x}^{*})
+                    $$
+
+
+                </p>
+            </div>
+        </div>
+
+
+        <div class="row" style="margin-top:2em;">
+            <div class="content container padding body">
+                <h2>
+                    Citation
+                </h2>
+                <div class="form-group col-md-12 ">
+                    <div class="form-group" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">
+                        @inproceedings{stergiou2023leaping,</br>
+                        title={Leaping Into Memories: Space-Time Deep Feature Synthesis},</br>
+                        author={Stergiou, Alexandros and Deligiannis, Nikos},</br>
+                        booktitle={IEEE/CVF International Conference on Computer Vision (ICCV)},</br>
+                        year={2023}}
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>
+        var observer = new MutationObserver(function(mutations) {
+            if (mutations[0].oldValue.contains('display: none')) {
+                alert('The element got visible');
+            }
+            else if (mutations[0].oldValue.contains('display: block')) {
+                alert('The element got hidden');
+            }
+        });
+        observer.observe(document.getElementById('dribblingCarousel-singleview'), {attributes: true, attributeOldValue: true});
+    </script>
+</body>
+</html>

@@ -179,37 +179,37 @@ body, html {
 /* First image */
 .background1 {
     background-image: url("backgrounds/1.jpg");
-    min-height: 70%;
+    min-height: 60%;
 }
 
 /* Second image*/
 .background2 {
     background-image: url("backgrounds/9.jpg");
-    min-height: 60%;
+    min-height: 40%;
 }
 
 /* Third image*/
 .background3 {
     background-image: url("backgrounds/10.jpg");
-    min-height: 60%;
+    min-height: 40%;
 }
 
 /* Fourth image*/
 .background4 {
     background-image: url("backgrounds/44.jpg");
-    min-height: 60%;
+    min-height: 40%;
 }
 
 /* Fifth image*/
 .background5 {
     background-image: url("backgrounds/6.jpg");
-    min-height: 60%;
+    min-height: 40%;
 }
 
 /* Six image*/
 .background6 {
     background-image: url("backgrounds/94.jpg");
-    min-height: 60%;
+    min-height: 40%;
 }
 
 /* photo */
@@ -394,6 +394,37 @@ img {
     -webkit-transition: all 0.5s ease-in-out;
 }
 
+#newsfeed {
+  overflow: auto;
+  height: 200px;
+  max-height: 350px;
+}
+
+#newsfeed li {
+  padding-bottom: 10px;
+}
+
+/* Custom scroll bar */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
 </style>
 <head>
 	<link rel="apple-touch-icon" sizes="180x180" href="favicon.ico/apple-touch-icon.png">
@@ -551,11 +582,8 @@ window.onload = function(){
 
           <a class="tooltip" href="https://scholar.google.co.uk/citations?user=_E_Zs3kAAAAJ&hl=en&oi=sra" target="_blank" data-title="GoogleScholar"><i class="ai ai-google-scholar ai"></i><span>GoogleScholar</span></a>
 
-          <a class="tooltip" href="https://orcid.org/0000-0003-4706-4231" target="_blank" data-title="Orcid"><i class="ai ai-orcid ai"></i><span>Orcid</span></a>
-
           <a class="tooltip" href="https://www.linkedin.com/in/alexandros-stergiou-b06a17128/" target="_blank" data-title="LinkedIn"><i class="lab la-linkedin-in"></i><span>LinkedIn</span></a>
 
-          <a class="tooltip" href="mailto:alexandros.stergiou@bristol.ac.uk?Subject=Hi! I would like your CV." data-title="CV"><i class="ai ai-cv ai"></i><span>cv</span></a>
         </div>
       </div>
   </div>
@@ -565,7 +593,7 @@ window.onload = function(){
     <h3 class="middle">Short bio</h3>
 
 
-    <p class="middle"><em>My main research focus is on Computer Vision and Machine Learning</em></p>
+    <p class="middle"><em>My research is centred on Computer Vision and Machine Learning</em></p>
 
     <div class="col section">
       <p>
@@ -573,12 +601,21 @@ window.onload = function(){
       I was previously a Research Associate at the University of Bristol working with <a href="https://dimadamen.github.io/" target="_blank"><font color="#1E4258"> Dima Damen</font></a> on video understanding.
       I obtained my PhD from Utrecht University's Department of Information and Computing Science where I was lucky to be supervised by <a href="https://rpoppe.wordpress.com/" target="_blank"><font color="#1E4258"> Ronald Poppe</font></a> and
       <a href="https://www.uu.nl/staff/default.aspx?lng=NL&Profielpagina=RCVeltkamp&t=0" target="_blank"><font color="#1E4258"> Remco C. Veltkamp</font></a>.
-      The topic of my thesis was based on human action and interaction recognition in everyday
-      social settings.
-      During my time in Utrecht, I also worked on improving the efficiency and explainability of spatiotemporal deep learning models, for scene understanding and classification of videos.
-      I completed my Master's and Bachelor's degrees in Computer Science at the University of Essex.
+      My thesis topic was human action and interaction recognition in everyday
+      social settings. During my time in Utrecht, I additionally worked on improving the efficiency and explainability of spatiotemporal deep learning video classification models. I completed my undergrad and graduate studies in Computer Science at the University of Essex.
       </p>
     </br>
+    <h3 class="middle">News</h3>
+    <div id="newsfeed">
+      <p>
+      <b> June 2023 </b> &nbsp; <a href="./project_pages/LEAPS/index.html" target="_blank"><font color="#1E4258"><i>Leaping Into Memories: Space-Time Deep Feature Synthesis </i></font></a> was accepted in ICCV 2023. 
+      </p>
+
+      <p> <b> Feb 2023 </b> &nbsp; I'll present <a href="./project_pages/PlayItBack/index.html" target="_blank"><font color="#1E4258"><i>Play It Back: Iterative Attention for Audio Recognition </i></font></a> in ICASSP 2023.
+
+      <p> <b> Feb 2023 </b> &nbsp; Our paper <a href="./project_pages/TemPr/index.html" target="_blank"><font color="#1E4258"><i> The Wisdom of Crowds: Temporal Progressive Attention for Early Action Prediction </i></font></a> got accepted in CVPR 2023.
+      </p>
+    </div>
     </br>
     </br>
     </div>
@@ -598,8 +635,12 @@ window.onload = function(){
     <p class="middle"><em>A full list can be found at my GoogleScholar profile.</em></p><br>
 
 
-    <h3 class="middle" style="margin-top:3em;">ARXIV PREPRINTS</h3>
+    <!-- <h3 class="middle" style="margin-top:3em;">ARXIV PREPRINTS</h3> -->
 
+
+
+
+    <h3 class="middle" style="margin-top:3em;">CONFERENCE PAPERS</h3>
 
     <!-- Leaping Into Memories: Space-Time Deep Feature Synthesis  -->
     <div class="row-padding">
@@ -611,8 +652,8 @@ window.onload = function(){
           </div>
           <div class="list-description">
             <br>
-            <span>Stergiou A., and<a href="https://scholar.google.co.uk/citations?user=iUGMLcYAAAAJ&hl=en&oi=ao" target="_blank"><font color="#1E4258"> Deligiannis N.</font></a>,<b>Leaping Into Memories: Space-Time Deep Feature Synthesis </b></span><br> 
-            <span>ArXiv</span>
+            <span>Stergiou A., and<a href="https://scholar.google.co.uk/citations?user=iUGMLcYAAAAJ&hl=en&oi=ao" target="_blank"><font color="#1E4258"> Deligiannis N.</font></a>,<b> Leaping Into Memories: Space-Time Deep Feature Synthesis </b></span><br> 
+            <span><u><i> to be presented in ICCV 2023</i></u></span>
             <div class="links">
 
               <a href="https://arxiv.org/abs/2303.09941" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
@@ -632,10 +673,6 @@ window.onload = function(){
         </div>
       </div>
     </div>
-
-
-
-    <h3 class="middle" style="margin-top:3em;">CONFERENCE PAPERS</h3>
   
 
 
@@ -650,8 +687,11 @@ window.onload = function(){
           <div class="list-description">
             <br>
             <span>Stergiou A., and<font color="#1E4258"><a href="http://people.cs.bris.ac.uk/~damen/" target="_blank"> Damen D.</a></font>,<b> The Wisdom of Crowds: Temporal Progressive Attention for Early Action Prediction</b></span><br> 
-            <span><u>to be presented in </u> CVPR 2023</span>
+            <span> CVPR 2023</span>
             <div class="links">
+
+              <a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Stergiou_The_Wisdom_of_Crowds_Temporal_Progressive_Attention_for_Early_Action_CVPR_2023_paper.pdf" target="_blank"><p class="ai ai-open-access ai">&#32;</p></a>
+              <a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Stergiou_The_Wisdom_of_Crowds_Temporal_Progressive_Attention_for_Early_Action_CVPR_2023_paper.pdf" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201;</a>
 
               <a href="http://arxiv.org/abs/2204.13340" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
               <a href="http://arxiv.org/abs/2204.13340" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;</a>
@@ -665,11 +705,11 @@ window.onload = function(){
 
               <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('stergiou2022temporal')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span> </i></a>
             </div>
-            <p id="stergiou2022temporal" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2022temporal,</br>
-              title={Temporal Progressive Attention for Early Action Prediction},</br>
+            <p id="stergiou2022temporal" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@inproceedings{stergiou2023wisdom,</br>
+              title={The Wisdom of Crowds: Temporal Progressive Attention for Early Action Prediction},</br>
               author={Stergiou, Alexandros and Damen, Dima},</br>
-              journal={arXiv preprint arXiv:2204.13340},</br>
-              year={2022}}</p>
+              booktitle={IEEE/CVF Computer Vision and Pattern Recognition (CVPR)},</br>
+              year={2023}}</p>
           </div>
         </div>
       </div>
@@ -687,8 +727,11 @@ window.onload = function(){
           <div class="list-description">
             <br>
             <span>Stergiou A., and<font color="#1E4258"><a href="http://people.cs.bris.ac.uk/~damen/" target="_blank"> Damen D.</a></font>,<b> Play It Back: Iterative Attention for Audio Recognition</b></span><br>
-            <span><u> to be presented in</u> ICASSP 2023 </span>
+            <span> ICASSP 2023 </span>
             <div class="links">
+
+              <a href="https://ieeexplore.ieee.org/document/10096532" target="_blank"><p class="ai ai-open-access ai">&#32;</p></a>
+              <a href="https://ieeexplore.ieee.org/document/10096532" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201;</a>
 
               <a href="http://arxiv.org/abs/2210.11328" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
               <a href="http://arxiv.org/abs/2210.11328" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;</a>
@@ -702,11 +745,12 @@ window.onload = function(){
 
               <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('stergiou2023playitback')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span> </i></a>
             </div>
-            <p id="stergiou2023playitback" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2022playitback,</br>
+            <p id="stergiou2023playitback" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@inproceedings{stergiou2023playitback,</br>
               title={Play It Back: Iterative Attention for Audio Recognition},</br>
               author={Stergiou, Alexandros and Damen, Dima},</br>
-              journal={arXiv preprint arXiv:2210.11328},</br>
-              year={2022}}</p>
+              booktitle={IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},</br>
+              year={2023}}</br>
+              organization={IEEE}}</p>
           </div>
         </div>
       </div>
@@ -739,7 +783,7 @@ window.onload = function(){
             <p id="stergiou2021refining" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2021refining, <br/>
               title={Refining activation downsampling with SoftPool}, <br/>
               author={Stergiou, Alexandros and Poppe, Ronald and Kalliatakis, Grigorios}, <br/>
-              booktitle={IEEE International Conference on Computer Vision (ICCV)}, <br/>
+              booktitle={IEEE/CVF International Conference on Computer Vision (ICCV)}, <br/>
               year={2021}, <br/>
               organization={IEEE}}</p>
           </div>
@@ -882,7 +926,7 @@ window.onload = function(){
           <div class="list-description">
             <br>
             <span> Stergiou A., and <font color="#1E4258"><a href="https://rpoppe.wordpress.com/" target="_blank"> Poppe R.</a></font>, <b>Spatio-Temporal FAST 3D Convolutions for Human Action Recognition</b></span><br> 
-            <span>ICMLA 2019</span>
+            <span>ICMLA 2019 (Oral)</span>
             <div class="links">
               <a href="https://ieeexplore.ieee.org/abstract/document/8999121" target="_blank"><p class="ai ai-closed-access ai">&#32;</p></a>
               <a href="https://ieeexplore.ieee.org/abstract/document/8999121" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201;</a>
@@ -924,7 +968,7 @@ window.onload = function(){
           <div class="list-description">
             <br>
             <span> Stergiou A., <font color="#1E4258"><a href="https://scholar.google.com/citations?user=6EwH9wsAAAAJ&hl=en&oi=ao" target="_blank">Kapidis G.</a></font>, <font color="#1E4258"><a href="https://scholar.google.co.uk/citations?user=LMY5lhwAAAAJ&hl=en/" target="_blank"> Kalliatakis G.</a></font>,<font color="#1E4258"><a href="https://www.napier.ac.uk/people/christos-chrysoulas" target="_blank"> Chrysoulas C.</a></font>,<font color="#1E4258"><a href="https://www.uu.nl/staff/RCVeltkamp" target="_blank"> Veltkamp R.C.</a></font>, and <font color="#1E4258"><a href="https://rpoppe.wordpress.com/" target="_blank"> Poppe R.</a></font>, <b>Saliency Tubes: Visual Explanations for Spatio-Temporal Convolutions</b></span><br> 
-            <span>ICIP 2019</span>
+            <span>ICIP 2019 (Oral)</span>
             <div class="links">
               <a href="https://ieeexplore.ieee.org/abstract/document/8803153" target="_blank"><p class="ai ai-closed-access ai">&#32;</p></a>
               <a href="https://ieeexplore.ieee.org/abstract/document/8803153" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201;</a>
@@ -1248,24 +1292,6 @@ window.onload = function(){
           <div class="list-description">
             September 2016 - September 2017
             <br> MSc student in Advanced Computer Science at University of Essex, Colchester, UK
-            <br> Dissertation title: The Driver's Assistant: Utilising Synthetic Data Generation and Deep Learning for Traffic Sign Classification
-            <br> Supervisor: <a href="https://www.essex.ac.uk/people/clark65804/adrian-clark" target="_blank"><font color="#1E4258"> Adrian Clark</font></a>
-          </div>
-        </div>
-        </div>
-      </div>
-
-      <div class="row-padding">
-      <div class="row">
-        <div class="section">
-          <div class="list-image small ">
-            <img style="float: right;margin:0em 1em;" src="photos/affiliations/essex.png" width="50 em" height="50 em" alt="aff2" ondragstart="return false;">
-          </div>
-          <div class="list-description">
-            September 2013 - September 2016
-            <br> BSc student in Computer Science at University of Essex, Colchester, UK
-            </br>
-            </br>
           </div>
         </div>
         </div>
@@ -1314,7 +1340,7 @@ window.onload = function(){
       <div class="list-image small">
         </div>
       <div class="list-description small">
-        <font color="#1E4258">Journals:</font> TPAMI, IJCV, TIP, Pattern Recognition
+        <font color="#1E4258">Journals:</font> IJCV, TIP, TPAMI, Pattern Recognition
         <br>
       </div>
     </div>
@@ -1323,7 +1349,7 @@ window.onload = function(){
       <div class="list-image small">
         </div>
       <div class="list-description small">
-        <font color="#1E4258">Conferences:</font> ECCV 2022, CVPR 2022-2023
+        <font color="#1E4258">Conferences:</font> BMVC 2023, CVPR 2022-2023, ECCV 2022, ICCV 2023
         <br>
       </div>
     </div>
@@ -1376,7 +1402,7 @@ window.onload = function(){
       -->
   </div>
 
-  <div class="middle"><p class="light-grey" style="color:#ccc">&copy;<a href="https://github.com/alexandrosstergiou"> Alexandros Stergiou</a> and <a href="https://github.com/DebzDK">Deborah Dike</a></p></div>
+  <div class="middle"><p class="light-grey" style="color:#ccc">&copy;<a href="https://github.com/alexandrosstergiou"> Alexandros Stergiou</a></p></div>
 
 </body>
 </html>
