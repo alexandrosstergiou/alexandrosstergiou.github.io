@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-29YV7SY3QT"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-29YV7SY3QT');
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Holistic Representation Learning for Multitask Trajectory Anomaly Detection</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../favicon.ico/apple-touch-icon.png">
+  	<link rel="icon" type="../../image/png" sizes="32x32" href="../../favicon.ico/favicon-32x32.png">
+  	<link rel="icon" type="../../image/png" sizes="16x16" href="../../favicon.ico/favicon-16x16.png">
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="../../css/design.css">
+    <link rel="stylesheet" href="../../academicons/css/academicons.min.css"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+</head>
+
+
+</script>
+
+<body>
+    <div id="main">
+        <div style="background-color:#222629;">
+        <div class="row">
+            <h2 class="white col-md-12 text-center" style="margin-top:2em;color:white;">
+                <b>Holistic Representation Learning for Multitask Trajectory Anomaly Detection</b>
+            </h2>
+            <h4 class="white col-md-12 text-center" style="margin-top:.5em;color:white;">
+                WACV 2024
+            </h4>
+        </div>
+        <div class="row" style="margin-top:1em;margin-bottom:.5em;color:white;">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="https://alexandrosstergiou.github.io/" target="_blank">
+                          <font size="4px">Alexandros Stergiou</font>
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <a href="https://orcid.org/0000-0001-9240-2370" target="_blank">
+                            <font size="4px">Brent De Weerdt</font>
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <a href="https://scholar.google.co.uk/citations?view_op=list_works&hl=en&hl=en&user=iUGMLcYAAAAJ" target="_blank">
+                            <font size="4px">Nikos Deligiannis</font></a>
+                    </li>
+                    </ul>
+                    <ul class="list-inline">
+                      <font size="4px">Vrije Universiteit Brussel & imec </font></a>
+                      &nbsp; &nbsp; &nbsp;
+                    </ul>
+                    
+            </div>
+        </div>
+
+
+        <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center">
+                  <div id="social-platforms">
+
+                    <a href="http://arxiv.org/abs/2311.01851" target="_blank" data-title="ArXiv"><i class="ai ai-arxiv ai"></i><span>ArXiv</span></a>
+
+                    <a href="https://github.com/alexandrosstergiou/TrajREC" target="_blank" data-title="GitHub"><i class="lab la-github"></i><span>GitHub</span></a>
+
+                    <a href="#" target="_blank" data-title="YouTube"><i class="lab la-youtube"></i><span>YouTube</span></a>
+
+
+              </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row" style="margin-top:3em;">
+            <div class="col-md-9 col-md-offset-1">
+              <p style="text-align:center;">
+                  <img class="static" src="img/TrajREC.png"  width="110%" height=auto;/>
+                </p>
+						</div>
+        </div>
+
+
+        <div class="row" style="margin-top:2em;">
+            <div class="content container padding body">
+                <h2>
+                    Abstract
+                </h2>
+                <br>
+                <p class="text-justify">
+                    Video anomaly detection deals with the recognition of abnormal events in videos. Apart from the visual signal, video anomaly detection has also been addressed with the use of skeleton sequences. We propose a holistic representation of skeleton trajectories to learn expected motions across segments at different times. Our approach uses multitask learning to reconstruct any continuous unobserved temporal segment of the trajectory allowing the extrapolation of past or future segments and the interpolation of in-between segments. We use an end-to-end attention-based encoder-decoder. We encode temporally occluded trajectories, jointly learn latent representations of the occluded segments, and reconstruct trajectories based on expected motions across different temporal segments. Extensive experiments on three trajectory-based video anomaly detection datasets show the advantages and effectiveness of our approach with state-of-the-art results on anomaly detection in skeleton trajectories
+                </p>
+            </div>
+        </div>
+
+
+
+        <div class="row" style="margin-top:2em;">
+            <div class="content container padding body">
+                <h2>
+                    Video (coming soon...)
+                </h2>
+                <!---
+                <div class="col-md-8 col-md-offset-2">
+                    <div style="position:relative;padding-top:56.25%;">
+                        <iframe src="https://www.youtube.com/embed/dcmd8U47BT8" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                    </div>
+                </div>
+            -->
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:2em;">
+            <div class="content container padding body">
+                    <h2>
+                        Method
+                    </h2>
+
+                    <p>
+
+                        The entire trajectory \( \mathbf{v} \) is encoded into representation \( \mathbf{z} \). Each point \( \mathbf{z}_{t_i} \) in the latent space corresponds to a spatial point at time \( t_i \in \mathbf{t} \). We want to approximate occluded segment \( \mathbf{s} \) from only \( \mathbf{v} \setminus \mathbf{s} = \{\mathbf{x}: \mathbf{x}\in \mathbf{v} \; \text{and} \; \mathbf{x} \notin \mathbf{s}\} \). Encoder \( \mathcal{B} \) encodes each point \( \mathbf{x} \) at \( t_i \) into the latent space \( \mathcal{B}(\{\mathbf{x};\mathbf{v} \setminus \mathbf{s}\}) \). The latent representations are then combined with a learned tensor to form an estimated latent trajectory. Decoder \( \mathcal{D} \) then decodes each representation at temporal point \( t_i \) back to the input space and obtain point \( \widehat{\mathbf{x}} \).
+
+                    </p>
+                    
+                    <br>
+                    <h4>
+                        Multitask Holistic Trajectories
+                    </h4>
+                    <p>
+                        Jointly learning multiple trajectory segments allows to both distinguish anomalies that may occur at different times as well as learn a high-level understanding of the global trajectory. Given partial trajectory \( \mathbf{v} \setminus \mathbf{s} \) we predict occluded segments \( \mathbf{s} = \{\mathbf{x}_{t_i}: t_i \in \widehat{\mathbf{t}}\} \) for three tasks.
+                        <br>
+                        <b>Predicting the future given the past </b> (<font color="#06D6A0">Ftr</font>) <i>Future segments</i> over \( \widehat{\mathbf{t}} = \{ T_{Ftr},...,T \} \) are estimated from partial trajectory \( \mathbf{v} \setminus \mathbf{s} \) composed of only past segments.
+                        <br>
+                        <b>Predicting the past given the future </b> (<font color="#E84545">Pst</font>) <i>Past segments</i> over \( \widehat{\mathbf{t}} = \{ 1,...,T_{Pst}\} \) are estimated from partial trajectory \( \mathbf{v} \setminus \mathbf{s} \) of only future segments.
+                        <br>
+                        <b>Predicting the present given both past and future </b> (<font color="#118AFF">Prs</font>) <i>Present segments</i>. In-between segments over \( \widehat{\mathbf{t}} = \{ T_{Pst}+1,...,T_{Ftr}-1 \} \), are referred to as <i>present segments</i> and estimated from partial trajectory \( \mathbf{v} \setminus \mathbf{s} \) composed of both past and future segments.
+                        <br>
+                        <br>
+                        We explore these tasks jointly in a multitask training scheme.
+
+                        
+    
+                    </p>
+                    <br>
+                    <h4>
+                        Latent Representation Leaning
+                    </h4>
+
+                    <p>
+                        Encoder \( \mathcal{B} \) is applied only on the un-occluded part of trajectories \( \mathbf{v} \setminus \mathbf{s} \). A learnable tensor \( \mathbf{u} = \{ \widehat{\mathbf{z}}_{t_i} : t_i \in \mathbf{t} \} \) of equal size as the full trajectory's representations \( |\mathbf{u}| = |\mathcal{B}(\mathbf{v})| \) is also defined. For each task, we select segment \( \mathbf{u}_s = \{ \widehat{\mathbf{z}}_{t_i} : t_i \in \widehat{\mathbf{t}} \} \) corresponding to the occluded \( \mathbf{s} \) in \( \mathbf{v} \). Tensor segment \( \mathbf{u}_s \) is combined with the observed trajectory latents:
+                        $$
+                            \mathbf{a} = \Phi(\mathcal{B}(\{\mathbf{x};\mathbf{v} \setminus \mathbf{s}\}) \cup \textbf{u}_{s})
+                        $$
+                        where \( \Phi \) is a function that reorders \( \mathcal{B}(\{\mathbf{x};\mathbf{v} \setminus \mathbf{s}\}) \cup \textbf{u}_{s} \). To draw each of the learned vectors \( \widehat{\mathbf{z}}_{t_i} \in \mathbf{u}_s \) closer to the corresponding trajectory representations \( \mathbf{z}_{t_i} \in \mathcal{B}(\mathbf{v}) \) we define an objective based on latent space positive and negative pairs.
+                    </p>
+                    <br>
+                    <p>
+                        <b>Positive pairs</b>. Minimize the distance between learned vector \( \widehat{\mathbf{z}}_{t_i} \) and the trajectory representation \( \mathbf{z}_{t_i} \).
+                        <br>
+                        <b>Soft negative pairs</b>. Given the remaining representations \( \mathbf{z}_{t_j} \) at temporal locations \( t_j \neq t_i \) we maximize their distance to \( \widehat{\mathbf{z}}_{t_i} \) with respect to their temporal distance.
+                        <br>
+                        <b>Hard negative pairs</b>. We select latents of segments \( \mathbf{s}' \) from other trajectories as hard negative pairs and maximize their distance to \( \mathbf{z}_{t_i} \).
+                    </p>
+                    
+                    <br>
+                    <p>
+                        Decoder \( \mathcal{D} \) takes \( \mathbf{a} \) and projects it back to the input space. As both ground truth trajectory \( \mathbf{v} \) and estimated \( \widehat{\textbf{v}} = \mathcal{D}(\textbf{a}) \) are available, the decoder is explicitly trained on reconstruction and not extra/interpolation.
+                    </p>
+                    
+                </div>
+            </div>
+            </div>
+
+
+        <div class="row" style="margin-top:2em;">
+            <div class="content container padding body">
+                <h2>
+                    BIBT<sub>E</sub>X
+                </h2>
+                <div class="col-md-8 col-md-offset-2">
+                <div class="form-group" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">
+                  @inproceedings{stergiou2024holistic,</br>
+                    title={Holistic Representation Learning for Multitask Trajectory Anomaly Detection},</br>
+                    author={Stergiou, Alexandros and De Weerdt , Brent and Deligiannis, Nikos},</br>
+                    booktitle={IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},</br>
+                    year={2024}</br>
+                    }
+                  </textarea>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+        <div class="row" style="margin-top:2em;">
+            <div class="content container padding body">
+                <h2>
+                    Acknowledgements
+                </h2>
+                <p class="text-justify">
+                    Funded by  <a href="https://www.imec-int.com/en/research-portfolio/surv-ai-llance" target="_blank"> imec.icon Surv-AI-llance </a> and FWO (Grant G0A4720N).
+                </p>
+            </br>
+            </div>
+        </div>
+
+    </div>
+    </div>
+</body>
+</html>
