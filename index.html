@@ -179,7 +179,7 @@ body, html {
 /* First image */
 .background1 {
     background-image: url("backgrounds/1.jpg");
-    min-height: 60%;
+    min-height: 50%;
 }
 
 /* Second image*/
@@ -257,6 +257,23 @@ img {
 .clickable {
   cursor: pointer;
 }
+
+.top-container {
+  display: grid;
+  align-items: center; 
+  grid-template-columns: 1fr 1.8fr .3fr;
+  column-gap: -2px;
+ }
+ 
+ img {
+   max-width: 100%;
+   max-height:100%;
+ }
+ 
+ .text {
+   font-size: .95em;
+   margin-top: 5.5em;
+ }
 
 .list-image {
   display: inline-block;
@@ -563,48 +580,41 @@ window.onload = function(){
 
 
   <!-- Welcome Image -->
-  <div class="backgrounds background1 display-container middle">
-    <img src="photos/me_circle.png" class="drop" width="200em" alt="Me">
-    <h3 class="white middle fade">Alex Stergiou</h3>
-     <h5 class="white middle fade">Postdoc Researcher at Vrije Universiteit Brussel</h5>
-     <div>
-       <a class="white middle fade" href="mailto:alexandros.stergiou@vub.be?Subject=Hello from a website visitor"><i class="fa fa-paper-plane"></i> alexandros.stergiou@vub.be </a>
-     </div>
-
-
-
-      <div id="social-platforms" style="margin-bottom:5px;">
-        <div class="fade">
-
-          <!--<a class="tooltip" href="https://research-information.bris.ac.uk/en/persons/alexandros-g-stergiou" target="_blank" data-title="UU"><i class="las la-university" target="_blank"></i><span>UU personal page</span></a>-->
-
-          <a class="tooltip" href="https://github.com/alexandrosstergiou" target="_blank" data-title="GitHub"><i class="fa fa-github"></i><span>GitHub</span></a>
-
-          <a class="tooltip" href="https://scholar.google.co.uk/citations?user=_E_Zs3kAAAAJ&hl=en&oi=sra" target="_blank" data-title="GoogleScholar"><i class="ai ai-google-scholar ai"></i><span>GoogleScholar</span></a>
-
-          <a class="tooltip" href="https://www.linkedin.com/in/alexandros-stergiou-b06a17128/" target="_blank" data-title="LinkedIn"><i class="lab la-linkedin-in"></i><span>LinkedIn</span></a>
-
+  <div class="backgrounds background1">
+    <div class="middle top-container container">
+      <div class="image">
+        <img src="photos/my_photos/me_circle.png" class="drop" width="240em" alt="Me">
+      </div>
+      <div class="text">
+        <div class="white fade margin-top">
+          <h3>Alex Stergiou</h3>
+          <p> I am an Assistant Assistant professor at University of Twente's <a href="https://www.utwente.nl/en/eemcs/dmb/" target="_blank"><font color="#3c84b0"> Data Management & Biometrics (DMB)</font></a> group. Previously, I was a Postdoc at VUB and a Research Associate at the University of Bristol working with <a href="https://dimadamen.github.io/" target="_blank"><font color="#3c84b0"> Dima Damen</font></a> on video understanding.
+          I obtained my PhD from Utrecht University where I was lucky to be supervised by <a href="https://rpoppe.wordpress.com/" target="_blank"><font color="#3c84b0"> Ronald Poppe</font></a> and
+          <a href="https://www.uu.nl/staff/default.aspx?lng=NL&Profielpagina=RCVeltkamp&t=0" target="_blank"><font color="#3c84b0"> Remco C. Veltkamp</font></a>.
+          My thesis topic was on human action and interaction recognition in everyday
+          social settings. During my time in Utrecht, I additionally worked on improving the efficiency and interpretability of spatiotemporal deep learning video classification models.
+          </p>
+        </div>
+        <div id="social-platforms">
+          <div class="fade">
+  
+            <a class="tooltip" href="mailto:a.g.stergiou@utwente.nl?Subject= " data-title="mail"><i class="fa fa-paper-plane-o" style="font-size:1.6rem;"></i><span>email</span></a>
+  
+            <a class="tooltip" href="https://github.com/alexandrosstergiou" target="_blank" data-title="GitHub"><i class="fa fa-github"></i><span>GitHub</span></a>
+  
+            <a class="tooltip" href="https://scholar.google.co.uk/citations?user=_E_Zs3kAAAAJ&hl=en&oi=sra" target="_blank" data-title="GoogleScholar"><i class="ai ai-google-scholar ai"></i><span>GoogleScholar</span></a>
+  
+            <a class="tooltip" href="https://www.linkedin.com/in/alexandros-stergiou-b06a17128/" target="_blank" data-title="LinkedIn"><i class="lab la-linkedin-in"></i><span>LinkedIn</span></a>
+  
+          </div>
         </div>
       </div>
+    </div>
   </div>
 
   <!-- About -->
   <div class="content container padding body" id="about">
-    <h3 class="middle">Short bio</h3>
-
-    <p class="middle"><em>My research is centred on Video Understanding</em></p>
-
-    <div class="col section">
-      <p>
-        <!-- I am an Assistant Assistant professor at University of Twente's <a href="https://www.utwente.nl/en/eemcs/dmb/" target="_blank"><font color="#1E4258"> Data Management \& Biometrics (DMB)</font></a> group. Prior to my current role, I was a Postdoc at Vrije Universiteit Brussel and -->
-      I am a Postdoc at Vrije Universiteit Brussel.
-      I was previously a Research Associate at the University of Bristol working with <a href="https://dimadamen.github.io/" target="_blank"><font color="#1E4258"> Dima Damen</font></a> on video understanding.
-      I obtained my PhD from Utrecht University where I was lucky to be supervised by <a href="https://rpoppe.wordpress.com/" target="_blank"><font color="#1E4258"> Ronald Poppe</font></a> and
-      <a href="https://www.uu.nl/staff/default.aspx?lng=NL&Profielpagina=RCVeltkamp&t=0" target="_blank"><font color="#1E4258"> Remco C. Veltkamp</font></a>.
-      My thesis topic was on human action and interaction recognition in everyday
-      social settings. During my time in Utrecht, I additionally worked on improving the efficiency and interpretability of spatiotemporal deep learning video classification models.
-      </p>
-    </br>
+    
     <h3 class="middle">News</h3>
     <div id="newsfeed">
       <p>
@@ -626,13 +636,6 @@ window.onload = function(){
   </div>
 
 
-  <!-- Second Parallax Image -->
-  <div class="backgrounds background2 display-container">
-    <div class="display-m">
-      <h2 class="xxlarge light-grey wide boxed middle fade">PUBLICATIONS</h2>
-    </div>
-  </div>
-
   <!-- Projects -->
   <div id="publications" class="content container padding body">
     <h3 class="middle">PUBLICATIONS LIST</h3>
@@ -650,13 +653,13 @@ window.onload = function(){
       <div class="row">
         <div class="section">
           <div class="list-image big">
-            <img class="static"  src="photos/anomaly_detection/anom_detect.png" width="100em" height="100em" alt="leaps" style="margin:10px 0;" ondragstart="return false;">
-            <img class="active" src="photos/anomaly_detection/anom_detect.gif" width="100em" height="100em" alt="leaps-active" style="margin:10px 0" ondragstart="return false;">
+            <img class="static"  src="photos/anomaly_detection/anom_detect.png" width="100em" height="100em" alt="anom_detect" style="margin:10px 0;" ondragstart="return false;">
+            <img class="active" src="photos/anomaly_detection/anom_detect.gif" width="100em" height="100em" alt="anom_detect-active" style="margin:10px 0" ondragstart="return false;">
           </div>
           <div class="list-description">
             <br>
             <span>Stergiou A.,<a href="https://orcid.org/0000-0001-9240-2370" target="_blank"><font color="#1E4258"> De Weerdt B.</font></a>, and <a href="https://scholar.google.co.uk/citations?user=iUGMLcYAAAAJ&hl=en&oi=ao" target="_blank"><font color="#1E4258"> Deligiannis N.</font></a>,<b> Holistic Representation Learning for Multi-Task Trajectory Anomaly Detection </b></span><br> 
-            <span><u>to be presented at WACV 2024</u></span>
+            <span>WACV 2024</span>
             <br>
             <div class="links">
               <a href="https://arxiv.org/abs/2311.01851" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
@@ -666,9 +669,11 @@ window.onload = function(){
               <a href="./project_pages/TrajREC/index.html" target="_blank">website&#8201;&#8201;&#8201;  </a>
               <a href="https://github.com/alexandrosstergiou/TrajREC" target="_blank"><p class="fa fa-github">&#32;</p></a>
               <a href="https://github.com/alexandrosstergiou/TrajREC" target="_blank" style="font-style:normal;">code&#8201;&#8201;&#8201;</a>
-              <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('stergiou2023leaping')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span> </i></a>
+              <a href="https://www.youtube.com/watch?v=NVJ2Y8-2C1E" target="_blank"><p class="lab la-youtube">&#32;</p></a>
+              <a href="https://www.youtube.com/watch?v=NVJ2Y8-2C1E" target="_blank" style="font-style:normal;">video&#8201;&#8201;&#8201;</a>
+              <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('stergiou2024holistic')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span> </i></a>
             </div>
-            <p id="stergiou2023leaping" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@inproceedings{stergiou2024holistic,</br>
+            <p id="stergiou2024holistic" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@inproceedings{stergiou2024holistic,</br>
               title={Holistic Representation Learning for Multitask Trajectory Anomaly Detection},</br>
               author={Stergiou, Alexandros and De Weerdt , Brent and Deligiannis, Nikos},</br>
               booktitle={IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)}, <br/>
@@ -1058,11 +1063,6 @@ window.onload = function(){
 
 
 
-
-
-
-
-
     <!-- Saliency Tubes: Visual Explanations for Spatio-Temporal Convolutions -->
     <div class="row-padding">
       <div class="row">
@@ -1226,96 +1226,6 @@ window.onload = function(){
      </div>
    </div>
   </div>
-
-
-
-  <!-- 
-  <div class="backgrounds background5 display-container">
-    <div class="display-m">
-       <h2 class="xxlarge light-grey wide boxed fade" align="middle">EXPERIENCE</h2>
-    </div>
-  </div>
-
-  
-  <div id="experience" class="content container padding body">
-
-    <h3 class="middle" style="margin-top:2em;">PAST AND CURRENT ROLES</h3>
-
-    
-    <div class="row-padding">
-    <div class="row">
-      <div class="section">
-        <div class="list-image small">
-          <img style="float: right;margin:0em 1em;" src="photos/affiliations/VUB.png" width="50 em" height="50 em" alt="aff1" ondragstart="return false;">
-        </div>
-        <div class="list-description">
-          October 2022 - now
-          <br> Postdoctoral Researcher at Vrije Universiteit Brussel, Brussels, BE
-          <br> PI: <font color="#1E4258"> Nikos Deligiannis</font>
-        </br>
-        </br>
-        </div>
-      </div>
-      </div>
-    </div>
-    
-    <div class="row-padding">
-    <div class="row">
-      <div class="section">
-        <div class="list-image small">
-          <img style="float: right;margin:0em 1em;" src="photos/affiliations/UoB.png" width="50 em" height="50 em" alt="aff1" ondragstart="return false;">
-        </div>
-        <div class="list-description">
-          August 2021 - September 2022
-          <br> Research Associate at University of Bristol, Bristol, UK
-          <br> PI: <a href="https://dimadamen.github.io/" target="_blank"><font color="#1E4258"> Dima Damen</font></a>
-        </br>
-        </br>
-        </div>
-      </div>
-      </div>
-    </div>
-
-
-    <h3 class="middle" style="margin-top:2em;">EDUCATION</h3>
-
-      <div class="row-padding">
-      <div class="row">
-        <div class="section">
-          <div class="list-image small">
-            <img style="float: right;margin:0em 1em;" src="photos/affiliations/utrecht.png" width="50 em" height="50 em" alt="aff1" ondragstart="return false;">
-          </div>
-          <div class="list-description">
-            September 2017 - September 2021
-            <br> PhD student at Utrecht University, Utrecht, NL
-            <br> Thesis title: Efficient Modelling Across Time of Human Actions and Interactions
-            <br> Supervisor: <a href="https://rpoppe.wordpress.com/" target="_blank"><font color="#1E4258"> Ronald Poppe</font></a> and
-            <a href="https://www.uu.nl/staff/default.aspx?lng=NL&Profielpagina=RCVeltkamp&t=0" target="_blank"><font color="#1E4258"> Remco C. Veltkamp</font></a>
-          </div>
-        </div>
-        </div>
-      </div>
-
-
-      <div class="row-padding">
-      <div class="row">
-        <div class="section">
-          <div class="list-image small ">
-            <img style="float: right;margin:0em 1em;" src="photos/affiliations/essex.png" width="50 em" height="50 em" alt="aff2" ondragstart="return false;">
-          </div>
-          <div class="list-description">
-            September 2016 - September 2017
-            <br> MSc student in Advanced Computer Science at University of Essex, Colchester, UK
-          </div>
-        </div>
-        </div>
-      </div>
-
-    </br>
-    </br>
-    </br>
-  </div>
-  -->
 
   <!-- Fourth Parallax Image -->
   <div class="backgrounds background4 display-container">
