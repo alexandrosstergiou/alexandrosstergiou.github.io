@@ -433,6 +433,7 @@ img {
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
+  border-radius: 8px;
   background: #888; 
 }
 
@@ -587,11 +588,11 @@ window.onload = function(){
       <div class="text">
         <div class="white fade margin-top">
           <h3>Alex Stergiou</h3>
-          <p> I am an Assistant Professor at University of Twente's <a href="https://www.utwente.nl/en/eemcs/dmb/" target="_blank"><font color="#3c84b0"> Data Management & Biometrics (DMB)</font></a> group. Previously, I was a Postdoc at VUB and a Research Associate at the University of Bristol working with <a href="https://dimadamen.github.io/" target="_blank"><font color="#3c84b0"> Dima Damen</font></a> on video understanding.
+          <p align="justify"> I am an Assistant Professor at University of Twente's <a href="https://www.utwente.nl/en/eemcs/dmb/" target="_blank"><font color="#3c84b0"> Data Management & Biometrics (DMB)</font></a> group. My research focus is video understanding by modeling video tasks and interpreting their algorithmic understanding. Previously, I was a Postdoc at VUB and a Research Associate at the University of Bristol working with <a href="https://dimadamen.github.io/" target="_blank"><font color="#3c84b0"> Dima Damen</font></a> on video understanding.
           I obtained my PhD from Utrecht University where I was lucky to be supervised by <a href="https://rpoppe.wordpress.com/" target="_blank"><font color="#3c84b0"> Ronald Poppe</font></a> and
           <a href="https://webspace.science.uu.nl/~veltk101/" target="_blank"><font color="#3c84b0"> Remco C. Veltkamp</font></a>.
           My thesis topic was on human action and interaction recognition in everyday
-          social settings. During my time in Utrecht, I additionally worked on improving the efficiency and interpretability of spatiotemporal deep learning video classification models.
+          social settings. 
           </p>
         </div>
         <div id="social-platforms">
@@ -619,6 +620,8 @@ window.onload = function(){
     <h3 class="middle">News</h3>
     <div id="newsfeed">
       <p>
+      <b> [06-2024] </b> &nbsp; Public release of <a href="./datasets/LAVIB/index.html" target="_blank"><font color="#1E4258">LAVIB: Large-scale Video Interpolation Benchmark</font></a>.
+      <br style="line-height:1px;"\>
       <b> [03-2024] </b> &nbsp; Our preprint on video repetition counting is now available <a href="https://sinhasaptarshi.github.io/escounts" target="_blank"><font color="#1E4258">here</font></a> alongside code and model checkpoints.
       <br style="line-height:1px;"\>
       <b> [11-2023] </b> &nbsp; I'll be joining University of Twente as an Assistant Professor in February. 
@@ -647,6 +650,40 @@ window.onload = function(){
 
     <!-- <h3 class="middle" style="margin-top:3em;">ARXIV PREPRINTS</h3> -->
 
+
+    <!-- LAVIB: Large-scale Video Interpolation Benchmark -->
+    <div class="row-padding">
+      <div class="row">
+        <div class="section">
+          <div class="list-image big">
+            <img class="static"  src="photos/LAVIB/out.png" width="100em"  style="margin:17px 0;" ondragstart="return false;">
+            <img class="active"  src="photos/LAVIB/out.gif" width="100em" style="margin:17px 0;" ondragstart="return false;">
+          </div>
+          <div class="list-description">
+            <br>
+            <span>Stergiou A.,<b> LAVIB: Large-scale Video Interpolation Benchmark </b></span><br> 
+            <span>arXiv 2024</span>
+            <br>
+            <div class="links">
+              <a href="https://arxiv.org/abs/2406.09754" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
+              <a href="https://arxiv.org/abs/2406.09754" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;</a>
+              <a href="./datasets/LAVIB/index.html" target="_blank"><p class="fa fa-globe">
+              </p>&#32; </a>
+              <a href="./datasets/LAVIB/index.html" target="_blank">website&#8201;&#8201;&#8201;  </a>
+              <a href="https://github.com/alexandrosstergiou/LAVIB" target="_blank"><p class="fa-brands fa-github">&#32;</p></a>
+              <a href="https://github.com/alexandrosstergiou/LAVIB" target="_blank" style="font-style:normal;">code&#8201;&#8201;&#8201;</a>
+              <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('stergiou2024lavib')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span> </i></a>
+            </div>
+            <p id="stergiou2024lavib" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2024lavib,</br>
+              title={LAVIB: Large-scale Video Interpolation Benchmark},</br>
+              author={tergiou, Alexandros},</br>
+              booktitle={arXiv}, <br/>
+              year={2024}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Every Shot Counts: Using  Exemplars for Repetition Counting in Videos -->
     <div class="row-padding">
       <div class="row">
@@ -661,8 +698,8 @@ window.onload = function(){
             <span>arXiv 2024</span>
             <br>
             <div class="links">
-              <a href="https://arxiv.org/abs/2311.01851" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
-              <a href="https://arxiv.org/abs/2311.01851" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;</a>
+              <a href="https://arxiv.org/abs/2403.18074" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
+              <a href="https://arxiv.org/abs/2403.18074" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;</a>
               <a href="https://sinhasaptarshi.github.io/escounts" target="_blank"><p class="fa fa-globe">
               </p>&#32; </a>
               <a href="https://sinhasaptarshi.github.io/escounts" target="_blank">website&#8201;&#8201;&#8201;  </a>
@@ -1064,39 +1101,6 @@ window.onload = function(){
 
 
 
-    <!-- Spatio-Temporal FAST 3D Convolutions for Human Action RecognitionRecognition -->
-    <div class="row-padding">
-      <div class="row">
-        <div class="section">
-          <div class="list-image big">
-            <img src="photos/FAST_conv/fast_v01.png" width="100em" height="100em" alt="FAST_conv" style="margin:10px 0;" ondragstart="return false;">
-          </div>
-          <div class="list-description">
-            <span> Stergiou A., and <font color="#1E4258"><a href="https://rpoppe.wordpress.com/" target="_blank"> Poppe R.</a></font>, <b>Spatio-Temporal FAST 3D Convolutions for Human Action Recognition</b></span><br> 
-            <span>ICMLA 2019 (Oral)</span>
-            <div class="links">
-              <a href="https://ieeexplore.ieee.org/abstract/document/8999121" target="_blank"><p class="ai ai-closed-access ai">&#32;</p></a>
-              <a href="https://ieeexplore.ieee.org/abstract/document/8999121" target="_blank" style="font-style:normal;">PDF&#8201;&#8201;&#8201;</a>
-
-              <a href="https://arxiv.org/abs/1909.13474" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
-              <a href="https://arxiv.org/abs/1909.13474" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;</a>
-
-              <a href="https://doi.org/10.1109/ICMLA.2019.00036" target="_blank"><p class="ai ai-doi ai">&#32;</p></a>
-              <a href="https://doi.org/10.1109/ICMLA.2019.00036" target="_blank" style="font-style:normal;">DOI&#8201;&#8201;&#8201;</a>
-
-              <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('fast-conv-2019')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span></i></a>
-            </div>
-            <p id="fast-conv-2019" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@article{stergiou2019fast, <br/>
-              title={Spatio-Temporal FAST 3D Convolutions for Human Action Recognition}, <br/>
-              author={Stergiou, Alexandros and Poppe, Ronald}, <br/>
-              booktitle={IEEE Intenrantional Conference on Machine Learning Applications (ICMLA)}, <br/>
-              year={2019}, <br/>
-              organization={IEEE}}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
 
 
     <!-- Saliency Tubes: Visual Explanations for Spatio-Temporal Convolutions -->
@@ -1326,7 +1330,7 @@ window.onload = function(){
       <div class="list-image small">
         </div>
       <div class="list-description small">
-        <font color="#1E4258">Conferences:</font> CVPR 2022-now, ECCV 2022-now, ICCV 2023-now, BMVC (2018,2023), WACV 2024
+        <font color="#1E4258">Conferences:</font> CVPR 2022-now, ECCV 2022-now, ICCV 2023-now, BMVC 2018,2023-now, WACV 2024
         <br>
       </div>
     </div>
