@@ -48,6 +48,194 @@
     <link rel="stylesheet" href="academicons/css/academicons.min.css"/>
 
     <style>
+
+      .button_c {
+        border: none;
+        color: black;
+        padding: .5em 1em;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 0.1em 0.1em;
+        -webkit-transition-duration: 0.8s; /* Safari Chrome */
+        -moz-transition-duration: 0.8; /* Firefox */
+        transition-duration: 0.8s;
+        border-radius: 0.4em;
+        cursor: pointer;
+        -webkit-touch-callout:none;
+        -webkit-user-select:none;
+        -moz-user-select:none;
+        -ms-user-select:none;
+        user-select:none;
+        cursor: pointer;
+      }
+      
+      .button_c:hover {
+        background-color: #00000015;
+        color: #1e4258;
+        box-shadow: 0 .4em .4em 0 rgba(0,0,0,0.24),0 .4em .4em 0 rgba(0,0,0,0.19);
+        cursor: pointer;
+
+      }
+      
+
+      .container-video {
+        position: relative;
+        width: 80%;
+        max-width: 1000px;
+        margin: 20px 0;
+        overflow: hidden;
+        display: inline-block;
+    }
+
+    .video-wrapper {
+        position: relative;
+        width: 30%;
+        height: auto;
+        display: inline-block;
+
+    }
+
+    video {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .video-wrapper video:first-child {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .video-wrapper video:last-child {
+        position: absolute;
+        top: 0;
+        left: 0;
+        clip-path: inset(0 50% 0 0);
+    }
+
+    .slider {
+        position: absolute;
+        top: 0;
+        left: 90%;
+        width: 4px;
+        height: 100%;
+        background-color: #fff;
+        cursor: pointer;
+        z-index: 1;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+        line-height: normal;
+        opacity: .7
+    }
+
+    .slider:hover {
+      opacity: 1
+  }
+
+  .slider:hover :before {
+    color: #fff;
+    border-color: #fff
+}
+
+  .slider:before {
+    content: '';
+    -webkit-mask: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+LnN0MHtmaWxsOiNGRkZGRkY7ZW5hYmxlLWJhY2tncm91bmQ6bmV3ICAgIDt9PC9zdHlsZT48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTgwLjIsMTA4LjFsNjEuNy02Mi4yYzMuOC0zLjgsOC44LTUuOSwxNC4xLTUuOWM1LjMsMCwxMC40LDIuMSwxNC4xLDUuOWw2MS43LDYyLjJjMy45LDMuOSw5LjEsNS45LDE0LjIsNS45czEwLjItMS45LDE0LjEtNS44YzcuOC03LjgsNy45LTIwLjQsMC4xLTI4LjNsLTYxLjctNjIuMkMyODcuMiw2LjMsMjcyLjEsMCwyNTYsMHMtMzEuMiw2LjMtNDIuNSwxNy44TDE1MS44LDgwYy03LjgsNy44LTcuNywyMC41LDAuMSwyOC4zQzE1OS44LDExNiwxNzIuNCwxMTUuOSwxODAuMiwxMDguMXoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMzMxLjgsNDAzLjlsLTYxLjcsNjIuMmMtMy44LDMuOC04LjgsNS45LTE0LjEsNS45Yy01LjMsMC0xMC40LTIuMS0xNC4xLTUuOWwtNjEuNy02Mi4yYy03LjgtNy44LTIwLjQtNy45LTI4LjMtMC4xYy03LjgsNy44LTcuOSwyMC40LTAuMSwyOC4zbDYxLjcsNjIuMmMxMS40LDExLjQsMjYuNSwxNy44LDQyLjUsMTcuOHMzMS4yLTYuMyw0Mi41LTE3LjhsNjEuNy02Mi4yYzcuOC03LjgsNy43LTIwLjUtMC4xLTI4LjNDMzUyLjIsMzk2LDMzOS42LDM5Ni4xLDMzMS44LDQwMy45eiIvPjwvc3ZnPg==) no-repeat 100% 100%;
+    mask: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+LnN0MHtmaWxsOiNGRkZGRkY7ZW5hYmxlLWJhY2tncm91bmQ6bmV3ICAgIDt9PC9zdHlsZT48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTgwLjIsMTA4LjFsNjEuNy02Mi4yYzMuOC0zLjgsOC44LTUuOSwxNC4xLTUuOWM1LjMsMCwxMC40LDIuMSwxNC4xLDUuOWw2MS43LDYyLjJjMy45LDMuOSw5LjEsNS45LDE0LjIsNS45czEwLjItMS45LDE0LjEtNS44YzcuOC03LjgsNy45LTIwLjQsMC4xLTI4LjNsLTYxLjctNjIuMkMyODcuMiw2LjMsMjcyLjEsMCwyNTYsMHMtMzEuMiw2LjMtNDIuNSwxNy44TDE1MS44LDgwYy03LjgsNy44LTcuNywyMC41LDAuMSwyOC4zQzE1OS44LDExNiwxNzIuNCwxMTUuOSwxODAuMiwxMDguMXoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMzMxLjgsNDAzLjlsLTYxLjcsNjIuMmMtMy44LDMuOC04LjgsNS45LTE0LjEsNS45Yy01LjMsMC0xMC40LTIuMS0xNC4xLTUuOWwtNjEuNy02Mi4yYy03LjgtNy44LTIwLjQtNy45LTI4LjMtMC4xYy03LjgsNy44LTcuOSwyMC40LTAuMSwyOC4zbDYxLjcsNjIuMmMxMS40LDExLjQsMjYuNSwxNy44LDQyLjUsMTcuOHMzMS4yLTYuMyw0Mi41LTE3LjhsNjEuNy02Mi4yYzcuOC03LjgsNy43LTIwLjUtMC4xLTI4LjNDMzUyLjIsMzk2LDMzOS42LDM5Ni4xLDMzMS44LDQwMy45eiIvPjwvc3ZnPg==) no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+    width: 26px;
+    color:#fff;
+    height: 26px;
+    padding: 0;
+    background-color: currentColor;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%) rotate(90deg);
+    -ms-transform: translate(-50%, -50%) rotate(90deg);
+    transform: translate(-50%, -50%) rotate(90deg);
+    z-index: 2;
+    font-size: 0
+}
+
+  .slider:after {
+    top: 50%;
+    left: 0;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 100%;
+    height: 3px
+}
+
+    .b-dics__slider {
+      color: #fff;
+      position: absolute;
+      left: 90%;
+      top: 0;
+      cursor: pointer;
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%);
+      height: 100%;
+      width: 3px;
+      padding: 0 30px;
+      z-index: 1;
+      -ms-touch-action: none;
+      touch-action: none;
+      line-height: normal;
+      opacity: .7
+  }
+  
+  
+  .b-dics__slider:before {
+      content: '';
+      -webkit-mask: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+LnN0MHtmaWxsOiNGRkZGRkY7ZW5hYmxlLWJhY2tncm91bmQ6bmV3ICAgIDt9PC9zdHlsZT48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTgwLjIsMTA4LjFsNjEuNy02Mi4yYzMuOC0zLjgsOC44LTUuOSwxNC4xLTUuOWM1LjMsMCwxMC40LDIuMSwxNC4xLDUuOWw2MS43LDYyLjJjMy45LDMuOSw5LjEsNS45LDE0LjIsNS45czEwLjItMS45LDE0LjEtNS44YzcuOC03LjgsNy45LTIwLjQsMC4xLTI4LjNsLTYxLjctNjIuMkMyODcuMiw2LjMsMjcyLjEsMCwyNTYsMHMtMzEuMiw2LjMtNDIuNSwxNy44TDE1MS44LDgwYy03LjgsNy44LTcuNywyMC41LDAuMSwyOC4zQzE1OS44LDExNiwxNzIuNCwxMTUuOSwxODAuMiwxMDguMXoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMzMxLjgsNDAzLjlsLTYxLjcsNjIuMmMtMy44LDMuOC04LjgsNS45LTE0LjEsNS45Yy01LjMsMC0xMC40LTIuMS0xNC4xLTUuOWwtNjEuNy02Mi4yYy03LjgtNy44LTIwLjQtNy45LTI4LjMtMC4xYy03LjgsNy44LTcuOSwyMC40LTAuMSwyOC4zbDYxLjcsNjIuMmMxMS40LDExLjQsMjYuNSwxNy44LDQyLjUsMTcuOHMzMS4yLTYuMyw0Mi41LTE3LjhsNjEuNy02Mi4yYzcuOC03LjgsNy43LTIwLjUtMC4xLTI4LjNDMzUyLjIsMzk2LDMzOS42LDM5Ni4xLDMzMS44LDQwMy45eiIvPjwvc3ZnPg==) no-repeat 100% 100%;
+      mask: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+LnN0MHtmaWxsOiNGRkZGRkY7ZW5hYmxlLWJhY2tncm91bmQ6bmV3ICAgIDt9PC9zdHlsZT48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTgwLjIsMTA4LjFsNjEuNy02Mi4yYzMuOC0zLjgsOC44LTUuOSwxNC4xLTUuOWM1LjMsMCwxMC40LDIuMSwxNC4xLDUuOWw2MS43LDYyLjJjMy45LDMuOSw5LjEsNS45LDE0LjIsNS45czEwLjItMS45LDE0LjEtNS44YzcuOC03LjgsNy45LTIwLjQsMC4xLTI4LjNsLTYxLjctNjIuMkMyODcuMiw2LjMsMjcyLjEsMCwyNTYsMHMtMzEuMiw2LjMtNDIuNSwxNy44TDE1MS44LDgwYy03LjgsNy44LTcuNywyMC41LDAuMSwyOC4zQzE1OS44LDExNiwxNzIuNCwxMTUuOSwxODAuMiwxMDguMXoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMzMxLjgsNDAzLjlsLTYxLjcsNjIuMmMtMy44LDMuOC04LjgsNS45LTE0LjEsNS45Yy01LjMsMC0xMC40LTIuMS0xNC4xLTUuOWwtNjEuNy02Mi4yYy03LjgtNy44LTIwLjQtNy45LTI4LjMtMC4xYy03LjgsNy44LTcuOSwyMC40LTAuMSwyOC4zbDYxLjcsNjIuMmMxMS40LDExLjQsMjYuNSwxNy44LDQyLjUsMTcuOHMzMS4yLTYuMyw0Mi41LTE3LjhsNjEuNy02Mi4yYzcuOC03LjgsNy43LTIwLjUtMC4xLTI4LjNDMzUyLjIsMzk2LDMzOS42LDM5Ni4xLDMzMS44LDQwMy45eiIvPjwvc3ZnPg==) no-repeat 100% 100%;
+      mask-size: cover;
+      -webkit-mask-size: cover;
+      width: 26px;
+      height: 26px;
+      padding: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%) rotate(90deg);
+      -ms-transform: translate(-50%, -50%) rotate(90deg);
+      transform: translate(-50%, -50%) rotate(90deg);
+      z-index: 2;
+      font-size: 0
+  }
+  
+  .b-dics__slider:after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%);
+      height: 100%;
+      width: 3px;
+      background-color: currentColor;
+      z-index: 1
+  }
+
+  
+
+    #slider {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 4px;
+        height: 100%;
+        background-color: #418fc0;
+        cursor: ew-resize;
+        z-index: 10;
+    }
       .button {
         background-color: black;
         border: none;
@@ -600,7 +788,7 @@
       }
     </script>
     <script>
-      function displayBibtexForPublication(id) {
+      function displayForPublication(id) {
         var elem = document.getElementById(id);
     
         if (elem) {
@@ -624,7 +812,7 @@
     </script>
   </head>
   <body>
-  
+    
     <div id="nav" class="navbar">
       <div id="page-anchors">
           <button id="navbutton" onclick="toggleMenuVisibility()"><div class="navbutton"><i id="nav-icon" class="clickable las la-bars la"></i></button>
@@ -634,6 +822,8 @@
               <li><a href="#lavib">LAVIB</a></li>
               <li><a href="#statistics">Statistics</a></li>
               <li><a href="#dataset">Dataset</a></li>
+              <li><a href="#explore">Explore</a></li>
+              <li><a href="#results">Results</a></li>
               <li><a href="#cite">Citation</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
@@ -712,7 +902,299 @@
 
   </div>
   <br><br>
-  <div class="container" id="result">
+  <div class="container" id="explore">
+    <h1>Explore</h1> <br>
+
+    <p class="absfont">Examples of interpolated video segments from LAVIB OOD challenges with FLAVR. Use the slider to see the ground truth. 
+      (Reload the page if videos become out of sync).<br> <br></p>
+    
+
+    <p class="button_c absfont clickable" onclick="displayForPublication('afm_h2l')"><b>Low \( \rightarrow \) High Average Flow Magnitude (AFM)</b> <br></p>
+    <div class="text-center hidden div1" id="afm_h2l">
+    <!-- First Slider -->
+    <div class="container-video">
+
+        <div class="video-wrapper">
+            <video id="afterVideo1" src="img/videos/high_afm/1/pred.mp4" autoplay muted loop></video>
+            <video id="beforeVideo1" src="img/videos/high_afm/1/gt.mp4" autoplay muted loop></video>
+            <div class="slider" id="slider1"></div>
+        </div>&emsp;&emsp;
+    
+        <div class="video-wrapper">
+            <video id="afterVideo2" src="img/videos/high_afm/2/pred.mp4" autoplay muted loop></video>
+            <video id="beforeVideo2" src="img/videos/high_afm/2/gt.mp4" autoplay muted loop></video>
+            <div class="slider" id="slider2"></div>
+        </div>&emsp;&emsp;
+    
+        <div class="video-wrapper">
+            <video id="afterVideo3" src="img/videos/high_afm/3/pred.mp4" autoplay muted loop></video>
+            <video id="beforeVideo3" src="img/videos/high_afm/3/gt.mp4" autoplay muted loop></video>
+            <div class="slider" id="slider3"></div>
+        </div>
+    </div>
+  </div>
+  <br>
+
+
+  <p class="button_c absfont clickable" onclick="displayForPublication('alv_h2l')"><b>Low \( \rightarrow \) High Average Laplacian Variance (ALV)</b> <br></p>
+  <div class="text-center hidden div1" id="alv_h2l">
+    <!-- First Slider -->
+    <div class="container-video">
+
+        <div class="video-wrapper">
+            <video id="afterVideo4" src="img/videos/high_alv/1/pred.mp4" autoplay muted loop></video>
+            <video id="beforeVideo4" src="img/videos/high_alv/1/gt.mp4" autoplay muted loop></video>
+            <div class="slider" id="slider4"></div>
+        </div>&emsp;&emsp;
+    
+        <div class="video-wrapper">
+            <video id="afterVideo5" src="img/videos/high_alv/2/pred.mp4" autoplay muted loop></video>
+            <video id="beforeVideo5" src="img/videos/high_alv/2/gt.mp4" autoplay muted loop></video>
+            <div class="slider" id="slider5"></div>
+        </div>&emsp;&emsp;
+    
+        <div class="video-wrapper">
+            <video id="afterVideo6" src="img/videos/high_alv/3/pred.mp4" autoplay muted loop></video>
+            <video id="beforeVideo6" src="img/videos/high_alv/3/gt.mp4" autoplay muted loop></video>
+            <div class="slider" id="slider6"></div>
+        </div>
+    </div>
+  </div>
+  <br>
+
+  <p class="button_c absfont clickable" onclick="displayForPublication('arl_h2l')"><b>Low \( \rightarrow \) High Average Relative Luminance (ARL)</b> <br></p>
+  <div class="text-center hidden div1" id="arl_h2l">
+    <!-- First Slider -->
+    <div class="container-video">
+
+        <div class="video-wrapper">
+            <video id="afterVideo7" src="img/videos/high_arl/1/pred.mp4" autoplay muted loop></video>
+            <video id="beforeVideo7" src="img/videos/high_arl/1/gt.mp4" autoplay muted loop></video>
+            <div class="slider" id="slider7"></div>
+        </div>&emsp;&emsp;
+    
+        <div class="video-wrapper">
+            <video id="afterVideo8" src="img/videos/high_arl/2/pred.mp4" autoplay muted loop></video>
+            <video id="beforeVideo8" src="img/videos/high_arl/2/gt.mp4" autoplay muted loop></video>
+            <div class="slider" id="slider8"></div>
+        </div>&emsp;&emsp;
+    
+        <div class="video-wrapper">
+            <video id="afterVideo9" src="img/videos/high_arl/3/pred.mp4" autoplay muted loop></video>
+            <video id="beforeVideo9" src="img/videos/high_arl/3/gt.mp4" autoplay muted loop></video>
+            <div class="slider" id="slider9"></div>
+        </div>
+    </div>
+  </div>
+  <br>
+
+
+  <p class="button_c absfont clickable" onclick="displayForPublication('arms_h2l')"><b>Low \( \rightarrow \) High Average Root Mean Square (ARMS)</b> <br></p>
+  <div class="text-center hidden div1" id="arms_h2l">
+    <!-- First Slider -->
+    <div class="container-video">
+
+        <div class="video-wrapper">
+            <video id="afterVideo10" src="img/videos/high_arms/1/pred.mp4" autoplay muted loop></video>
+            <video id="beforeVideo10" src="img/videos/high_arms/1/gt.mp4" autoplay muted loop></video>
+            <div class="slider" id="slider10"></div>
+        </div>&emsp;&emsp;
+    
+        <div class="video-wrapper">
+            <video id="afterVideo11" src="img/videos/high_arms/2/pred.mp4" autoplay muted loop></video>
+            <video id="beforeVideo11" src="img/videos/high_arms/2/gt.mp4" autoplay muted loop></video>
+            <div class="slider" id="slider11"></div>
+        </div>&emsp;&emsp;
+    
+        <div class="video-wrapper">
+            <video id="afterVideo12" src="img/videos/high_arms/3/pred.mp4" autoplay muted loop></video>
+            <video id="beforeVideo12" src="img/videos/high_arms/3/gt.mp4" autoplay muted loop></video>
+            <div class="slider" id="slider12"></div>
+        </div>
+    </div>
+  </div>
+  <br>
+
+
+
+
+
+  <p class="button_c absfont clickable" onclick="displayForPublication('afm_l2h')"><b>High \( \rightarrow \) Low Average Flow Magnitude (AFM)</b> <br></p>
+  <div class="text-center hidden div1" id="afm_l2h">
+    <!-- First Slider -->
+    <div class="container-video">
+
+        <div class="video-wrapper">
+            <video id="afterVideo13" src="img/videos/low_afm/1/pred.mp4" autoplay muted loop></video>
+            <video id="beforeVideo13" src="img/videos/low_afm/1/gt.mp4" autoplay muted loop></video>
+            <div class="slider" id="slider13"></div>
+        </div>&emsp;&emsp;
+    
+        <div class="video-wrapper">
+            <video id="afterVideo14" src="img/videos/low_afm/2/pred.mp4" autoplay muted loop></video>
+            <video id="beforeVideo14" src="img/videos/low_afm/2/gt.mp4" autoplay muted loop></video>
+            <div class="slider" id="slider14"></div>
+        </div>&emsp;&emsp;
+    
+        <div class="video-wrapper">
+            <video id="afterVideo15" src="img/videos/low_afm/3/pred.mp4" autoplay muted loop></video>
+            <video id="beforeVideo15" src="img/videos/low_afm/3/gt.mp4" autoplay muted loop></video>
+            <div class="slider" id="slider15"></div>
+        </div>
+    </div>
+  </div>
+  <br>
+
+
+  <p class="button_c absfont clickable" onclick="displayForPublication('alv_l2h')"><b>High \( \rightarrow \) Low Average Laplacian Variance (ALV)</b> <br></p>
+  <div class="text-center hidden div1" id="alv_l2h">
+    <!-- First Slider -->
+    <div class="container-video">
+
+        <div class="video-wrapper">
+            <video id="afterVideo16" src="img/videos/low_alv/1/pred.mp4" autoplay muted loop></video>
+            <video id="beforeVideo16" src="img/videos/low_alv/1/gt.mp4" autoplay muted loop></video>
+            <div class="slider" id="slider16"></div>
+        </div>&emsp;&emsp;
+    
+        <div class="video-wrapper">
+            <video id="afterVideo17" src="img/videos/low_alv/2/pred.mp4" autoplay muted loop></video>
+            <video id="beforeVideo17" src="img/videos/low_alv/2/gt.mp4" autoplay muted loop></video>
+            <div class="slider" id="slider17"></div>
+        </div>&emsp;&emsp;
+    
+        <div class="video-wrapper">
+            <video id="afterVideo18" src="img/videos/low_alv/3/pred.mp4" autoplay muted loop></video>
+            <video id="beforeVideo18" src="img/videos/low_alv/3/gt.mp4" autoplay muted loop></video>
+            <div class="slider" id="slider18"></div>
+        </div>
+    </div>
+  </div>
+  <br>
+
+  <p class="button_c absfont clickable" onclick="displayForPublication('arl_l2h')"><b>High \( \rightarrow \) Low Average Relative Luminance (ARL)</b> <br></p>
+  <div class="text-center hidden div1" id="arl_l2h">
+    <!-- First Slider -->
+    <div class="container-video">
+
+        <div class="video-wrapper">
+            <video id="afterVideo19" src="img/videos/low_arl/1/pred.mp4" autoplay muted loop></video>
+            <video id="beforeVideo19" src="img/videos/low_arl/1/gt.mp4" autoplay muted loop></video>
+            <div class="slider" id="slider19"></div>
+        </div>&emsp;&emsp;
+    
+        <div class="video-wrapper">
+            <video id="afterVideo20" src="img/videos/low_arl/2/pred.mp4" autoplay muted loop></video>
+            <video id="beforeVideo20" src="img/videos/low_arl/2/gt.mp4" autoplay muted loop></video>
+            <div class="slider" id="slider20"></div>
+        </div>&emsp;&emsp;
+    
+        <div class="video-wrapper">
+            <video id="afterVideo21" src="img/videos/low_arl/3/pred.mp4" autoplay muted loop></video>
+            <video id="beforeVideo21" src="img/videos/low_arl/3/gt.mp4" autoplay muted loop></video>
+            <div class="slider" id="slider21"></div>
+        </div>
+    </div>
+  </div>
+  <br>
+
+
+  <p class="button_c absfont clickable" onclick="displayForPublication('arms_l2h')"><b>High \( \rightarrow \) Low Average Root Mean Square (ARMS)</b> <br></p>
+  <div class="text-center hidden div1" id="arms_l2h">
+    <!-- First Slider -->
+    <div class="container-video">
+
+        <div class="video-wrapper">
+            <video id="afterVideo22" src="img/videos/low_arms/1/pred.mp4" autoplay muted loop></video>
+            <video id="beforeVideo22" src="img/videos/low_arms/1/gt.mp4" autoplay muted loop></video>
+            <div class="slider" id="slider22"></div>
+        </div>&emsp;&emsp;
+    
+        <div class="video-wrapper">
+            <video id="afterVideo23" src="img/videos/low_arms/2/pred.mp4" autoplay muted loop></video>
+            <video id="beforeVideo23" src="img/videos/low_arms/2/gt.mp4" autoplay muted loop></video>
+            <div class="slider" id="slider23"></div>
+        </div>&emsp;&emsp;
+    
+        <div class="video-wrapper">
+            <video id="afterVideo24" src="img/videos/low_arms/3/pred.mp4" autoplay muted loop></video>
+            <video id="beforeVideo24" src="img/videos/low_arms/3/gt.mp4" autoplay muted loop></video>
+            <div class="slider" id="slider24"></div>
+        </div>
+    </div>
+  </div>
+
+    <script>
+        // Function to create a before-and-after slider effect
+        function createSlider(sliderId, beforeVideoId, afterVideoId) {
+            const slider = document.getElementById(sliderId);
+            const afterVideo = document.getElementById(afterVideoId);
+            const container = slider.closest('.video-wrapper');
+            var w = window.innerWidth;
+
+            slider.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+
+                const onMouseMove = (e) => {
+                    let xPos = e.clientX - container.offsetLeft - 0.2 * w;
+                    if (xPos < 0) xPos = 0;
+                    if (xPos > container.offsetWidth) xPos = container.offsetWidth;
+
+                    const widthPercent = (xPos / container.offsetWidth) * 100;
+                    afterVideo.style.clipPath = `inset(0 ${100 - widthPercent}% 0 0)`;
+                    slider.style.left = `${widthPercent}%`;
+                };
+
+                document.addEventListener('mousemove', onMouseMove);
+
+                document.addEventListener('mouseup', () => {
+                    document.removeEventListener('mousemove', onMouseMove);
+                }, { once: true });
+            });
+        }
+
+        // Initialize sliders
+        createSlider('slider1', 'beforeVideo1', 'afterVideo1');
+        createSlider('slider2', 'beforeVideo2', 'afterVideo2');
+        createSlider('slider3', 'beforeVideo3', 'afterVideo3');
+
+        createSlider('slider4', 'beforeVideo4', 'afterVideo4');
+        createSlider('slider5', 'beforeVideo5', 'afterVideo5');
+        createSlider('slider6', 'beforeVideo6', 'afterVideo6');
+
+        createSlider('slider7', 'beforeVideo7', 'afterVideo7');
+        createSlider('slider8', 'beforeVideo8', 'afterVideo8');
+        createSlider('slider9', 'beforeVideo9', 'afterVideo9');
+
+        createSlider('slider10', 'beforeVideo10', 'afterVideo10');
+        createSlider('slider11', 'beforeVideo11', 'afterVideo11');
+        createSlider('slider12', 'beforeVideo12', 'afterVideo12');
+
+        createSlider('slider13', 'beforeVideo13', 'afterVideo13');
+        createSlider('slider14', 'beforeVideo14', 'afterVideo14');
+        createSlider('slider15', 'beforeVideo15', 'afterVideo15');
+
+        createSlider('slider16', 'beforeVideo16', 'afterVideo16');
+        createSlider('slider17', 'beforeVideo17', 'afterVideo17');
+        createSlider('slider18', 'beforeVideo18', 'afterVideo18');
+
+        createSlider('slider19', 'beforeVideo19', 'afterVideo19');
+        createSlider('slider20', 'beforeVideo20', 'afterVideo20');
+        createSlider('slider21', 'beforeVideo21', 'afterVideo21');
+
+        createSlider('slider22', 'beforeVideo22', 'afterVideo22');
+        createSlider('slider23', 'beforeVideo23', 'afterVideo23');
+        createSlider('slider24', 'beforeVideo24', 'afterVideo24');
+
+
+    </script>
+    </div>
+  </div> <br><br> 
+  
+
+
+
+  <div class="container" id="results">
       <h1>Results</h1> <br>
 
       <div class="text-center">
