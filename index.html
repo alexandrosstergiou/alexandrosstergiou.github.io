@@ -45,7 +45,7 @@
    display: none;
 }
 
-@media only screen and (min-width : 40%) {
+@media only screen and (min-width: 768px) {
  #welcome-slide #claim h2{
    display: block;
    font-size: .9em;
@@ -217,6 +217,16 @@ body, html {
   height: 8%;
   min-width: 80em;
   min-height: 80em;
+}
+
+/* Mobile responsive photo */
+@media (max-width: 768px) {
+  .me {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
+  }
 }
 
 img {
@@ -442,6 +452,248 @@ img {
   background: #555; 
 }
 
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  /* Fix welcome slide positioning */
+  #welcome-slide #claim {
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+    right: 5%;
+    margin: auto;
+    z-index: 3em;
+    color: #ccc7c3;
+  }
+
+  /* Make container more mobile-friendly */
+  .content {
+    max-width: 95%;
+    margin: auto;
+    background-color: #fff;
+  }
+
+  .container {
+    padding: 0.01em 1em;
+  }
+
+  /* Fix top container grid for mobile */
+  .top-container {
+    display: block;
+    text-align: center;
+  }
+
+  /* Adjust list layout for mobile */
+  .list-image {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .list-description {
+    display: block;
+    width: 100%;
+  }
+
+  .long-list-description {
+    display: block;
+    max-width: 100%;
+  }
+
+  /* Make dropdown menu more mobile-friendly */
+  #dropdown-menu {
+    width: 12em;
+    right: 1em;
+  }
+
+  #dropdown-menu > ul {
+    padding: 1em;
+    margin: -1em -.5em;
+  }
+
+  #dropdown-menu > ul li a {
+    width: 10em;
+    padding: 0.5em;
+    font-size: 0.9em;
+  }
+
+  /* Adjust navigation */
+  .navbar a {
+    padding: 0.6em 0.6em;
+    font-size: 0.8em;
+  }
+
+  /* Make social platforms more mobile-friendly */
+  #social-platforms a {
+    width: 2.4em;
+    height: 2.4em;
+    font-size: 1em;
+    margin: 0.2em 0.1em;
+    padding: 0.5em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  /* Consistent icon sizing for mobile */
+  #social-platforms a i {
+    font-size: 1.2em !important;
+    line-height: 1;
+    display: block;
+  }
+
+  #social-platforms a img {
+    width: 1.2em !important;
+    height: 1.2em !important;
+    max-width: 1.2em !important;
+    max-height: 1.2em !important;
+    object-fit: contain;
+  }
+
+  #page-anchors button {
+    width: 1.2em;
+    height: 1.2em;
+    font-size: 1.5em;
+    margin: 0.4em 0.2em;
+    padding: 0.12em;
+  }
+
+  /* Adjust text sizes */
+  .text {
+    font-size: 0.85em;
+    margin-top: 3em;
+  }
+
+  body, html {
+    font-size: 0.85em;
+  }
+
+  /* Fix modal for mobile */
+  .modal {
+    padding-top: 50px;
+  }
+
+  .modal-content {
+    padding: 3em;
+    border: 0.5em solid #ADADAD;
+  }
+
+  .modal-content-horizontal-50,
+  .modal-content-horizontal-40 {
+    width: 90%;
+  }
+
+  .modal-content-vertical-23 {
+    width: 85%;
+  }
+
+  .close {
+    font-size: 6em;
+  }
+
+  /* Adjust row padding for mobile */
+  .row-padding, .row-padding > .col {
+    padding: 0 4px;
+  }
+
+  /* Make images more responsive */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Adjust button sizes */
+  .button {
+    padding: 0.8em 1.5em;
+    font-size: 0.75em;
+    margin: 0.2em 0.2em;
+  }
+}
+
+/* Extra small screens (phones in portrait) */
+@media (max-width: 480px) {
+  #welcome-slide #claim {
+    left: 2%;
+    right: 2%;
+  }
+
+  .container {
+    padding: 0.01em 0.5em;
+  }
+
+  .content {
+    max-width: 98%;
+  }
+
+  #dropdown-menu {
+    width: 10em;
+    right: 0.5em;
+  }
+
+  #dropdown-menu > ul li a {
+    width: 8.5em;
+    padding: 0.4em;
+    font-size: 0.8em;
+  }
+
+  .navbar a {
+    padding: 0.4em 0.4em;
+    font-size: 0.7em;
+  }
+
+  body, html {
+    font-size: 0.8em;
+  }
+
+  .text {
+    font-size: 0.8em;
+    margin-top: 2em;
+  }
+
+  #social-platforms a {
+    width: 2.2em;
+    height: 2.2em;
+    font-size: 0.9em;
+    margin: 0.15em 0.05em;
+    padding: 0.45em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  /* Consistent icon sizing for very small mobile */
+  #social-platforms a i {
+    font-size: 1.1em !important;
+    line-height: 1;
+    display: block;
+  }
+
+  #social-platforms a img {
+    width: 1.1em !important;
+    height: 1.1em !important;
+    max-width: 1.1em !important;
+    max-height: 1.1em !important;
+    object-fit: contain;
+  }
+
+  #page-anchors button {
+    width: 1.1em;
+    height: 1.1em;
+    font-size: 1.3em;
+    margin: 0.3em 0.15em;
+  }
+
+  .modal-content {
+    padding: 2em;
+  }
+
+  .close {
+    font-size: 5em;
+  }
+}
+
 </style>
 <head>
 	<link rel="apple-touch-icon" sizes="180x180" href="favicon.ico/apple-touch-icon.png">
@@ -598,9 +850,9 @@ window.onload = function(){
         <div id="social-platforms">
           <div class="fade">
             
-            <a class="tooltip" href="mailto:a.g.stergiou@utwente.nl?Subject= " data-title="mail"><i class="fa-regular fa-paper-plane" style="font-size:1.6rem;"></i><span>email</span></a>
+            <a class="tooltip" href="mailto:a.g.stergiou@utwente.nl?Subject= " data-title="mail"><i class="fa-regular fa-paper-plane"></i><span>email</span></a>
 
-            <a class="tooltip" href="https://people.utwente.nl/a.g.stergiou" target="_blank" data-title="UTwente"><img src="photos/affiliations/UT.png" style="float: top;margin:0em 0em .05em 0em;"><span>UTwente</span></a>
+            <a class="tooltip" href="https://people.utwente.nl/a.g.stergiou" target="_blank" data-title="UTwente"><img src="photos/affiliations/UT.png"><span>UTwente</span></a>
             
             <a class="tooltip" href="https://scholar.google.co.uk/citations?user=_E_Zs3kAAAAJ&hl=en&oi=sra" target="_blank" data-title="GoogleScholar"><i class="ai ai-google-scholar ai"></i><span>GoogleScholar</span></a>
   

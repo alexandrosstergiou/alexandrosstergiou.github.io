@@ -18,12 +18,14 @@
   background: rgba(230, 230, 230, 0.1);
   text-align:center;
   position:relative;
-  display:inline-block;
+  display:inline-flex;
+  align-items: center;
+  justify-content: center;
   width:1.3em;
   height:1.3em;
   font-size:1.75em;
   color:#fff;
-  line-height:1.05em;
+  line-height:1;
   border:0;
   cursor:pointer;
   margin:0.3em 0.2em;
@@ -33,6 +35,20 @@
   -webkit-transition:all .5s;
   -moz-transition:all .5s;
   transition:all .5s;
+  box-sizing: border-box;
+}
+
+/* Ensure consistent icon and image sizing */
+#social-platforms a i {
+  font-size: 1em;
+  line-height: 1;
+  display: block;
+}
+
+#social-platforms a img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 
@@ -318,6 +334,106 @@ footer {
 @media (max-width:600px){
 	.hide-small{
 		display:none;
+	}
+	
+	/* Enhanced mobile styles */
+	.col {
+		width: 100%;
+		margin-bottom: 1em;
+	}
+	
+	.col.m6 {
+		width: 100%;
+	}
+	
+	.container {
+		padding: 0.01em 1em;
+	}
+	
+	.content {
+		max-width: 95%;
+	}
+	
+	/* Make social platforms stack better on mobile */
+	#social-platforms a,
+	#page-anchors button {
+		margin: 0.2em 0.1em;
+	}
+	
+	/* Consistent social media button sizing for mobile */
+	#social-platforms a {
+		width: 2.4em;
+		height: 2.4em;
+		font-size: 1em;
+		padding: 0.5em;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		box-sizing: border-box;
+	}
+	
+	#social-platforms a i {
+		font-size: 1.2em !important;
+		line-height: 1;
+	}
+	
+	#social-platforms a img {
+		width: 1.2em !important;
+		height: 1.2em !important;
+		max-width: 1.2em !important;
+		max-height: 1.2em !important;
+		object-fit: contain;
+	}
+	
+	/* Adjust modal for mobile */
+	.modal {
+		padding-top: 50px;
+	}
+	
+	.modal-content-horizontal-50,
+	.modal-content-horizontal-40 {
+		width: 90%;
+	}
+	
+	.modal-content-vertical-23 {
+		width: 85%;
+	}
+}
+
+/* Extra mobile styles for very small screens */
+@media (max-width: 480px) {
+	.container {
+		padding: 0.01em 0.5em;
+	}
+	
+	.content {
+		max-width: 98%;
+	}
+	
+	.modal-content-horizontal-50,
+	.modal-content-horizontal-40,
+	.modal-content-vertical-23 {
+		width: 95%;
+	}
+	
+	/* Extra small screen social media adjustments */
+	#social-platforms a {
+		width: 2.2em;
+		height: 2.2em;
+		font-size: 0.9em;
+		padding: 0.45em;
+		margin: 0.15em 0.05em;
+	}
+	
+	#social-platforms a i {
+		font-size: 1.1em !important;
+	}
+	
+	#social-platforms a img {
+		width: 1.1em !important;
+		height: 1.1em !important;
+		max-width: 1.1em !important;
+		max-height: 1.1em !important;
 	}
 }
 
