@@ -210,11 +210,14 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-29YV7SY3QT"></script>
     <script>
+    // Check domain to avoid tracking people that like copying :)
+    if (window.location.hostname.includes("alexandrosstergiou.github.io")) { 
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
     gtag('config', 'G-29YV7SY3QT');
+    }
     </script>
 
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
