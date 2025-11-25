@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J20N7V1THW"></script>
+    <script>
+    // Check domain to avoid people that like copying :)
+    if (window.location.hostname.includes("alexandrosstergiou.github.io") || window.location.href.includes("TRANSPORTER")) { 
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-J20N7V1THW');
+    }else{
+        window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+    }
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>TRANSPORTER: Transferring Visual Semantics from VLM Manifolds</title>
+
+    <link rel="icon" type="image/svg+xml" href="resources/icons/TRANSPORTER_V1-icon.svg">
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="../../css/design.css">
+    <link rel="stylesheet" href="../../academicons/css/academicons.min.css"/>
+
+    <!-- Tailwind CSS (Added for Carousel) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Configure Tailwind to not reset existing Bootstrap styles (preflight: false)
+      tailwind.config = {
+        corePlugins: {
+          preflight: false,
+        }
+      }
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="academicons/css/academicons.min.css"/>
+
+    <style>
+
+      @font-face {
+        font-family: 'Serpentine_BoldOblique';
+        src:
+            url('resources/fonts/Serpentine_BoldOblique.ttf') 
+            format('opentype');
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: 'Serpentine_MediumOblique';
+        src:
+            url('resources/fonts/Serpentine_MediumOblique.ttf') 
+            format('opentype');
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: 'Serpentine_LightOblique';
+        src:
+            url('resources/fonts/Serpentine_LightOblique.ttf') 
+            format('opentype');
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      .transporterfont {
+        font-family: 'Serpentine_BoldOblique', sans-serif;
+      }
+
+      .transporterfontmedium {
+        font-family: 'Serpentine_MediumOblique', sans-serif;
+      }
+
+      .transporterfontlight {
+        font-family: 'Serpentine_LightOblique', sans-serif;
+      }
+
+      .button_c {
+        border: none;
+        color: black;
+        padding: .5em 1em;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 0.1em 0.1em;
+        -webkit-transition-duration: 0.8s; /* Safari Chrome */
+        -moz-transition-duration: 0.8; /* Firefox */
+        transition-duration: 0.8s;
+        border-radius: 0.4em;
+        cursor: pointer;
+        -webkit-touch-callout:none;
+        -webkit-user-select:none;
+        -moz-user-select:none;
+        -ms-user-select:none;
+        user-select:none;
+        cursor: pointer;
+      }
+      
+      .button_c:hover {
+        background-color: #00000015;
+        color: #1e4258;
+        box-shadow: 0 .4em .4em 0 rgba(0,0,0,0.24),0 .4em .4em 0 rgba(0,0,0,0.19);
+        cursor: pointer;
+
+      }
+      
+
+      .container-video {
+        position: relative;
+        width: 70%;
+        max-width: 1000px;
+        margin: 20px 0;
+        overflow: hidden;
+        display: inline-block;
+    }
+
+    .video-wrapper {
+        position: relative;
+        width: 30%;
+        height: auto;
+        display: inline-block;
+
+    }
+
+    video {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .video-wrapper video:first-child {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .video-wrapper video:last-child {
+        position: absolute;
+        top: 0;
+        left: 0;
+        clip-path: inset(0 50% 0 0);
+    }
+
+    .slider {
+        position: absolute;
+        top: 0;
+        left: 90%;
+        width: 4px;
+        height: 100%;
+        background-color: #fff;
+        cursor: pointer;
+        z-index: 1;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+        line-height: normal;
+        opacity: .7
+    }
+
+    .slider:hover {
+      opacity: 1
+  }
+
+  .slider:hover :before {
+    color: #fff;
+    border-color: #fff
+}
+
+  .slider:before {
+    content: '';
+    -webkit-mask: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+LnN0MHtmaWxsOiNGRkZGRkY7ZW5hYmxlLWJhY2tncm91bmQ6bmV3ICAgIDt9PC9zdHlsZT48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTgwLjIsMTA4LjFsNjEuNy02Mi4yYzMuOC0zLjgsOC44LTUuOSwxNC4xLTUuOWM1LjMsMCwxMC40LDIuMSwxNC4xLDUuOWw2MS43LDYyLjJjMy45LDMuOSw5LjEsNS45LDE0LjIsNS45czEwLjItMS45LDE0LjEtNS44YzcuOC03LjgsNy45LTIwLjQsMC4xLTI4LjNsLTYxLjctNjIuMkMyODcuMiw2LjMsMjcyLjEsMCwyNTYsMHMtMzEuMiw2LjMtNDIuNSwxNy44TDE1MS44LDgwYy03LjgsNy44LTcuNywyMC41LDAuMSwyOC4zQzE1OS44LDExNiwxNzIuNCwxMTUuOSwxODAuMiwxMDguMXoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMzMxLjgsNDAzLjlsLTYxLjcsNjIuMmMtMy44LDMuOC04LjgsNS45LTE0LjEsNS45Yy01LjMsMC0xMC40LTIuMS0xNC4xLTUuOWwtNjEuNy02Mi4yYy03LjgtNy44LTIwLjQtNy45LTI4LjMtMC4xYy03LjgsNy44LTcuOSwyMC40LTAuMSwyOC4zbDYxLjcsNjIuMmMxMS40LDExLjQsMjYuNSwxNy44LDQyLjUsMTcuOHMzMS4yLTYuMyw0Mi41LTE3LjhsNjEuNy02Mi4yYzcuOC03LjgsNy43LTIwLjUtMC4xLTI4LjNDMzUyLjIsMzk2LDMzOS42LDM5Ni4xLDMzMS44LDQwMy45eiIvPjwvc3ZnPg==) no-repeat 100% 100%;
+    mask: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+LnN0MHtmaWxsOiNGRkZGRkY7ZW5hYmxlLWJhY2tncm91bmQ6bmV3ICAgIDt9PC9zdHlsZT48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTgwLjIsMTA4LjFsNjEuNy02Mi4yYzMuOC0zLjgsOC44LTUuOSwxNC4xLTUuOWM1LjMsMCwxMC40LDIuMSwxNC4xLDUuOWw2MS43LDYyLjJjMy45LDMuOSw5LjEsNS45LDE0LjIsNS45czEwLjItMS45LDE0LjEtNS44YzcuOC03LjgsNy45LTIwLjQsMC4xLTI4LjNsLTYxLjctNjIuMkMyODcuMiw2LjMsMjcyLjEsMCwyNTYsMHMtMzEuMiw2LjMtNDIuNSwxNy44TDE1MS44LDgwYy03LjgsNy44LTcuNywyMC41LDAuMSwyOC4zQzE1OS44LDExNiwxNzIuNCwxMTUuOSwxODAuMiwxMDguMXoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMzMxLjgsNDAzLjlsLTYxLjcsNjIuMmMtMy44LDMuOC04LjgsNS45LTE0LjEsNS45Yy01LjMsMC0xMC40LTIuMS0xNC4xLTUuOWwtNjEuNy02Mi4yYy03LjgtNy44LTIwLjQtNy45LTI4LjMtMC4xYy03LjgsNy44LTcuOSwyMC40LTAuMSwyOC4zbDYxLjcsNjIuMmMxMS40LDExLjQsMjYuNSwxNy44LDQyLjUsMTcuOHMzMS4yLTYuMyw0Mi41LTE3LjhsNjEuNy02Mi4yYzcuOC03LjgsNy43LTIwLjUtMC4xLTI4LjNDMzUyLjIsMzk2LDMzOS42LDM5Ni4xLDMzMS44LDQwMy45eiIvPjwvc3ZnPg==) no-repeat 100% 100%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+    width: 26px;
+    color:#fff;
+    height: 26px;
+    padding: 0;
+    background-color: currentColor;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%) rotate(90deg);
+    -ms-transform: translate(-50%, -50%) rotate(90deg);
+    transform: translate(-50%, -50%) rotate(90deg);
+    z-index: 2;
+    font-size: 0
+}
+
+  .slider:after {
+    top: 50%;
+    left: 0;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 100%;
+    height: 3px
+}
+
+    .b-dics__slider {
+      color: #fff;
+      position: absolute;
+      left: 90%;
+      top: 0;
+      cursor: pointer;
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%);
+      height: 100%;
+      width: 3px;
+      padding: 0 30px;
+      z-index: 1;
+      -ms-touch-action: none;
+      touch-action: none;
+      line-height: normal;
+      opacity: .7
+  }
+  
+  
+  .b-dics__slider:before {
+      content: '';
+      -webkit-mask: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+LnN0MHtmaWxsOiNGRkZGRkY7ZW5hYmxlLWJhY2tncm91bmQ6bmV3ICAgIDt9PC9zdHlsZT48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTgwLjIsMTA4LjFsNjEuNy02Mi4yYzMuOC0zLjgsOC44LTUuOSwxNC4xLTUuOWM1LjMsMCwxMC40LDIuMSwxNC4xLDUuOWw2MS43LDYyLjJjMy45LDMuOSw5LjEsNS45LDE0LjIsNS45czEwLjItMS45LDE0LjEtNS44YzcuOC03LjgsNy45LTIwLjQsMC4xLTI4LjNsLTYxLjctNjIuMkMyODcuMiw2LjMsMjcyLjEsMCwyNTYsMHMtMzEuMiw2LjMtNDIuNSwxNy44TDE1MS44LDgwYy03LjgsNy44LTcuNywyMC41LDAuMSwyOC4zQzE1OS44LDExNiwxNzIuNCwxMTUuOSwxODAuMiwxMDguMXoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMzMxLjgsNDAzLjlsLTYxLjcsNjIuMmMtMy44LDMuOC04LjgsNS45LTE0LjEsNS45Yy01LjMsMC0xMC40LTIuMS0xNC4xLTUuOWwtNjEuNy02Mi4yYy03LjgtNy44LTIwLjQtNy45LTI4LjMtMC4xYy03LjgsNy44LTcuOSwyMC40LTAuMSwyOC4zbDYxLjcsNjIuMmMxMS40LDExLjQsMjYuNSwxNy44LDQyLjUsMTcuOHMzMS4yLTYuMyw0Mi41LTE3LjhsNjEuNy02Mi4yYzcuOC03LjgsNy43LTIwLjUtMC4xLTI4LjNDMzUyLjIsMzk2LDMzOS42LDM5Ni4xLDMzMS44LDQwMy45eiIvPjwvc3ZnPg==) no-repeat 100% 100%;
+      mask: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1zbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+LnN0MHtmaWxsOiNGRkZGRkY7ZW5hYmxlLWJhY2tncm91bmQ6bmV3ICAgIDt9PC9zdHlsZT48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTgwLjIsMTA4LjFsNjEuNy02Mi4yYzMuOC0zLjgsOC44LTUuOSwxNC4xLTUuOWM1LjMsMCwxMC40LDIuMSwxNC4xLDUuOWw2MS43LDYyLjJjMy45LDMuOSw5LjEsNS45LDE0LjIsNS45czEwLjItMS45LDE0LjEtNS44YzcuOC03LjgsNy45LTIwLjQsMC4xLTI4LjNsLTYxLjctNjIuMkMyODcuMiw2LjMsMjcyLjEsMCwyNTYsMHMtMzEuMiw2LjMtNDIuNSwxNy44TDE1MS44LDgwYy03LjgsNy44LTcuNywyMC41LDAuMSwyOC4zQzE1OS44LDExNiwxNzIuNCwxMTUuOSwxODAuMiwxMDguMXoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMzMxLjgsNDAzLjlsLTYxLjcsNjIuMmMtMy44LDMuOC04LjgsNS45LTE0LjEsNS45Yy01LjMsMC0xMC40LTIuMS0xNC4xLTUuOWwtNjEuNy02Mi4yYy03LjgtNy44LTIwLjQtNy45LTI4LjMtMC4xYy03LjgsNy44LTcuOSwyMC40LTAuMSwyOC4zbDYxLjcsNjIuMmMxMS40LDExLjQsMjYuNSwxNy44LDQyLjUsMTcuOHMzMS4yLTYuMyw0Mi41LTE3LjhsNjEuNy02Mi4yYzcuOC03LjgsNy43LTIwLjUtMC4xLTI4LjNDMzUyLjIsMzk2LDMzOS42LDM5Ni4xLDMzMS44LDQwMy45eiIvPjwvc3ZnPg==) no-repeat 100% 100%;
+      mask-size: cover;
+      -webkit-mask-size: cover;
+      width: 26px;
+      height: 26px;
+      padding: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%) rotate(90deg);
+      -ms-transform: translate(-50%, -50%) rotate(90deg);
+      transform: translate(-50%, -50%) rotate(90deg);
+      z-index: 2;
+      font-size: 0
+  }
+  
+  .b-dics__slider:after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%);
+      height: 100%;
+      width: 3px;
+      background-color: currentColor;
+      z-index: 1
+  }
+
+  
+
+    #slider {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 4px;
+        height: 100%;
+        background-color: #418fc0;
+        cursor: ew-resize;
+        z-index: 10;
+    }
+      .button {
+        background-color: black;
+        border: none;
+        color: white;
+        padding: 1em 2em;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 0.8em;
+        margin: 0.3em 0.3em;
+        -webkit-transition-duration: 0.8s; /* Safari Chrome */
+        -moz-transition-duration: 0.8; /* Firefox */
+        transition-duration: 0.8s;
+        cursor: pointer;
+        border-radius: 0.7em;
+        -webkit-touch-callout:none;
+        -webkit-user-select:none;
+        -moz-user-select:none;
+        -ms-user-select:none;
+        user-select:none
+      
+      }
+      
+      .button:hover {
+        background-color: #1E4258;
+        color: white;
+        box-shadow: 0 2em 2em 0 rgba(0,0,0,0.24),0 1em 1em 0 rgba(0,0,0,0.19);
+      }
+      
+      .circle{
+        border-radius:50%;
+      }
+      
+      .xxlarge{
+        font-size:240%;
+      }
+      
+      .xlarge{
+        font-size:150%;
+      }
+      
+      .hover-grey:hover{
+        color:#1E4258;
+      }
+      
+      .white{
+        color:#fff;
+      }
+      
+      .light-grey{
+        color: #f1f1f1;
+      }
+      
+      .boxed {
+        border-style: solid none solid none ;
+        border-width: 0.5%;
+        border-color: white;
+      }
+      
+      .boxed_grey {
+        border-style: solid none none none;
+        border-width: 0.05em;
+        border-color: #f8f9fa
+      }
+      
+      .middle{
+        text-align:center;
+      }
+        
+      .div1{
+          border-radius: 35px;
+      }
+
+      .div2{
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        word-break: break-all;
+        word-wrap: break-word;
+        color: #333;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      .divtext1{
+          font-size: 40px;
+      }
+
+      .font1{
+          font-family: 'Tenor Sans', sans-serif;
+      }
+
+      .font2{
+          font-family: 'Roboto', sans-serif;
+      }
+
+      .btndes{
+        border-radius: 20px;
+        background-color: #ffffff;
+        color: white;
+        text-decoration: none !important;
+      }
+
+      .btndes:hover {
+        background-color:black;
+        color: white;
+      }
+
+      .navsize1{
+          font-size: 25px;
+      }
+      .navsize{
+          font-size: 18px;;
+      }
+      .absfont{
+          font-size: 17px;;
+      }
+
+      .navcolor{
+          background-color: #363636;
+      }
+
+      .navfontc{
+          color: white;
+      }
+
+      .margin-left{
+          margin-left: 10px;
+      }
+
+      .size2{
+          font-size: 23px;
+      }
+
+      .datalink{
+          background-color:#E2E0E4;
+          border-radius: 10px;
+
+      }
+
+      .margin{
+          margin-left: 10px;
+          font-size: 15px;
+      }
+
+      .card {
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+      }
+
+      .card {
+        margin-top: 10px;
+        box-sizing: border-box;
+        border-radius: 2px;
+        background-clip: padding-box;
+        min-height:200px;
+      }
+
+      .card span.card-title {
+        color: #fff;
+        font-size: 24px;
+        font-weight: 300;
+        text-transform: uppercase;
+      }
+
+      .card .card-image {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card .card-image img {
+        border-radius: 2px 2px 0 0;
+        background-clip: padding-box;
+        position: relative;
+        z-index: -1;
+      }
+
+      .card .card-image span.card-title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 16px;
+      }
+
+      .card .card-content {
+        padding: 10px;
+        border-radius: 0 0 2px 2px;
+        background-clip: padding-box;
+        box-sizing: border-box;
+      }
+
+      .card .card-content p {
+        margin: 0;
+        color: inherit;
+      }
+
+      .card .card-content span.card-title {
+        line-height: 48px;
+      }
+
+      .card .card-action {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 16px;
+      }
+
+      .card .card-action a {
+        color: #ffab40;
+        margin-right: 16px;
+        transition: color 0.3s ease;
+        text-transform: uppercase;
+      }
+
+      .card .card-action a:hover {
+        color: #ffd8a6;
+        text-decoration: none;
+      }
+
+      .navbar {
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        z-index: 100;
+      }
+
+      .navbar a {
+        float: left;
+        display: block;
+        color: inherit;
+        opacity: 1;
+        margin:0em 0em;
+        text-align: center;
+        padding: .4em .4em;
+        text-decoration: none;
+        font-size: .9em;
+      }
+      
+      .navbar a:hover {
+        background: #000;
+      }
+      
+      #nav-icon {
+        color: white;
+      }
+      
+      #dropdown-menu {
+        position: fixed;
+        color: #fff;
+        width: 10em;
+        z-index: 100;
+        filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
+      }
+
+      #dropdown-menu > ul {
+        list-style-type: none;
+        margin: 0;
+        overflow: auto;
+        padding: 0;
+        display:block;
+        width: inherit;
+        text-align: start;
+        color: #fff;
+        -webkit-transition:all .5s;
+        -moz-transition:all .5s;
+        transition:all .5s;
+        padding: 1.5em;
+        margin: -2em -.5em;
+      }
+      
+      #dropdown-menu >ul li a{
+        display:inline-block;
+        padding:0px;
+        background:black;
+        width: 9em;
+        padding:0.2em;
+      }
+      
+      #dropdown-menu >ul li a:hover{
+        box-shadow: 0em 0.2em 0.2em 0em rgba(0, 0, 0, 0.55);
+      }
+      
+      #dropdown-menu > ul li:first-child a{
+        border-radius: 0.8em 0.8em 0 0;
+      }
+      
+      #dropdown-menu > ul li:last-child a{
+        border-radius: 0 0 0.8em 0.8em;
+      }
+
+      #social-platforms,
+      #page-anchors {
+        position:relative;
+        font-size:1.1rem;
+        text-align:center;
+        height:auto;
+        overflow:hidden;
+      }
+
+
+      #social-platforms a{
+        background: rgba(255, 255, 255, 0.1);
+        text-align:center;
+        position:relative;
+        display:inline-block;
+        width:1.7em;
+        height:1.7em;
+        font-size:1.4em;
+        color:#fff;
+        line-height:1.05em;
+        border:0;
+        cursor:pointer;
+        margin:0.3em 0.2em;
+        padding:0.15em;
+        box-shadow: 0em 0.35em 0.35em 0em rgba(0, 0, 0, 0.55);
+        border-radius:0.3em 0.3em 0.3em 0.3em;
+        -webkit-transition:all .5s;
+        -moz-transition:all .5s;
+        transition:all .5s;
+      }
+
+
+      #page-anchors button {
+        background: #000;
+        text-align:center;
+        position:relative;
+        display:inline-block;
+        width:1.7em;
+        height:1.7em;
+        font-size:1.7em;
+        color:#fff;
+        line-height:1.05em;
+        border:0;
+        cursor:pointer;
+        margin:0.6em 0.3em;
+        padding:0.17em;
+        box-shadow: 0em 0.3em 0.3em 0em rgba(0, 0, 0, 0.55);
+        border-radius:0.3em 0.3em 0.3em 0.3em;
+        -webkit-transition:all .5s;
+        -moz-transition:all .5s;
+        transition:all .5s;
+      }
+
+      #social-platforms a span {
+        display:none;
+      }
+
+      #social-platforms a:after,
+      #page-anchors button:after {
+        opacity:0;
+        font-size:.5em;
+        font-weight:30em;
+        color:#fff;
+        background:#000;
+        content:attr(data-title);
+        white-space:nowrap;
+        display:block;
+        position:absolute;
+        left:0;
+        bottom:60em;
+        z-index:-5;
+        cursor:help;
+        padding:3em 8em;
+        -webkit-transition:all .5s;
+        -moz-transition:all .5s;
+        transition:all .5s;
+      }
+
+      #social-platforms a:before,
+      #page-anchors button:before {
+        opacity:0;
+        display:block;
+        position:absolute;
+        bottom:5em;
+        left:50%;
+        margin-left:-5em;
+        z-index:9;
+        cursor:help;
+        content:'';
+        width:0;
+        height:0;
+        border-left:5em solid transparent;
+        border-right:5em solid transparent;
+        border-top:5em solid #000;
+        -webkit-transition:all .5s;
+        -moz-transition:all .5s;
+        transition:all .5s;
+        }
+
+      #social-platforms a:hover,
+      #page-anchors a:hover,
+      #page-anchors button:hover {
+        color:white;
+        background-color: #1E4258;
+        box-shadow: 0 0.1em 0.1em 0 rgba(0, 0, 0, 0.45);
+        }
+
+      #social-platforms a:hover:before, #social-platforms a:hover:after,
+      #page-anchors a:hover:before, #page-anchors a:hover:after,
+      #page-anchors button:hover:before, #page-anchors button:hover:after  {
+        opacity:1;
+        z-index:50;
+      }
+
+      #project-platforms {
+        position:relative;
+        font-size:1.2rem;
+        text-align:center;
+        height:auto;
+        overflow:visible;
+      }
+      
+      #project-platforms a {
+        background: rgba(0, 0, 0, 0.9);
+        text-align:center;
+        position:relative;
+        display:inline-block;
+        width:1.4em;
+        height:1.4em;
+        font-size:1.75em;
+        color:#fff;
+        line-height:1.05em;
+        border:0;
+        cursor:pointer;
+        margin:0.9em 0.2em;
+        padding:0.15em;
+        box-shadow: 0em 0.2em 0.2em 0em rgba(190, 190, 190, 0.65);
+        border-radius:0.2em 0.2em 0.2em 0.2em;
+        -webkit-transition:all .5s;
+        -moz-transition:all .5s;
+        transition:all .5s;
+      }
+      
+      #project-platforms a span {
+        display:none;
+      }
+      
+      #project-platforms a:after {
+        opacity:0;
+        font-size:.5em;
+        font-weight:30em;
+        color:#000;
+        background:#000;
+        content:attr(data-title);
+        white-space:nowrap;
+        display:block;
+        position:absolute;
+        left:0;
+        bottom:60em;
+        z-index:-5;
+        cursor:help;
+        padding:3em 8em;
+        -webkit-transition:all .5s;
+        -moz-transition:all .5s;
+        transition:all .5s;
+      }
+      
+      #project-platforms a:before {
+        opacity:0;
+        display:block;
+        position:absolute;
+        bottom:5em;
+        left:50%;
+        margin-left:-5em;
+        z-index:9;
+        cursor:help;
+        content:'';
+        width:0;
+        height:0;
+        border-left:5em solid transparent;
+        border-right:5em solid transparent;
+        border-top:5em solid #000;
+        -webkit-transition:all .5s;
+        -moz-transition:all .5s;
+        transition:all .5s;
+        }
+      
+      #project-platforms a:hover {
+        background-color: #1E4258;
+        color:#fff;
+        box-shadow: 0 0.1em 0.1em 0 rgba(70, 70, 70, 0.45);
+        }
+        
+        /* Carousel Styles */
+        .video-transition {
+            transition: opacity 0.6s ease-in-out;
+        }
+        
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .container {
+            width: 80% !important;
+            max-width: 1000px !important;
+        }
+
+        .coming-soon-wrapper {
+          position: relative;
+          display: inline-block;
+        }
+        .coming-soon-trigger {
+          position: relative;
+          z-index: 1;
+        }
+        .coming-soon-bubble {
+          position: absolute;
+          left: 50%;
+          top: 0%;
+          transform: translate(-1%, -1px) scale(0.35);
+          background: #000;
+          color: #fff;
+          padding: 0.35em 0.6em;
+          border-radius: 0.5em;
+          font-size: 0.7em;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+        .coming-soon-bubble::after {
+          content: '';
+          position: absolute;
+          left: 50%;
+          bottom: -0.3em;
+          transform: translateX(-10%);
+          border: 0.35em solid transparent;
+          border-top-color: #000;
+        }
+        .coming-soon-bubble.is-visible {
+          opacity: 1;
+          transform: translate(-50%, -36px) scale(1);
+        }
+        
+    </style>
+    <script>
+      var bars = null;
+      var dropdown = null;
+      var whiteContainers = null;
+      var scrolledContainerIndex = null;
+    
+      function toggleMenuVisibility() {
+        changeClass("nav-icon")
+        document.getElementById('dropdown-menu').classList.toggle('hidden');
+      }
+    
+      function adjustNavMenuColor(scroll) {
+        var topOfContainer = -1;
+    
+        if (!scroll) {
+          setTimeout(function() {
+            adjustNavMenuColor(document.body);
+          }, 1000);
+        } else {
+          for (var i = 0; i < whiteContainers.length; i++) {
+            var container = whiteContainers[i];
+    
+            if (container.previousElementSibling) {
+              topOfContainer += container.previousElementSibling.clientHeight;
+            }
+    
+            var bottomOfContainer = topOfContainer + container.clientHeight;
+    
+            if (scroll.scrollY >= topOfContainer && scroll.scrollY <= bottomOfContainer) {
+              bars.style.color = "#000";
+              dropdown.style.color = "#000";
+              scrolledContainerIndex = i;
+              break;
+            } else if (bars.style.color === "rgb(0, 0, 0)" && i > scrolledContainerIndex) {
+              bars.style.color = "#fff";
+              dropdown.style.color = "#fff";
+              break;
+            }
+            topOfContainer += container.clientHeight;
+          }
+        }
+      }
+    
+      function setupForScroll() {
+        bars = document.getElementById('nav-icon');
+        dropdown = document.getElementById('dropdown-menu');
+        whiteContainers = document.querySelectorAll('div.content.container');
+        adjustNavMenuColor(document.body);
+      }
+    
+      function changeClass(id){
+        var navicon = document.getElementById(id);
+    
+        if (navicon.className == "clickable las la-bars la"){
+          navicon.className = "clickable las la-times la";
+          document.getElementById('navbutton').style.backgroundColor = '#1E4258';
+        }else if (navicon.className == "clickable las la-times la"){
+          navicon.className = "clickable las la-bars la";
+          document.getElementById('navbutton').style.backgroundColor = '#000';
+        }
+      }
+    </script>
+    <script>
+      function displayForPublication(id) {
+        var elem = document.getElementById(id);
+    
+        if (elem) {
+          elem.classList.toggle('hidden', elem.classList.contains('hidden') !== true);
+        }
+      }
+    
+      function displaymenuitems(items) {
+        for (var item in items) {
+          var elem = document.getElementById(item);
+          if (elem) {
+            elem.classList.toggle('hidden', elem.classList.contains('hidden') !== true);
+          }
+        }
+      }
+    
+    window.onload = function(){
+          document.getElementById("nav-icon").addEventListener('click', changeClass);
+      }
+    
+    </script>
+  </head>
+  <body>
+    
+    <div id="nav" class="navbar">
+      <div id="page-anchors">
+          <button id="navbutton" onclick="toggleMenuVisibility()"><div class="navbutton"><i id="nav-icon" class="clickable las la-bars la"></i></button>
+  
+          <div id="dropdown-menu" class="hidden">
+            <ul>
+              <li><a href="#abstract">Abstract</a></li>
+              <li><a href="#method">Method</a></li>
+              <li><a href="#gallery">Gallery</a></li>
+              <li><a href="#comparison">Comparisons</a></li>
+              <li><a href="#cite">Citation</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="container div1" align="center" style="padding-top: 20px;">
+    <h1 class="divtext1 font1"><b><span class="transporterfont">TRANSPORTER</span>: Transferring Visual Semantics from VLM Manifolds </h1>
+    <h3 style="padding-top: 6px;" class="font1"><a href="https://alexandrosstergiou.github.io/" target="_blank">Alexandros Stergiou</a></h3>
+    <h4 class="font2">University of Twente, NL</h4> 
+
+    <div id="project-platforms">
+
+      <a href="#" target="_blank" data-title="ArXiv"><i class="ai ai-arxiv ai"></i><span>ArXiv</span></a>
+      <span class="coming-soon-wrapper">
+        <a href="#" target="_blank" data-title="GitHub" class="coming-soon-trigger"><i class="lab la-github"></i><span>GitHub</span></a>
+        <span class="coming-soon-bubble" aria-hidden="true">Coming soon</span>
+      </span>
+
+      <span class="coming-soon-wrapper">
+        <a href="#" target="_blank" data-title="Hugging Face" class="coming-soon-trigger">
+          <img src="resources/icons/hf_w.png" style="width: 1em; height: 1em; vertical-align: top; filter: invert(0);" alt="HF">
+          <span>Data</span>
+        </a>
+        <span class="coming-soon-bubble" aria-hidden="true">Coming soon</span>
+      </span>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          document.querySelectorAll('.coming-soon-trigger').forEach(function (trigger) {
+            const bubble = trigger.nextElementSibling;
+            trigger.addEventListener('click', function (evt) {
+              evt.preventDefault();
+              if (!bubble) return;
+              bubble.classList.add('is-visible');
+              if (trigger._comingSoonTimer) clearTimeout(trigger._comingSoonTimer);
+              trigger._comingSoonTimer = setTimeout(function () {
+                bubble.classList.remove('is-visible');
+                trigger._comingSoonTimer = null;
+              }, 1600);
+            });
+          });
+        });
+      </script>
+      <!-- Coming soon bubble END -->
+
+
+    </div>
+    
+
+    </b>
+    </div>
+  <br><br>
+  <div class="container" align="center">
+      <video width="100%" playsinline autoplay muted loop>
+        <source src="resources/videos/teaser.mp4" type="video/mp4">
+      </video>
+  </div>
+  <br><br>
+  <div class="container" id="abstract">
+
+      <h1>Abstract</h1> <br>
+      <p class="absfont" style="text-align: justify;">How do video understanding models acquire their answers? Although current Vision Language Models (VLMs) reason over complex scenes with diverse objects, action performances, and scene dynamics, understanding and controlling their internal processes remains an open challenge. Motivated by recent advancements in text-to-video (T2V) generative models, this paper introduces a logits-to-video (L2V) task alongside a model-independent approach, <span class="transporterfontmedium">TRANSPORTER</span>, to generate videos that capture the underlying rules behind VLMs' predictions. Given the high-visual-fidelity produced by T2V models, <span class="transporterfontmedium">TRANSPORTER</span> learns an optimal transport coupling to VLM's high-semantic embedding spaces. In turn, logit scores define embedding directions for conditional video generation. <span class="transporterfontmedium">TRANSPORTER</span> generates videos that reflect caption changes over diverse object attributes, action adverbs, and scene context. Quantitative and qualitative evaluations across VLMs demonstrate that L2V can provide a fidelity-rich, novel direction for model interpretability that has not been previously explored.</p>
+  </div>
+  <br><br>
+  <div class="container" id="method">
+    <h1>Method Overview</h1> <br>
+        <div class="text-center">
+          <div style="position:relative;">
+                <img class="static" src="resources/figs/TRANSPORTER_V1-main.svg"  width="100%";/>
+                <b>L2V overview</b>
+            </div>
+            <div style="display: flex; justify-content: center; width: 100%;">
+                <img src="resources/figs/TRANSPORTER_V1-main_b.svg" style="width: 26%; padding: 1px;" />
+                <img src="resources/figs/TRANSPORTER_V1-main_c.svg" style="width: 33%; padding: 1px;" />
+                <img src="resources/figs/TRANSPORTER_V1-main_d.svg" style="width: 41%; padding: 1px;" />
+            </div>
+            <div style="display: flex; justify-content: center; width: 100%; margin-top: 5px;">
+                <b style="width: 29%; text-align: center;">Coupling network training \(\Phi\)</b>
+                <b style="width: 36%; text-align: center;">Concept bank \(\mathbf{Q}\)</b>
+                <b style="width: 35%; text-align: center;">Inference step</b>
+            </div>
+            <div style="margin-top: 10px;">
+                    <p class="absfont" style="text-align: justify;"><b>L2V with <span class="transporterfontmedium">TRANSPORTER</span></b>: Embeddings \(\mathbf{z}_\Xi \in \mathbb{R}^\Xi\) are coupled with network \(\Phi\) and concept bank \(\mathbf{Q}\). <b>Coupling network</b> \(\Phi\) projects \(\mathbf{z}_\Xi\) with condition \(\pi_\Xi\) to \(\widehat{\mathbf{z}}_{\Omega_1}=\Phi_{\Omega_1}(\mathbf{z}_\Xi,\pi_\Xi)\). Latents \(\widehat{\mathbf{z}}_{\Omega_2} \in \mathbb{R}^\Omega\) are obtained via \(\Phi_{\Omega_2}\) over decoder \(\mathcal{D}_\Xi\) and encoder \(\mathcal{E}_\Omega\). The Learnable Optimal Transport (\(\rho\)-OT) uses projection vectors \(\mathbf{p}_{\Omega_1},\mathbf{p}_{\Omega_2}\) to transport embeddings to \(\tilde{\mathbf{z}}_\Omega\). <b>Concept bank</b> \(\mathbf{Q}=\{\mathbf{q}_o:o\in \mathcal{O}\}\) is trained using probability path difference \(\Delta v\) weighted by logit distribution change \(\Delta \omega\). <b>Inference</b>: Latents \(\mathbf{q}_o\) are added to conditions to transport noise \(\mathbf{\epsilon}\sim \mathcal{N}(0,\mathbf{I})\) and generate videos.</p>
+                </div>
+    </div>
+    <br><br>
+</div>
+<br><br>
+  <div class="container" id="gallery">
+      <h1>Results Gallery</h1> <br> <br> <br>
+      <!-- Carousel 1 -->
+      <h3 class="font1" style="text-align: left;">Active object modulations</h3>
+      <p class="absfont" style="text-align: justify;"> <span class="transporterfontmedium">TRANSPORTER</span> can generate videos to visualize VLM logit transitions between different object attributes, such as color or material types. The sharpness of the transition also varies across modulations.</p>
+      <br>
+      <br>
+      <div class="text-center" style="width: 100%;position:relative; margin-bottom: 20px;">
+          <div class="flex justify-between items-center mb-6 font1 w-full" style="font-size: 1.5em;">
+            <br>
+              <span class="font-bold">0</span>
+              <div class="relative flex-grow mx-4 h-0.5 bg-black">
+                  <div class="absolute left-1/2 -top-12 -translate-x-1/2 -translate-y-full text-3xl">\( \mathbf{q} \)</div>
+                  <div id="modText1" class="absolute left-1/2 -top-2 -translate-x-1/2 -translate-y-full font-normal whitespace-nowrap flex items-center justify-center"></div>
+                  <div id="modelText1" class="absolute left-1/2 top-4 -translate-x-1/2 font-normal whitespace-nowrap flex items-center justify-center"></div>
+                  <div class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-0.5 w-3 h-3 border-l-4 border-b-4 border-black rotate-45"></div>
+                  <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-0.5 w-3 h-3 border-r-4 border-t-4 border-black rotate-45"></div>
+              </div>
+              <span class="font-bold">1</span>
+          </div>
+          <br>
+          <div class="relative w-full bg-black rounded-xl overflow-hidden shadow-2xl border border-gray-800 group mx-auto" style="aspect-ratio: 6/1;">
+            <video id="videoSlotA1" class="absolute inset-0 w-full h-full object-cover video-transition opacity-100 z-10" muted playsinline></video>
+            <video id="videoSlotB1" class="absolute inset-0 w-full h-full object-cover video-transition opacity-0 z-0" muted playsinline></video>
+            <div id="errorMessage1" class="absolute inset-0 flex items-center justify-center bg-gray-800 text-white hidden z-50">
+                <div class="text-center p-4"><p class="text-xl font-bold mb-2">Video not found</p><p class="text-sm text-gray-400" id="errorText1">Check console/filepaths</p></div>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none z-20"></div>
+            <button onclick="carousels[0].prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/80 text-white p-3 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 -ml-2 group-hover:ml-0 z-30" aria-label="Previous Video">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+            </button>
+            <button onclick="carousels[0].nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/80 text-white p-3 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 -mr-2 group-hover:mr-0 z-30" aria-label="Next Video">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+            </button>
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex justify-center gap-2 px-3 py-2 bg-black/30 rounded-full z-30" id="dotsContainer1"></div>
+        </div>
+      </div>
+      <br>
+      <br>
+
+
+      <!-- Carousel 2 -->
+      <h3 class="font1" style="text-align: left;">Action modulations</h3>
+      <p class="absfont" style="text-align: justify;"> In actions where their performance is proximal, <span class="transporterfontmedium">TRANSPORTER</span> modulations show that small and distinct changes are learned by VLMs. The difference in speed can be seen in cases where action verbs differ significantly in their executions. Transitions between actions with even larger differences in their executions are simultaneously.</p>
+      <br>
+      <br>
+      <div class="text-center" style="width: 100%;position:relative; margin-bottom: 20px;">
+          <div class="flex justify-between items-center mb-6 font1 w-full" style="font-size: 1.5em;">
+              <span class="font-bold">0</span>
+              <div class="relative flex-grow mx-4 h-0.5 bg-black">
+                  <div class="absolute left-1/2 -top-12 -translate-x-1/2 -translate-y-full text-3xl">\( \mathbf{q} \)</div>
+                  <div id="modText2" class="absolute left-1/2 -top-2 -translate-x-1/2 -translate-y-full font-normal whitespace-nowrap flex items-center justify-center"></div>
+                  <div id="modelText2" class="absolute left-1/2 top-4 -translate-x-1/2 font-normal whitespace-nowrap flex items-center justify-center"></div>
+                  <div class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-0.5 w-3 h-3 border-l-4 border-b-4 border-black rotate-45"></div>
+                  <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-0.5 w-3 h-3 border-r-4 border-t-4 border-black rotate-45"></div>
+              </div>
+              <span class="font-bold">1</span>
+          </div>
+          <br>
+          <div class="relative w-full bg-black rounded-xl overflow-hidden shadow-2xl border border-gray-800 group mx-auto" style="aspect-ratio: 6/1;">
+            <video id="videoSlotA2" class="absolute inset-0 w-full h-full object-cover video-transition opacity-100 z-10" muted playsinline></video>
+            <video id="videoSlotB2" class="absolute inset-0 w-full h-full object-cover video-transition opacity-0 z-0" muted playsinline></video>
+            <div id="errorMessage2" class="absolute inset-0 flex items-center justify-center bg-gray-800 text-white hidden z-50">
+                <div class="text-center p-4"><p class="text-xl font-bold mb-2">Video not found</p><p class="text-sm text-gray-400" id="errorText2">Check console/filepaths</p></div>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none z-20"></div>
+            <button onclick="carousels[1].prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/80 text-white p-3 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 -ml-2 group-hover:ml-0 z-30" aria-label="Previous Video">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+            </button>
+            <button onclick="carousels[1].nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/80 text-white p-3 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 -mr-2 group-hover:mr-0 z-30" aria-label="Next Video">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+            </button>
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex justify-center gap-2 px-3 py-2 bg-black/30 rounded-full z-30" id="dotsContainer2"></div>
+        </div>
+      </div>
+      <br>
+      <br>
+
+      <!-- Carousel 3 -->
+      <h3 class="font1" style="text-align: left;">Scene modulations</h3>
+      <p class="absfont" style="text-align: justify;"> The resulting videos show  <span class="transporterfontmedium">TRANSPORTER</span>'s ability to generate videos with in-context modulations. Aspects such as the performance of the action or the appearances of objects/actors remain constant throughout the transition between source and target logits.</p>
+      <br>
+      <br>
+      <div class="text-center" style="width: 100%;position:relative; margin-bottom: 20px;">
+          <div class="flex justify-between items-center mb-6 font1 w-full" style="font-size: 1.5em;">
+              <span class="font-bold">0</span>
+              <div class="relative flex-grow mx-4 h-0.5 bg-black">
+                  <div class="absolute left-1/2 -top-12 -translate-x-1/2 -translate-y-full text-3xl">\( \mathbf{q} \)</div>
+                  <div id="modText3" class="absolute left-1/2 -top-2 -translate-x-1/2 -translate-y-full font-normal whitespace-nowrap flex items-center justify-center"></div>
+                  <div id="modelText3" class="absolute left-1/2 top-4 -translate-x-1/2 font-normal whitespace-nowrap flex items-center justify-center"></div>
+                  <div class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-0.5 w-3 h-3 border-l-4 border-b-4 border-black rotate-45"></div>
+                  <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-0.5 w-3 h-3 border-r-4 border-t-4 border-black rotate-45"></div>
+              </div>
+              <span class="font-bold">1</span>
+          </div>
+          <br>
+          <div class="relative w-full bg-black rounded-xl overflow-hidden shadow-2xl border border-gray-800 group mx-auto" style="aspect-ratio: 6/1;">
+            <video id="videoSlotA3" class="absolute inset-0 w-full h-full object-cover video-transition opacity-100 z-10" muted playsinline></video>
+            <video id="videoSlotB3" class="absolute inset-0 w-full h-full object-cover video-transition opacity-0 z-0" muted playsinline></video>
+            <div id="errorMessage3" class="absolute inset-0 flex items-center justify-center bg-gray-800 text-white hidden z-50">
+                <div class="text-center p-4"><p class="text-xl font-bold mb-2">Video not found</p><p class="text-sm text-gray-400" id="errorText3">Check console/filepaths</p></div>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none z-20"></div>
+            <button onclick="carousels[2].prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/80 text-white p-3 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 -ml-2 group-hover:ml-0 z-30" aria-label="Previous Video">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+            </button>
+            <button onclick="carousels[2].nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/80 text-white p-3 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 -mr-2 group-hover:mr-0 z-30" aria-label="Next Video">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+            </button>
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex justify-center gap-2 px-3 py-2 bg-black/30 rounded-full z-30" id="dotsContainer3"></div>
+        </div>
+      </div>
+      <br>
+      <br>
+
+      <!-- Carousel 4 -->
+      <h3 class="font1" style="text-align: left;">Multiple modulations</h3>
+      <p class="absfont" style="text-align: justify;">In settings with combined modulation, transitions of individual logit pairs are visualized over different \( \Delta \omega\). </p>
+      <br>
+      <br>
+      <div class="text-center" style="width: 100%;position:relative; margin-bottom: 20px;">
+          <div class="flex justify-between items-center mb-6 font1 w-full" style="font-size: 1.5em;">
+              <span class="font-bold">0</span>
+              <div class="relative flex-grow mx-4 h-0.5 bg-black">
+                  <div class="absolute left-1/2 -top-12 -translate-x-1/2 -translate-y-full text-3xl">\( \mathbf{q} \)</div>
+                  <div id="modText4" class="absolute left-1/2 -top-2 -translate-x-1/2 -translate-y-full font-normal whitespace-nowrap flex items-center justify-center"></div>
+                  <div id="modelText4" class="absolute left-1/2 top-4 -translate-x-1/2 font-normal whitespace-nowrap flex items-center justify-center"></div>
+                  <div class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-0.5 w-3 h-3 border-l-4 border-b-4 border-black rotate-45"></div>
+                  <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-0.5 w-3 h-3 border-r-4 border-t-4 border-black rotate-45"></div>
+              </div>
+              <span class="font-bold">1</span>
+          </div>
+          <br>
+          <div class="relative w-full bg-black rounded-xl overflow-hidden shadow-2xl border border-gray-800 group mx-auto" style="aspect-ratio: 6/1;">
+            <video id="videoSlotA4" class="absolute inset-0 w-full h-full object-cover video-transition opacity-100 z-10" muted playsinline></video>
+            <video id="videoSlotB4" class="absolute inset-0 w-full h-full object-cover video-transition opacity-0 z-0" muted playsinline></video>
+            <div id="errorMessage4" class="absolute inset-0 flex items-center justify-center bg-gray-800 text-white hidden z-50">
+                <div class="text-center p-4"><p class="text-xl font-bold mb-2">Video not found</p><p class="text-sm text-gray-400" id="errorText4">Check console/filepaths</p></div>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none z-20"></div>
+            <button onclick="carousels[3].prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/80 text-white p-3 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 -ml-2 group-hover:ml-0 z-30" aria-label="Previous Video">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+            </button>
+            <button onclick="carousels[3].nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/80 text-white p-3 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 -mr-2 group-hover:mr-0 z-30" aria-label="Next Video">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+            </button>
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex justify-center gap-2 px-3 py-2 bg-black/30 rounded-full z-30" id="dotsContainer4"></div>
+        </div>
+      </div>
+  <br><br>
+ <div id="comparison">
+    <h1>Comparisons</h1> <br> <br>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-6xl mx-auto">
+        <div class="p-2">
+            <p class="absfont" style="text-align: justify;">Embedding similarity between <span class="transporterfontmedium">TRANSPORTER</span> and real videos. Cosine similarity \( cos \), \(l1/l2\) distance, and Kullback–Leibler divergence (KL) metrics are compared between mean encodings from VidChapters7M and generated videos.</p>
+            <img src="resources/tables/videollama3.svg" class="w-full h-auto" alt="VideoLLaMA 3">
+        </div>
+        <div class="p-2">
+            <video class="w-full h-auto" autoplay loop muted playsinline>
+                <source src="resources/videos/comparisons.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="p-2">
+            <img src="resources/tables/phi4.svg" class="w-full h-auto" alt="Phi 4">
+        </div>
+        <div class="p-2">
+            <img src="resources/tables/gemma3.svg" class="w-full h-auto" alt="Gemma 3">
+        </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-6xl mx-auto mt-8">
+        <div class="p-2 overflow-hidden">
+            <video id="seqVideo1" class="h-auto" style="width: 125%; max-width: none; margin-left: -12.5%;" muted playsinline>
+                <source src="resources/videos/videollama3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="p-2 overflow-hidden">
+            <video id="seqVideo2" class="h-auto" style="width: 125%; max-width: none; margin-left: -12.5%;" muted playsinline>
+                <source src="resources/videos/gemma3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="p-2 overflow-hidden">
+            <video id="seqVideo3" class="h-auto" style="width: 125%; max-width: none; margin-left: -12.5%;" muted playsinline>
+                <source src="resources/videos/phi4_mm.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const v1 = document.getElementById('seqVideo1');
+            const v2 = document.getElementById('seqVideo2');
+            const v3 = document.getElementById('seqVideo3');
+
+            if (v1 && v2 && v3) {
+                // Start the first video
+                v1.play().catch(e => console.log("Autoplay blocked for v1:", e));
+
+                v1.onended = function() {
+                    v2.currentTime = 0;
+                    v2.play();
+                };
+                v2.onended = function() {
+                    v3.currentTime = 0;
+                    v3.play();
+                };
+                v3.onended = function() {
+                    v1.currentTime = 0;
+                    v1.play();
+                };
+            }
+        });
+    </script>
+  </div>
+  <br><br>
+  <div id="cite">
+    <h1>Citation</h1> <br> <br>
+    <pre class="div2">@journal{stergiou2025transporter,
+      title={TRANSPORTER: Transferring Visual Semantics from VLM Manifolds},
+      author={Stergiou, Alexandros},
+      journal={arxiv},
+      year={2025}
+    }</pre>
+  </div>
+  <br><br>
+  <div id="contact">
+      <h1>Contact</h1> <br>
+      <p class="absfont">For questions you can drop an email to a dot g dot stergiou at utwente dot nl. </p> <a href= "mailto: a.g.stergiou@utwente.nl"><i class="fa-solid fa-paper-plane"></i> a.g.stergiou@utwente.nl</a> <br>
+  </div>
+  <div class="row align-items-center" >
+      <center>    
+      <div class="col thumb d-flex align-items-center">
+          <img class="img-fluid" src="img/UT_Logo_2400_Black_EN.png" style="max-width: 30%;" alt="">
+      </div>
+      </center>
+
+  </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" xintegrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" xintegrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" xintegrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Carousel Script -->
+    <script>
+        // --- CONFIGURATION ---
+        const videoFiles1 = [
+            "8a.mp4", "8b.mp4", "8c.mp4", "8d.mp4", "8e.mp4", "8f.mp4", "8g.mp4", "8h.mp4" 
+        ];
+        const modulations = [
+            ["\\(\\texttt{purple}\\)", "\\(\\texttt{pink}\\)"],
+            ["\\(\\texttt{starfish}\\)", "\\(\\texttt{seashell}\\)"],
+            ["\\(\\texttt{christmas tree}\\)", "\\(\\texttt{circle}\\)"],
+            ["\\(\\texttt{wood}\\)", "\\(\\texttt{metal}\\)"],
+            ["\\(\\texttt{book}\\)", "\\(\\texttt{newspaper}\\)"],
+            ["\\(\\texttt{mango}\\)", "\\(\\texttt{apple}\\)"],
+            ["\\(\\texttt{roll}\\)", "\\(\\texttt{brush}\\)"],
+            ["\\(\\texttt{typewriter}\\)", "\\(\\texttt{keyboard}\\)"]
+        ];
+        const models1 = ['VideoLLaMA 3','VideoLLaMA 3','VideoLLaMA 3','Gemma 3','Gemma 3','Gemma 3','Phi 4 MM','Phi 4 MM'];
+        const videoFiles2 = [
+            "9a.mp4", "9b.mp4", "9c.mp4", "9d.mp4", "9e.mp4", "9f.mp4", "9g.mp4", "9h.mp4" 
+        ];
+        const modulations2 = [
+            ["\\(\\texttt{surfing}\\)", "\\(\\texttt{kitesurfing}\\)"],
+            ["\\(\\texttt{roller skating}\\)", "\\(\\texttt{skateboarding}\\)"],
+            ["\\(\\texttt{running}\\)", "\\(\\texttt{spinning}\\)"],
+            ["\\(\\texttt{rolling}\\)", "\\(\\texttt{stretching}\\)"],
+            ["\\(\\texttt{stir}\\)", "\\(\\texttt{pour}\\)"],
+            ["\\(\\texttt{riding}\\)", "\\(\\texttt{leading}\\)"],
+            ["\\(\\texttt{toe bounding}\\)", "\\(\\texttt{head bouncing}\\)"],
+            ["\\(\\texttt{picks up}\\)", "\\(\\texttt{drags}\\)"]
+        ];
+        const models2 = ['VideoLLaMA 3','VideoLLaMA 3','VideoLLaMA 3','Gemma 3','Gemma 3','Gemma 3','Phi 4 MM','Phi 4 MM'];
+        const videoFiles3 = [
+            "10a.mp4", "10b.mp4", "10c.mp4", "10d.mp4", "10e.mp4", "10f.mp4" 
+        ];
+        const modulations3 = [
+            ["\\(\\texttt{parking lot}\\)", "\\(\\texttt{underpass}\\)"],
+            ["\\(\\texttt{grass}\\)", "\\(\\texttt{sandtrap}\\)"],
+            ["\\(\\texttt{outdoor}\\)", "\\(\\texttt{indoor}\\)"],
+            ["\\(\\texttt{clay}\\)", "\\(\\texttt{grass}\\)"],
+            ["\\(\\texttt{tree}\\)", "\\(\\texttt{roof}\\)"],
+            ["\\(\\texttt{overcast}\\)", "\\(\\texttt{clear sky}\\)"]
+        ];
+        const models3 = ['VideoLLaMA 3','VideoLLaMA 3','Gemma 3','Gemma 3','Phi 4 MM','Phi 4 MM'];
+        const videoFiles4 = [
+            "11a.mp4", "11b.mp4", "11c.mp4"
+        ];
+        const modulations4 = [
+            ["\\(\\texttt{bicycle}\\),\\(\\texttt{jacket}\\),\\(\\texttt{black}\\)", "\\(\\texttt{scooter}\\),\\(\\texttt{t-shirt}\\),\\(\\texttt{blue}\\)"],
+            ["\\(\\texttt{black}\\),\\(\\texttt{night}\\)", "\\(\\texttt{red}\\),\\(\\texttt{morning}\\)"],
+            ["\\(\\texttt{canoeing}\\),\\(\\texttt{lake}\\)", "\\(\\texttt{kayaking}\\),\\(\\texttt{river}\\)"]
+        ];
+        const models4 = ['VideoLLaMA 3','Gemma 3','Phi 4 MM'];
+        const FOLDER_PATH = "resources/videos/";
+        const AUTO_ROTATE_SECONDS = 4;
+
+        class VideoCarousel {
+            constructor(videoFiles, slotAId, slotBId, dotsId, errorMsgId, errorTextId, modulations = null, modTextId = null, models = null, modelTextId = null) {
+                this.videoFiles = videoFiles;
+                this.modulations = modulations;
+                this.modTextId = modTextId;
+                this.models = models;
+                this.modelTextId = modelTextId;
+                this.currentIndex = 0;
+                this.timer = null;
+                this.isInitialized = false;
+                
+                this.activeSlot = document.getElementById(slotAId);
+                this.inactiveSlot = document.getElementById(slotBId);
+                this.dotsContainer = document.getElementById(dotsId);
+                this.errorMsg = document.getElementById(errorMsgId);
+                this.errorText = document.getElementById(errorTextId);
+                this.modTextElement = this.modTextId ? document.getElementById(this.modTextId) : null;
+                this.modelTextElement = this.modelTextId ? document.getElementById(this.modelTextId) : null;
+                
+                this.init();
+            }
+
+            init() {
+                this.createDots();
+                const firstPath = `${FOLDER_PATH}${this.videoFiles[0]}`;
+                this.activeSlot.src = firstPath;
+                this.activeSlot.play().catch(e => console.log("Autoplay blocked:", e));
+                this.updateDots();
+                this.updateModulation(0);
+                this.updateModel(0);
+                this.startTimer();
+                this.isInitialized = true;
+            }
+
+            updateModulation(index) {
+                if (this.modulations && this.modTextElement && this.modulations[index]) {
+                    const mod = this.modulations[index];
+                    if (mod.length === 2) {
+                        this.modTextElement.innerHTML = `
+                            <div class="absolute right-full mr-2 top-1/2 -translate-y-1/2 whitespace-nowrap">
+                                <span class="inline-block border border-solid border-black rounded-md px-2 text-center">${mod[0]}</span>
+                            </div>
+                            <div>\\( \\rightarrow \\)</div>
+                            <div class="absolute left-full ml-2 top-1/2 -translate-y-1/2 whitespace-nowrap">
+                                <span class="inline-block border border-solid border-black rounded-md px-2 text-center">${mod[1]}</span>
+                            </div>`;
+                        if (window.MathJax) {
+                            MathJax.typesetPromise([this.modTextElement]).catch((err) => console.log('MathJax error:', err));
+                        }
+                    }
+                }
+            }
+
+            updateModel(index) {
+                if (this.models && this.modelTextElement && this.models[index]) {
+                    const modelName = this.models[index];
+                    const iconPath = `resources/icons/${modelName}.png`;
+                    this.modelTextElement.innerHTML = `<img src="${iconPath}" style="height: 1.5em; margin-right: 0.3em; transform: translateY(-0.1em);" alt="">${modelName}`;
+                }
+            }
+
+            loadVideo(index) {
+                if (index < 0) index = this.videoFiles.length - 1;
+                if (index >= this.videoFiles.length) index = 0;
+                
+                if (this.isInitialized && index === this.currentIndex) return;
+
+                this.inactiveSlot.onloadeddata = null;
+                this.inactiveSlot.onerror = null;
+
+                const nextPath = `${FOLDER_PATH}${this.videoFiles[index]}`;
+                this.inactiveSlot.src = nextPath;
+                this.inactiveSlot.load();
+
+                this.inactiveSlot.onerror = () => {
+                    this.errorMsg.classList.remove('hidden');
+                    this.errorText.innerText = `Could not load: ${this.videoFiles[index]}`;
+                };
+
+                this.inactiveSlot.onloadeddata = () => {
+                    this.errorMsg.classList.add('hidden');
+                    this.inactiveSlot.play().then(() => {
+                        this.inactiveSlot.classList.remove('opacity-0', 'z-0');
+                        this.inactiveSlot.classList.add('opacity-100', 'z-10');
+                        this.activeSlot.classList.remove('opacity-100', 'z-10');
+                        this.activeSlot.classList.add('opacity-0', 'z-0');
+
+                        this.currentIndex = index;
+                        this.updateDots();
+                        this.updateModulation(index);
+                        this.updateModel(index);
+
+                        setTimeout(() => {
+                            this.activeSlot.pause();
+                            this.activeSlot.currentTime = 0;
+                            const temp = this.activeSlot;
+                            this.activeSlot = this.inactiveSlot;
+                            this.inactiveSlot = temp;
+                        }, 600);
+                    }).catch(e => console.error("Play failed:", e));
+                };
+            }
+
+            createDots() {
+                this.dotsContainer.innerHTML = '';
+                this.videoFiles.forEach((_, index) => {
+                    const dot = document.createElement('button');
+                    dot.className = `w-4 h-4 rounded-full transition-all duration-300 border border-white/50 ${index === 0 ? 'bg-white shadow-lg' : 'bg-white/30 hover:bg-white/50'}`;
+                    dot.onclick = () => this.manualNavigate(index);
+                    dot.ariaLabel = `Go to video ${index + 1}`;
+                    this.dotsContainer.appendChild(dot);
+                });
+            }
+
+            updateDots() {
+                const dots = this.dotsContainer.children;
+                for (let i = 0; i < dots.length; i++) {
+                    if (i === this.currentIndex) {
+                        dots[i].className = 'w-4 h-4 rounded-full transition-all duration-300 border border-white/50 bg-white shadow-lg';
+                    } else {
+                        dots[i].className = 'w-4 h-4 rounded-full transition-all duration-300 border border-white/50 bg-white/30 hover:bg-white/50';
+                    }
+                }
+            }
+
+            nextSlide() {
+                this.manualNavigate(this.currentIndex + 1);
+            }
+
+            prevSlide() {
+                this.manualNavigate(this.currentIndex - 1);
+            }
+
+            manualNavigate(index) {
+                let newIndex = index;
+                if (newIndex >= this.videoFiles.length) newIndex = 0;
+                if (newIndex < 0) newIndex = this.videoFiles.length - 1;
+
+                this.loadVideo(newIndex);
+                this.resetTimer();
+            }
+
+            startTimer() {
+                if (this.timer) clearInterval(this.timer);
+                this.timer = setInterval(() => {
+                    this.nextSlide();
+                }, AUTO_ROTATE_SECONDS * 1000);
+            }
+
+            resetTimer() {
+                this.startTimer();
+            }
+        }
+
+        const carousels = [];
+        window.onload = function() {
+             document.getElementById("nav-icon").addEventListener('click', changeClass);
+
+             if (window.MathJax) {
+                 MathJax.typeset();
+             }
+
+             carousels.push(new VideoCarousel(videoFiles1, 'videoSlotA1', 'videoSlotB1', 'dotsContainer1', 'errorMessage1', 'errorText1', modulations, 'modText1', models1, 'modelText1'));
+             carousels.push(new VideoCarousel(videoFiles2, 'videoSlotA2', 'videoSlotB2', 'dotsContainer2', 'errorMessage2', 'errorText2', modulations2, 'modText2', models2, 'modelText2'));
+             carousels.push(new VideoCarousel(videoFiles3, 'videoSlotA3', 'videoSlotB3', 'dotsContainer3', 'errorMessage3', 'errorText3', modulations3, 'modText3', models3, 'modelText3'));
+             carousels.push(new VideoCarousel(videoFiles4, 'videoSlotA4', 'videoSlotB4', 'dotsContainer4', 'errorMessage4', 'errorText4', modulations4, 'modText4', models4, 'modelText4'));
+        }
+
+    </script>
+  </body>
+</html>

@@ -715,16 +715,18 @@ img {
 </script>
 
  <!-- Google tag (gtag.js) -->
- <script async src="https://www.googletagmanager.com/gtag/js?id=G-J20N7V1THW"></script>
- <script>
- // Check domain to avoid tracking people that like copying :)
- if (window.location.hostname.includes("alexandrosstergiou.github.io")) { 
- window.dataLayer = window.dataLayer || [];
- function gtag(){dataLayer.push(arguments);}
- gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J20N7V1THW"></script>
+    <script>
+    // Check domain to avoid people that like copying :)
+    if (window.location.href.includes("alexandrosstergiou.github.io")) { 
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
- gtag('config', 'G-J20N7V1THW');
- }
+    gtag('config', 'G-J20N7V1THW');
+    }else{
+        window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+    }
  </script>
 
 <script>
@@ -875,9 +877,13 @@ window.onload = function(){
     <h3 class="middle">News</h3>
     <div id="newsfeed">
       <p>
+      <b> [11-2025] </b> &nbsp; <b>R</b>: <a href="project_pages/TRANSPORTER/index.html" target="_blank"><font color="#1E4258">TRANSPORTER: Transferring Visual Semantics from VLM Manifolds <i class="fa-solid fa-up-right-from-square"></i></font></a> is now available.
+      <br style="line-height:1px;"\>
       <b> [08-2025] </b> &nbsp; <b>R</b>: We have released <a href="https://anaekin.github.io/MIMIC/" target="_blank"><font color="#1E4258">MIMIC <i class="fa-solid fa-up-right-from-square"></i></font></a>  for VLM explainability. Work led by <a href="https://www.linkedin.com/in/animesh-jain1203/" target="_blank"><font color="#1E4258">Animesh Jain <i class="fa-solid fa-up-right-from-square"></i></font></a>.
       <br style="line-height:1px;"\>
       <b> [05-2025] </b> &nbsp; <b>R</b>: <a href="https://link.springer.com/article/10.1007/s11263-025-02478-4" target="_blank"><font color="#1E4258">About Time: Advances, Challenges, and Outlooks of Action Understanding <i class="fa-solid fa-up-right-from-square"></i></font></a> is published in IJCV. 
+      <br style="line-height:1px;"\>
+      <b> [01-2025] </b> &nbsp; <b>P</b>: I'll be co-organizing <a href="https://thenccv.github.io/2025/" target="_blank"><font color="#1E4258">NCCV 2025 <i class="fa-solid fa-up-right-from-square"></i></font></a> in May 22-23 2025.
       <br style="line-height:1px;"\>
       <b> [11-2024] </b> &nbsp; <b>R</b>: We released a comprehensive review on action understanding tasks and advancements. <a href="https://arxiv.org/abs/2411.15106" target="_blank"><font color="#1E4258">Preprint <i class="fa-solid fa-up-right-from-square"></i></font></a> is now on arXiv!
       <br style="line-height:1px;"\>    
@@ -919,6 +925,42 @@ window.onload = function(){
 
 
     <!-- <h3 class="middle" style="margin-top:3em;">ARXIV PREPRINTS</h3> -->
+
+    <!-- TRANSPORTER: Transferring Visual Semantics from VLM Manifolds -->
+    <div class="row-padding">
+      <div class="row">
+        <div class="section">
+          <div class="list-image big">
+            <div style="width: 100px; overflow: hidden; margin: 17px 0; display: inline-block;">
+              <video src="project_pages/TRANSPORTER/resources/videos/videollama3.mp4" style="width: 143%; margin-left: -21.5%;" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+            </div>
+          </div>
+          <div class="list-description">
+            <br>
+            <span>Stergiou A.,<b> TRANSPORTER: Transferring Visual Semantics from VLM Manifolds </b></span><br> 
+            <span>arXiv 2025</span>
+            <br>
+            <div class="links">
+              <a href="#" target="_blank"><p class="ai ai-arxiv ai">&#32;</p></a>
+              <a href="#" target="_blank" style="font-style:normal;">arXiv&#8201;&#8201;&#8201;</a>
+              <a href="project_pages/TRANSPORTER/index.html" target="_blank"><p class="fa fa-globe">
+              </p>&#32; </a>
+              <a href="project_pages/TRANSPORTER/index.html" target="_blank">website&#8201;&#8201;&#8201;  </a>
+              <a href="#" target="_blank"><p class="fa-brands fa-github">&#32;</p></a>
+              <a href="#" target="_blank" style="font-style:normal;">code&#8201;&#8201;&#8201;</a>
+              <a href="#" target="_blank"><img src="project_pages/TRANSPORTER/resources/icons/hf_b.png" style="height: 1em; width: auto; vertical-align: 0.1em;"></a>
+              <a href="#" target="_blank" style="font-style:normal;">huggingface&#8201;&#8201;&#8201;</a>
+              <i class="clickable" style="font-style:normal;" onclick="displayBibtexForPublication('stergiou2025transporter')">&#8201;<span class="tex">BIBT<sub>e</sub>X</span> </i></a>
+            </div>
+            <p id="stergiou2025transporter" class="hidden" style="text-align:left;border: .1em solid #dadada;border-radius: .5em;padding: 10px; background-color: #eee;">@journal{stergiou2025transporter,</br>
+              title={TRANSPORTER: Transferring Visual Semantics from VLM Manifolds},</br>
+              author={Stergiou, Alexandros},</br>
+              journal={arxiv},</br>
+              year={2025}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- MIMIC: Multimodal Inversion for Model Interpretation and Conceptualization -->
     <div class="row-padding">
