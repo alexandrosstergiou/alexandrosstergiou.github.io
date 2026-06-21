@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Alexandros Stergiou</title>
+  
+  <!-- CSS Stylesheets from main site -->
+  <link rel="stylesheet" href="css/design_new.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+  
+  <style>
+    body, h1, h2, h3, h4, h5, h6 {
+      font-family: "Ubuntu", sans-serif;
+    }
+    
+    body, html {
+      height: 100%;
+      line-height: 1.8;
+      background-color: #fff;
+      color: #000;
+      font-size: .95em;
+      overflow-x: hidden; /* Avoid horizontal scrollbar under all conditions */
+    }
+
+    /* Left-align the navbar & page-anchors, reset overflow hidden */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4em;
+      z-index: 1000;
+      overflow: visible !important;
+    }
+
+    #page-anchors {
+      position: absolute !important;
+      top: 0 !important;
+      left: 1em !important;
+      text-align: left !important;
+      overflow: visible !important;
+      height: auto !important;
+    }
+
+    #navbutton {
+      background-color: #000;
+      margin: 0.6em 0 !important;
+    }
+
+    /* Position dropdown menu correctly on the left and clean up offsets */
+    #dropdown-menu {
+      position: absolute !important;
+      top: 3.2em !important;
+      left: 0 !important;
+      width: 10em;
+      color: #fff;
+      z-index: 100;
+    }
+
+    #dropdown-menu > ul {
+      list-style-type: none;
+      margin: 0 !important;
+      padding: 0 !important;
+      display: block;
+      width: inherit;
+      text-align: start;
+      color: #fff;
+      border-radius: 0.6em;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    #dropdown-menu > ul li a {
+      display: block;
+      background: black;
+      width: 100%;
+      padding: 0.6em 1em;
+      color: #fff;
+      text-decoration: none;
+      box-sizing: border-box;
+    }
+
+    #dropdown-menu > ul li a:hover {
+      background: #1E4258;
+      color: #fff;
+    }
+
+    #dropdown-menu > ul li:first-child a {
+      border-radius: 0.6em 0.6em 0 0;
+    }
+
+    #dropdown-menu > ul li:last-child a {
+      border-radius: 0 0 0.6em 0.6em;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .clickable {
+      cursor: pointer;
+    }
+
+    /* Clean Content Container */
+    .blog-container {
+      max-width: 800px;
+      margin: 7em auto 4em auto;
+      padding: 0 1.5em;
+    }
+
+    .blog-posts {
+      display: flex;
+      flex-direction: column;
+      gap: 3em;
+    }
+
+    .blog-post {
+      display: flex;
+      gap: 2.5em;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 2.5em;
+    }
+
+    .blog-post:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .post-date {
+      width: 7.5em;
+      flex-shrink: 0;
+      font-family: "Lato", sans-serif;
+      color: #666;
+      font-weight: bold;
+      font-size: 0.95em;
+      padding-top: 2px;
+      user-select: none;
+    }
+
+    .post-content {
+      flex-grow: 1;
+    }
+
+    .post-title {
+      margin: 0;
+      font-size: 1.15em;
+      font-weight: bold;
+      cursor: pointer;
+      color: #000;
+      transition: color 0.2s ease;
+      user-select: none;
+      display: inline-block;
+    }
+
+    .post-title:hover {
+      color: #1E4258;
+    }
+
+    .post-title::before {
+      content: "> ";
+      display: inline-block;
+      margin-right: 0.5em;
+      color: #777;
+      font-weight: normal;
+      font-family: monospace;
+    }
+
+    .blog-post.expanded .post-title::before {
+      content: "v ";
+    }
+
+    /* Smooth Height Transition */
+    .post-body-wrapper {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.35s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+      opacity: 0;
+      overflow: hidden;
+    }
+
+    .blog-post.expanded .post-body-wrapper {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
+
+    .post-body {
+      min-height: 0;
+      padding-top: 0.8em;
+      font-size: 0.95em;
+      color: #333;
+    }
+
+    .post-body p {
+      margin-bottom: 1em;
+    }
+
+    .post-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .post-body blockquote {
+      border-left: 3px solid #1E4258;
+      padding-left: 1em;
+      margin: 1.2em 0;
+      font-style: italic;
+      color: #555;
+    }
+
+    .post-body ul {
+      margin-bottom: 1em;
+      padding-left: 1.5em;
+    }
+
+    .post-body li {
+      margin-bottom: 0.3em;
+    }
+
+    .post-body pre {
+      background-color: #f7f7f7;
+      padding: 1em;
+      border-radius: 5px;
+      overflow-x: auto;
+      border: 1px solid #eee;
+      margin: 1.2em 0;
+    }
+
+    .post-body code {
+      font-family: monospace;
+      font-size: 0.9em;
+      background-color: #f7f7f7;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+
+    .post-body pre code {
+      background-color: transparent;
+      padding: 0;
+      border-radius: 0;
+    }
+
+    /* Mobile Adaptability */
+    @media (max-width: 600px) {
+      .blog-container {
+        margin-top: 5em;
+        padding: 0 1em;
+      }
+      .blog-post {
+        flex-direction: column;
+        gap: 0.2em;
+      }
+      .post-date {
+        width: auto;
+        font-size: 0.85em;
+        color: #777;
+      }
+      .post-title {
+        font-size: 1.1em;
+      }
+    }
+
+    .year-anchor {
+      scroll-margin-top: 7em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Burger Navigation Bar -->
+  <div id="nav" class="navbar">
+    <div id="page-anchors">
+      <button id="navbutton" onclick="toggleMenuVisibility()">
+        <div class="navbutton">
+          <i id="nav-icon" class="clickable las la-bars la"></i>
+        </div>
+      </button>
+
+      <div id="dropdown-menu" class="hidden">
+        <ul>
+          <li><a href="#year-2026" onclick="toggleMenuVisibility()">2026</a></li>
+          <li><a href="index.html">Main Page</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blog Posts Section -->
+  <main class="blog-container">
+    <div class="blog-posts">
+      
+      <!-- 2026 Year Anchor -->
+      <div id="year-2026" class="year-anchor"></div>
+
+      <!-- Post 1 -->
+      <article class="blog-post" id="post-1">
+        <div class="post-date">21 Jun 2026</div>
+        <div class="post-content">
+          <h2 class="post-title">Some views and thoughts of the past academic year</h2>
+          <div class="post-body-wrapper">
+            <div class="post-body">
+              <p>I have been part of several discussions and seen a plethora of posts on the role of AI in universities over the past year, so I thought to write my thoughts down, to hopefully revisit in a few years’ time. </p>
+              
+
+              <p>From my view, we are still stuck at the Trial of Socrates. On one end, we have accusations of corrupting influence over youth, and LLMs are a threat to the foundations of learning. Socrates’ defense at the time was that his service to Athens was to act as a gadfly, awakening the youth. A strong metric of academic merit, up to this point, has been tolerance towards busyness - coursework, projects, and exams. This status quo is becoming increasingly unmanageable, as with the “Thirty Tyrants” period that betrayed Athenian democracy and its institutions. I would argue that this balance in academic merit was never meant to be maintainable, but the conversation we have with the introduction of AI in education is that we can no longer ignore it as easily. I do not see educating people to be tolerable of boring tasks and functional as the highest goal. Looking at education from a researcher's point of view, this means having individuals who can take a form of initiative with the resources they are offered.</p>
+
+              <p>This process is not independent of students - the university will not shove a new life into your head, give you a degree, and send you on your merry way. Students need to find the inclination and the interest to explore the neat stuff that is lying around. The uniqueness of the university, from my view, is that it cannot work on the passive - as with LLM prompting. Making the most out of it requires an active interaction with resources and staff that are a stone’s throw away.</p>
+
+            </div>
+          </div>
+        </div>
+      </article>
+
+
+
+    </div>
+  </main>
+
+  <!-- Interactive Logic Script -->
+  <script>
+    // Toggle icon type and navbutton background color
+    function changeClass(id) {
+      var navicon = document.getElementById(id);
+      if (!navicon) return;
+      if (navicon.className == "clickable las la-bars la") {
+        navicon.className = "clickable las la-times la";
+        document.getElementById('navbutton').style.backgroundColor = '#1E4258';
+      } else if (navicon.className == "clickable las la-times la") {
+        navicon.className = "clickable las la-bars la";
+        document.getElementById('navbutton').style.backgroundColor = '#000';
+      }
+    }
+
+    // Toggle Burger Menu Visibility
+    function toggleMenuVisibility() {
+      changeClass("nav-icon");
+      const menu = document.getElementById('dropdown-menu');
+      if (menu) {
+        menu.classList.toggle('hidden');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // --- Expand / Collapse Post Logic with Outside Clicks ---
+      document.addEventListener('click', (event) => {
+        const clickedTitle = event.target.closest('.post-title');
+        const clickedBodyWrapper = event.target.closest('.post-body-wrapper');
+        const activePosts = document.querySelectorAll('.blog-post.expanded');
+
+        if (clickedTitle) {
+          const targetPost = clickedTitle.closest('.blog-post');
+          const isAlreadyExpanded = targetPost.classList.contains('expanded');
+
+          // Collapse all expanded posts
+          activePosts.forEach(post => {
+            post.classList.remove('expanded');
+          });
+
+          // If the clicked post was not already expanded, expand it
+          if (!isAlreadyExpanded) {
+            targetPost.classList.add('expanded');
+          }
+        } 
+        else if (clickedBodyWrapper) {
+          // Clicked inside the text body of an expanded post; keep it open
+          return;
+        } 
+        else {
+          // Clicked outside any active title or post body; collapse all
+          const clickedNav = event.target.closest('#nav');
+          // If we clicked the navigation bar area (like opening the menu), don't collapse posts
+          if (!clickedNav) {
+            activePosts.forEach(post => {
+              post.classList.remove('expanded');
+            });
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
