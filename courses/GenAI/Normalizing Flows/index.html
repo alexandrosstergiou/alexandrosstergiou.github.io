@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An offline study studio for Transformers and Normalizing Flows.">
+    <meta name="theme-color" content="#08090c">
+    <link rel="icon" href="./favicon.png">
+    <link rel="stylesheet" href="./assets/index-K7m2Qp4R.css">
+    <style>
+      /* Flow Matching parity: compact topic index and slide workspace. */
+      .home { padding: 0 clamp(20px, 3.4vw, 58px) 40px; overflow: visible; background: radial-gradient(circle at 88% 4%, #8f7cff1c, transparent 26%), var(--ink); }
+      .home .topbar { min-height: 74px; }
+      .home .topics { border: 0; padding: clamp(42px, 7vh, 76px) 0 0; }
+      .home .topics > h1 { margin: 0 0 26px; font-size: clamp(30px, 3vw, 44px); font-weight: 540; letter-spacing: -.045em; }
+      .home .topic-card { min-height: clamp(300px, 46vh, 380px); }
+      .step-actions { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+      .step-actions button { min-height: 40px; padding: 0 16px; border: 1px solid var(--line); border-radius: 999px; background: transparent; font-size: 10px; cursor: pointer; }
+      .step-actions button:first-child { justify-self: start; }
+      .step-actions button:last-child { justify-self: end; }
+      .step-actions button.primary { border-color: var(--accent); background: var(--accent); color: #07080a; font-weight: 700; }
+      .step-actions button:disabled { opacity: .3; cursor: not-allowed; }
+      .media-stage { margin: 0; }
+      .step-explanation { display: block; padding: 34px 0 26px; }
+      .step-heading { max-width: 860px; }
+      .step-heading .eyebrow { margin-bottom: 14px; }
+      .step-explanation h1 { margin: 0; max-width: 850px; font-size: clamp(32px, 3.5vw, 58px); font-weight: 520; line-height: .98; letter-spacing: -.06em; }
+      .learning-notes { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(250px, .9fr); margin-top: 30px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      .learning-notes section { min-width: 0; padding: 22px clamp(18px, 2vw, 28px); }
+      .learning-notes section:first-child { padding-left: 0; }
+      .learning-notes section + section { border-left: 1px solid var(--line); }
+      .learning-notes .convention-note { grid-column: 1 / -1; padding-left: 0; border-top: 1px solid var(--line); border-left: 0; }
+      .learning-notes h2 { margin: 0 0 11px; color: var(--accent); font: 700 9px ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .09em; text-transform: uppercase; }
+      .learning-notes p, .learning-notes li { color: #aeb2bc; font-size: 12px; line-height: 1.58; }
+      .learning-notes p { margin: 0; }
+      .learning-notes ul { display: flex; flex-direction: column; gap: 7px; margin: 0; padding: 0; list-style: none; }
+      .learning-notes li { position: relative; padding-left: 14px; }
+      .learning-notes li::before { content: ""; position: absolute; top: .66em; left: 0; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
+      @media (max-width: 1279px) {
+        .learning-notes { grid-template-columns: 1fr; }
+        .learning-notes section, .learning-notes section:first-child { padding: 18px 0; }
+        .learning-notes section + section { border-top: 1px solid var(--line); border-left: 0; }
+        .learning-notes .convention-note { grid-column: auto; }
+      }
+      @media (max-width: 719px) {
+        .home { padding: 0 16px 28px; }
+        .home .topics { padding-top: 36px; }
+        .home .topic-card { min-height: 275px; }
+        .step-explanation { padding-top: 25px; }
+        .step-explanation h1 { font-size: 34px; }
+        .step-actions button { width: 100%; padding: 0 11px; }
+      }
+
+      /* Nabla parity with the Flow Matching and Advanced Topics studios. */
+      .nabla-guide { --nabla-accent: var(--accent); position: fixed; z-index: 60; right: 374px; bottom: 22px; display: flex; align-items: flex-end; justify-content: flex-end; gap: 7px; max-width: min(560px, calc(100vw - 36px)); pointer-events: none; }
+      .nabla-card, .nabla-character { pointer-events: auto; }
+      .nabla-card { position: relative; width: min(390px, calc(100vw - 128px)); max-height: min(620px, calc(100vh - 44px)); overflow: auto; padding: 24px; border: 1px solid #1113182e; border-top: 3px solid var(--nabla-accent); border-radius: 16px 16px 4px; background: #f2f0ea; color: #16181d; box-shadow: 0 22px 70px #0000007a; animation: nabla-card-in .18s ease-out both; }
+      .nabla-card[hidden] { display: none; }
+      @keyframes nabla-card-in { from { opacity: 0; transform: translateY(8px) scale(.985); } to { opacity: 1; transform: none; } }
+      .nabla-close { position: absolute; top: 9px; right: 9px; display: grid; place-items: center; width: 36px; height: 36px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: #6f7178; font-size: 27px; line-height: 1; cursor: pointer; }
+      .nabla-close:hover, .nabla-close:focus-visible { color: #111318; background: #11131814; }
+      .nabla-card .nabla-eyebrow { margin: 0 42px 10px 0; color: color-mix(in srgb, var(--nabla-accent) 62%, #17191e); font: 760 12px ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .09em; text-transform: uppercase; }
+      .nabla-card h2 { margin: 0; color: #13151a; font-size: 27px; font-weight: 650; line-height: 1.08; letter-spacing: -.035em; }
+      .nabla-card .nabla-body { margin: 14px 0 0; color: #5b5e66; font-size: 16.5px; line-height: 1.5; }
+      .nabla-options { display: flex; flex-direction: column; gap: 8px; margin-top: 18px; }
+      .nabla-options button { display: grid; grid-template-columns: 15px 1fr; align-items: center; gap: 10px; width: 100%; min-height: 48px; padding: 10px 12px; border: 1px solid #11131824; border-radius: 10px; background: #ffffff94; color: #303239; text-align: left; font-size: 13.5px; line-height: 1.38; cursor: pointer; }
+      .nabla-options button > span { width: 11px; height: 11px; border: 1px solid #95979d; border-radius: 50%; }
+      .nabla-options button:hover:not(:disabled), .nabla-options button:focus-visible { border-color: color-mix(in srgb, var(--nabla-accent) 60%, #a2a4aa); background: #fff; }
+      .nabla-options button.correct { border-color: #4a9b7b; background: #e5f4ed; }
+      .nabla-options button.correct > span { border-color: #3c8c6d; background: #5aba94; box-shadow: inset 0 0 0 2px #e5f4ed; }
+      .nabla-options button.incorrect { border-color: #c1746b; background: #fae9e6; }
+      .nabla-options button.incorrect > span { border-color: #ba665c; background: #d27b70; box-shadow: inset 0 0 0 2px #fae9e6; }
+      .nabla-options button:disabled { cursor: default; }
+      .nabla-feedback p { margin: 14px 0 0; padding-left: 10px; border-left: 2px solid; color: #555860; font-size: 13.5px; line-height: 1.5; }
+      .nabla-feedback p.correct { border-color: #4a9b7b; }
+      .nabla-feedback p.incorrect { border-color: #c1746b; }
+      .nabla-action { min-height: 40px; margin-top: 17px; padding: 0 15px; border: 1px solid #1c1e23; border-radius: 999px; background: #1c1e23; color: #fff; font-size: 13.5px; font-weight: 680; cursor: pointer; }
+      .nabla-action:hover, .nabla-action:focus-visible { background: color-mix(in srgb, var(--nabla-accent) 35%, #1c1e23); }
+      .nabla-character { position: relative; display: grid; place-items: center; width: 106px; height: 106px; padding: 0; border: 1px solid #ffffff21; border-radius: 24px; background: radial-gradient(circle, color-mix(in srgb, var(--accent) 12%, transparent), transparent 68%), #08090ce6; box-shadow: 0 18px 48px #0006; backdrop-filter: blur(10px); cursor: pointer; }
+      .nabla-character:hover, .nabla-character:focus-visible { border-color: color-mix(in srgb, var(--accent) 50%, transparent); background: radial-gradient(circle, color-mix(in srgb, var(--accent) 18%, transparent), transparent 68%), #08090cf0; }
+      .nabla-mascot-stack { position: relative; display: grid; place-items: center; width: 96px; height: 96px; }
+      .nabla-mascot-stack > * { grid-area: 1 / 1; }
+      .nabla-mascot-stack > nabla-mascot, .nabla-static-mascot { display: block; width: 100% !important; height: 100% !important; }
+      .nabla-mascot-stack > nabla-mascot { opacity: 0; transition: opacity .1s ease-out; }
+      .nabla-mascot-stack.ready > nabla-mascot { opacity: 1; }
+      .nabla-static-mascot { opacity: 1; pointer-events: none; transform-origin: 50%; transition: opacity .1s ease-out; animation: nabla-safe-render-in .42s cubic-bezier(.2,.8,.2,1) both; }
+      .nabla-mascot-stack.ready > .nabla-static-mascot { opacity: 0; }
+      @keyframes nabla-safe-render-in { from { transform: scale(.82) rotate(-3deg); } to { transform: none; } }
+      .nabla-fallback-body { fill: none; stroke: var(--nabla-fallback-color); stroke-width: 14px; stroke-linecap: round; stroke-linejoin: round; }
+      .nabla-fallback-eye { fill: #fcfcfa; stroke: var(--nabla-fallback-color); stroke-width: 1.5px; }
+      .nabla-fallback-pupil { fill: #17191e; }
+      .nabla-fallback-symbol { fill: none; stroke: var(--nabla-fallback-color); stroke-width: 14px; stroke-linecap: round; stroke-linejoin: round; }
+      .nabla-fallback-symbol circle { fill: var(--nabla-fallback-color); stroke: none; }
+      .nabla-static-mascot:is([data-emote="question"], [data-emote="checkmark"], [data-emote="incorrect"]) .nabla-fallback-base { opacity: .18; }
+      .nabla-guide.collapsed .nabla-character { width: 82px; height: 82px; border-radius: 20px; }
+      .nabla-guide.collapsed .nabla-mascot-stack { width: 74px; height: 74px; }
+      @media (max-width: 1180px) { .nabla-guide { right: 320px; } }
+      @media (max-width: 960px) { .nabla-guide { right: 18px; bottom: 18px; } }
+      @media (max-width: 719px) {
+        .nabla-guide { right: 12px; bottom: 12px; max-width: calc(100vw - 24px); }
+        .nabla-card { width: min(330px, calc(100vw - 96px)); padding: 18px; }
+        .nabla-character { width: 82px; height: 82px; border-radius: 20px; }
+        .nabla-mascot-stack { width: 74px; height: 74px; }
+        .nabla-guide.collapsed .nabla-character { width: 68px; height: 68px; }
+        .nabla-guide.collapsed .nabla-mascot-stack { width: 61px; height: 61px; }
+      }
+      @media (prefers-reduced-motion: reduce) { .nabla-static-mascot { animation: none; } }
+    </style>
+    <title>Transformers &amp; Normalizing Flows Study Studio</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <noscript>This offline studio needs JavaScript enabled to save notes and run knowledge checks.</noscript>
+    <script defer src="./assets/nabla-mascot-CR322TyG.js"></script>
+    <script defer src="./assets/index-584e5752.js"></script>
+  </body>
+</html>

@@ -1,0 +1,179 @@
+.home-shell::before {
+  content: "ADVANCED / 03";
+  position: fixed;
+  right: 22px;
+  bottom: 18px;
+  color: #ffffff12;
+  font: 700 9px ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .16em;
+  pointer-events: none;
+}
+
+.topic-card-copy .topic-kicker {
+  color: var(--accent);
+  margin: 0 0 10px;
+  font: 700 8px ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.home-note {
+  color: #757a86;
+  max-width: 760px;
+  margin: 28px 0 0;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.media-stage.video .media-frame video {
+  background: #050608;
+}
+
+.source-links {
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+  padding-top: 18px;
+}
+
+.source-links a {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: #aeb2bc;
+  padding: 8px 11px;
+  font: 600 9px ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .035em;
+  text-decoration: none;
+}
+
+.source-links a:hover,
+.source-links a:focus-visible {
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.toast {
+  position: fixed;
+  z-index: 90;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: #171a22f2;
+  box-shadow: 0 18px 54px #0009;
+  color: #e7e8eb;
+  padding: 10px 16px;
+  font-size: 10px;
+}
+
+.nabla-card[hidden],
+.utilities-menu[hidden] {
+  display: none;
+}
+
+.nabla-guide {
+  --nabla-accent: var(--accent);
+  max-width: min(560px, calc(100vw - 36px));
+}
+
+.nabla-card {
+  width: min(390px, calc(100vw - 128px));
+  padding: 24px;
+}
+
+.nabla-card .nabla-eyebrow {
+  font-size: 12px;
+}
+
+.nabla-card .nabla-close {
+  width: 36px;
+  height: 36px;
+  font-size: 27px;
+}
+
+.nabla-card h2 {
+  font-size: 27px;
+}
+
+.nabla-card .nabla-body {
+  font-size: 16.5px;
+}
+
+.nabla-card .nabla-options button {
+  min-height: 48px;
+  font-size: 13.5px;
+}
+
+.nabla-card .nabla-feedback p,
+.nabla-card .nabla-action {
+  font-size: 13.5px;
+}
+
+.nabla-card .quiz-result {
+  color: #555860;
+  border-left: 2px solid #4a9b7b;
+  margin: 12px 0 0;
+  padding-left: 10px;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.lesson-main.activity-mode {
+  padding-bottom: 70px;
+}
+
+.activity-toolbar .button.is-active {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.summary-sources {
+  border-top: 1px solid var(--line);
+  margin-top: 18px;
+  padding-top: 18px;
+}
+
+.summary-sources .overline {
+  margin-bottom: 12px;
+}
+
+.summary-sources ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.summary-sources a {
+  color: #c4c7ce;
+  font-size: 11px;
+}
+
+.summary-sources a:hover {
+  color: var(--accent);
+}
+
+.media-error {
+  color: #ff9b8e;
+  padding: 18px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+@media (max-width: 960px) {
+  .nabla-guide {
+    max-width: calc(100vw - 36px);
+  }
+}
+
+@media (max-width: 719px) {
+  .nabla-card {
+    width: min(330px, calc(100vw - 96px));
+    padding: 18px;
+  }
+}
