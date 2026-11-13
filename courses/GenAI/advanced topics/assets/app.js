@@ -445,7 +445,7 @@
           </div>
         </header>
         <section class="topics-section" aria-labelledby="topics-title">
-          <h1 id="topics-title">Advanced topics</h1>
+          <h1 id="topics-title">Recent Advancements in Generative Models</h1>
           <div class="topic-grid">
             ${topics.map((topic) => topicCardMarkup(topic)).join("")}
           </div>
@@ -557,7 +557,7 @@
         <ol>
           ${topic.steps.map((step, index) => `
             <li><button class="${!summary && index === currentIndex ? "active" : ""} ${stepComplete(step, topicState) ? "visited" : ""}" type="button" data-step-index="${index}" ${!summary && index === currentIndex ? 'aria-current="step"' : ""}>
-              <span>${String(index + 1).padStart(2, "0")}</span><span><strong>${escapeHtml(step.title)}</strong><small>${step.kind === "pseudocode" ? "Practice" : step.kind === "video" ? "Demonstration" : "Slide"}</small></span>
+              <span>${String(index + 1).padStart(2, "0")}</span><span><strong>${escapeHtml(step.title)}${step.quiz ? '<span class="quiz-chip">◆ check</span>' : ""}</strong><small>${step.kind === "pseudocode" ? "Practice" : step.kind === "video" ? "Demonstration" : "Slide"}</small></span>
             </button></li>`).join("")}
           <li><button class="${summary ? "active" : ""}" type="button" data-action="summary" ${summary ? 'aria-current="step"' : ""}><span>Σ</span><span><strong>Topic summary</strong><small>Synthesis notes</small></span></button></li>
         </ol>

@@ -15,7 +15,7 @@
       .home .topics > h1 { margin: 0 0 26px; font-size: clamp(30px, 3vw, 44px); font-weight: 540; letter-spacing: -.045em; }
       .home .topic-card { min-height: clamp(300px, 46vh, 380px); }
       .step-actions { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
-      .step-actions button { min-height: 40px; padding: 0 16px; border: 1px solid var(--line); border-radius: 999px; background: transparent; font-size: 10px; cursor: pointer; }
+      .step-actions button { min-height: 44px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 999px; background: transparent; font-size: .875rem; line-height: 1.45; cursor: pointer; }
       .step-actions button:first-child { justify-self: start; }
       .step-actions button:last-child { justify-self: end; }
       .step-actions button.primary { border-color: var(--accent); background: var(--accent); color: #07080a; font-weight: 700; }
@@ -30,12 +30,12 @@
       .learning-notes section:first-child { padding-left: 0; }
       .learning-notes section + section { border-left: 1px solid var(--line); }
       .learning-notes .convention-note { grid-column: 1 / -1; padding-left: 0; border-top: 1px solid var(--line); border-left: 0; }
-      .learning-notes h2 { margin: 0 0 11px; color: var(--accent); font: 700 9px ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .09em; text-transform: uppercase; }
-      .learning-notes p, .learning-notes li { color: #aeb2bc; font-size: 12px; line-height: 1.58; }
+      .learning-notes h2 { margin: 0 0 11px; color: var(--accent); font: 700 .75rem ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .09em; text-transform: uppercase; }
+      .learning-notes p, .learning-notes li { color: #aeb2bc; font-size: 1rem; line-height: 1.7; overflow-wrap: anywhere; }
       .learning-notes p { margin: 0; }
-      .learning-notes ul { display: flex; flex-direction: column; gap: 7px; margin: 0; padding: 0; list-style: none; }
-      .learning-notes li { position: relative; padding-left: 14px; }
-      .learning-notes li::before { content: ""; position: absolute; top: .66em; left: 0; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
+      .learning-notes ul { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; }
+      .learning-notes li { position: relative; padding-left: 18px; }
+      .learning-notes li::before { content: ""; position: absolute; top: .66em; left: 0; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
       @media (max-width: 1279px) {
         .learning-notes { grid-template-columns: 1fr; }
         .learning-notes section, .learning-notes section:first-child { padding: 18px 0; }
@@ -105,6 +105,59 @@
         .nabla-guide.collapsed .nabla-mascot-stack { width: 61px; height: 61px; }
       }
       @media (prefers-reduced-motion: reduce) { .nabla-static-mascot { animation: none; } }
+
+      /* Readable explanations, chapter navigation, and notes across all chapters. */
+      .lesson-layout { grid-template-columns: 250px minmax(0, 1fr) minmax(280px, 350px); }
+      .back { font-size: .875rem; line-height: 1.5; }
+      .lesson-name strong { font-size: 1rem; line-height: 1.4; }
+      .lesson-name span { font-size: .75rem; line-height: 1.5; }
+      .lesson-progress-label { font-size: .75rem; line-height: 1.5; }
+      .rail-head { gap: 8px; font-size: .75rem; line-height: 1.5; }
+      .rail button { grid-template-columns: 26px minmax(0, 1fr); align-items: start; min-height: 56px; padding: 12px 9px; color: #b6bac4; }
+      .rail button div { min-width: 0; }
+      .step-no { font-size: .75rem; line-height: 1.5; }
+      .rail strong { overflow: visible; white-space: normal; text-overflow: clip; overflow-wrap: anywhere; font-size: .875rem; line-height: 1.4; }
+      .rail small { margin-top: 5px; color: var(--muted); font-size: .75rem; line-height: 1.5; }
+      .quiz-chip { display: inline-block; font-size: .75rem; white-space: nowrap; }
+      .eyebrow, .media-top, .mobile-step { font-size: .75rem; line-height: 1.5; }
+      .media-top { gap: 12px; }
+      .media-caption { color: var(--muted); font-size: .875rem; line-height: 1.6; }
+      .skip-transition { min-height: 40px; font-size: .875rem; }
+      .notes-head { flex-wrap: wrap; row-gap: 6px; }
+      .notes-head strong { font-size: 1rem; line-height: 1.5; }
+      .notes-head span { font-size: .75rem; line-height: 1.5; }
+      .notes textarea, .summary-editor textarea { font-size: 1rem; line-height: 32px; background: repeating-linear-gradient(transparent 0 31px, #ffffff10 32px); }
+      .prompt-chips { gap: 8px; }
+      .prompt-chips span { font-size: .75rem; line-height: 1.5; }
+      .prompt-chips button { min-height: 36px; font-size: .875rem; line-height: 1.4; }
+      .notes-footer { flex-wrap: wrap; gap: 8px; }
+      .notes-footer button { min-height: 40px; font-size: .875rem; }
+      .save-state, .overall { font-size: .75rem; }
+      .menu-button, .pill-button { min-height: 44px; font-size: .875rem; }
+      .menu-pop { top: 52px; width: 300px; max-width: calc(100vw - 32px); }
+      .menu-pop button, .menu-pop a { min-height: 44px; padding: 8px 11px; font-size: .875rem; line-height: 1.5; }
+      .summary-intro, .recap li { font-size: 1rem; line-height: 1.65; }
+      .summary-number span { font-size: .75rem; line-height: 1.5; }
+      .summary-status dl div, .summary-status p { font-size: .875rem; line-height: 1.6; }
+      .summary-actions { flex-wrap: wrap; }
+      .summary-actions button, .step-nav button { min-height: 44px; font-size: .875rem; }
+      .nabla-options button, .nabla-feedback p { font-size: .9375rem; line-height: 1.5; }
+      .nabla-action { font-size: .875rem; }
+      .toast, .modal-card p, .modal-actions button { font-size: .875rem; line-height: 1.6; }
+      @media (max-width: 1260px) {
+        .lesson-layout { grid-template-columns: 224px minmax(0, 1fr) 300px; }
+      }
+      @media (max-width: 960px) {
+        .rail button { grid-template-columns: 1fr; width: 52px; min-height: 44px; padding: 12px 8px; }
+      }
+      @media (max-width: 720px) {
+        .lesson-header { grid-template-columns: auto minmax(0, 1fr); gap: 10px 14px; height: 6.5rem; min-height: 6.5rem; padding: 12px 15px; }
+        .lesson-progress-block { padding-bottom: 0; }
+        .rail { top: 6.5rem; }
+      }
+      @media (max-width: 450px) {
+        .step-actions { grid-template-columns: 1fr; }
+      }
     </style>
     <title>Transformers &amp; Normalizing Flows Study Studio</title>
   </head>
@@ -112,6 +165,6 @@
     <div id="app"></div>
     <noscript>This offline studio needs JavaScript enabled to save notes and run knowledge checks.</noscript>
     <script defer src="./assets/nabla-mascot-CR322TyG.js"></script>
-    <script defer src="./assets/index-584e5752.js"></script>
+    <script defer src="./assets/index-7fbc5d61.js"></script>
   </body>
 </html>
